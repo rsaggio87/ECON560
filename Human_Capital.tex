@@ -1,0 +1,1021 @@
+\documentclass[blue]{beamer}
+\usetheme{Madrid}
+%\setbeamertemplate{footline}{Chris Walters (MIT)}
+\usenavigationsymbolstemplate{}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}{}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{graphics}
+\usepackage{multirow}
+\usepackage{xkeyval}
+\usepackage{verbatim}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{pdfpages}
+\usepackage{xcolor}
+\newsavebox\MBox
+\newcommand\Cline[2][red]{{\sbox\MBox{$#2$}%
+  \rlap{\usebox\MBox}\color{#1}\rule[-1.2\dp\MBox]{\wd\MBox}{0.75pt}}}
+\newcommand{\Perp}{\perp \! \! \! \perp}
+
+
+\makeatletter
+\makeatother
+
+\title{Human Capital}
+\author[]{Raffaele Saggio}
+\institute{\small{Econ 560}}
+
+\begin{document}
+
+{
+\thispagestyle{empty}
+\setbeamertemplate{footline}{}
+\frame{\titlepage}
+}
+
+\section{Motivation}
+\frame{\frametitle{Human Capital Investments: Theory and Evidence}
+\begin{itemize}
+\begin{small}
+\item Mincerian earnings regression:
+\begin{displaymath}
+\log y_{i} = \alpha +\beta S_{i} + \gamma_{1}Exp_{i}+\gamma_{2}Exp_{i}^{2}+e_{i}
+\end{displaymath}
+\item Questions:
+\begin{itemize}
+\begin{small}
+\vspace{0.05in}
+\item What is the theoretical rationale for this model?
+\vspace{0.05in}
+\item Does $\beta$ have a causal interpretation? If not, is it too big or too small?
+\vspace{0.05in}
+\item What do we know about the causal effect of schooling on earnings?
+\end{small}
+\end{itemize}
+\end{small}
+\end{itemize}
+}
+
+\section{Models of Human Capital Investment}
+\frame{\frametitle{Investment Over the Life Cycle: The Ben-Porath Model}
+\begin{itemize}
+\begin{small}
+\item Human capital paradigm: Worker skills as a form of capital
+\vspace{0.05in}
+\item Workers invest in these skills to improve earnings opportunities
+\begin{itemize}
+\begin{small}
+\vspace{0.05in}
+\item Schooling
+\vspace{0.05in}
+\item On-the-job training
+\end{small}
+\end{itemize}
+\vspace{0.05in}
+\item Tradeoff: cannot work while investing in human capital
+\vspace{0.05in}
+\item Elegantly described by Ben-Porath (1967)
+\end{small}
+\end{itemize}
+}
+
+
+\section{Returns to Schooling}
+\frame{\frametitle{A Causal Model of Schooling Investments}
+\begin{itemize}
+\begin{small}
+\item To investigate the returns to education, consider a static model of schooling investment, as in Card (1999) Handbook Chapter (almost 7K citations!).
+\medskip
+\item Consider an individual deciding how long to stay in school, $S$.
+\medskip
+\item Schooling maps to earnings according to the differentiable function $y(S)$ where $y'(S)\equiv \dfrac{\partial y(S)}{\partial S}$ denote the marginal return of schooling. 
+\medskip 
+\item An individual's goal is to maximize the present discounted value of earnings ($y(S))$ given a discount rate of $r$.
+
+\begin{displaymath}
+\displaystyle{\max_{S}} \hspace{0.1cm} PDV(S)
+\end{displaymath}
+where $PDV(S)\equiv \int_{S}^{\infty}{e^{-rt}y(S)}dt$.
+\medskip
+\item Idea: individuals discount future earnings at rate $r$ and decide how many years to spent in school before earning some amounts of money.
+\medskip
+\item What are we implicitly assuming here?
+%% RA money
+%% On-the job investments of human capital.
+% Infinetely lived?
+
+\end{small}
+\end{itemize}
+}
+\frame{\frametitle{A Causal Model of Schooling Investments}
+\begin{itemize}
+\begin{small}
+\item Note that the integral can be written as:
+\begin{displaymath}
+\int_{S}^{\infty}{e^{-rt}y(S)}dt = -y(S)\dfrac{e^{-rt}}{r}\vert^{\infty}_{S}=y(S)\dfrac{exp(-rS)}{r}
+\end{displaymath}
+\item Therefore the FOC of the maximization problem of the previous slide is:
+\begin{displaymath}
+y'(S^{*})\dfrac{exp(-rS^{*})}{r}-y(S^{*})exp(-rS^{*})=0
+\end{displaymath}
+which  can be written as 
+\begin{displaymath}
+\dfrac{d log y(S^{*})}{d S} = r
+\end{displaymath}
+\item Intuition?
+\end{small}
+\end{itemize}
+}
+\frame{\frametitle{A Causal Model of Schooling Investments}
+\begin{displaymath}
+\dfrac{d log y(S^{*})}{d S} = r
+\end{displaymath}
+\begin{itemize}
+\begin{small}
+\item Useful framework for interpreting empirical evidence and thinking about heterogeneity \medskip
+\item Variation in schooling across individuals is driven either by heterogeneity in the earnings function $y(S)$ or the interest rate $r$ \medskip
+\item ``Ability bias:" Individuals that choose different schooling levels may have different potential earnings functions, leading observed earnings/schooling relationship to differ from causal impact of schooling
+\end{small}
+\end{itemize}
+}
+
+\frame{\frametitle{Ability Bias}
+\begin{itemize}
+\begin{small}
+\item Simple specification of earnings function:
+\begin{displaymath}
+y_{i}(S) = \alpha_{i}+\beta S_{i}
+\end{displaymath}
+\medskip
+\item Optimal schooling choices:
+$S_{i}^{*} = \frac{1}{r} - \frac{\alpha_{i}}{\beta}$ \medskip
+\item Are ``smart" dudes getting more or less schooling in this model?
+\medskip
+\item What coefficient would a regression of earnings on schooling (and a constant) return? 
+\medskip
+\item Is OLS biased upwards or downwards?
+\end{small}
+\end{itemize}
+}
+
+\frame{\frametitle{Ability Bias}
+\begin{itemize}
+\begin{small}
+\item Alternative specification of earnings function:
+\begin{displaymath}
+log y_{i}(S) = \alpha_{i} + \beta S_{i} - \frac{\gamma}{2}S_{i}^{2}
+\end{displaymath}
+\medskip
+\item What is different now? 
+%The \textit{proportional} increase to earnings is the same across individuals. This means that the \textit{level} effect of schooling is larger for higher-ability individuals. 
+\item Assume also that discount rates vary across individuals $r_{i}$ and that $r_{i}$ has a symmetric distribution.
+\medskip
+\item Optimal level of schooling
+\begin{displaymath}
+S_{i}^{*} = \frac{\beta - r_{i}}{\gamma}
+\end{displaymath}
+\item OLS regression of log earnings on schooling:
+\begin{displaymath}
+b = \frac{Cov(\log y_{i}(S_{i}^{*}),S_{i}^{*})}{Var(S_{i}^{*})} 
+\end{displaymath}
+\end{small}
+\end{itemize}
+}
+\frame{\frametitle{Ability Bias}
+\begin{itemize}
+\begin{small}
+\item Since $r_{i}$ has a symmetric distribution with variance denoted by $\sigma^{2}_{r}$ and covariance with $\alpha_{i}$ given by $\sigma_{\alpha,r}$, we have that 
+\begin{displaymath}
+b = \beta - \gamma E[S_{i}^{*}] -\gamma \dfrac{\sigma_{\alpha,r}}{\sigma^{2}_{r}}
+\end{displaymath}
+\item First term is population average return to schooling
+\medskip
+\item Second term is the bias -- depends on joint distribution of log earnings intercept $\alpha_{i}$ and cost $r_{i}$ 
+\medskip 
+\item What do you think is the sign of $\sigma_{\alpha,r}$? Is OLS biased downwards or upwards?
+\end{small}
+\end{itemize}
+}
+
+
+
+\frame{\frametitle{Returns to Schooling Empirics}
+\begin{itemize}
+\begin{small}
+\item Equation of interest:
+\begin{displaymath}
+\log y_{i} = \alpha +\beta S_{i} + \gamma_{1}Exp_{i}+\gamma_{2}Exp_{i}^{2}+e_{i}
+\end{displaymath}
+\item Why adding controls for experience?
+\pause
+\item Facts:
+\begin{itemize}
+\begin{small}
+\vspace{0.05in}
+\item OLS return $\beta$ is 7 to 8 percent in most data sets
+\vspace{0.05in}
+\item Empirical relationship between log earnings and schooling is surprisingly linear
+\vspace{0.05in}
+\item Additively separable quadratic experience profile fits the data well
+\end{small}
+\end{itemize}
+\end{small}
+\end{itemize}
+}
+
+
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/card1999_f1.pdf}
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/card1999_f2.pdf}
+}
+
+\frame{\frametitle{Angrist and Krueger (QJE 1991)}
+\begin{itemize}
+\begin{small}
+\item Angrist and Krueger (1991) seek to estimate the causal return to education
+\vspace{0.05in}
+\item Instrumental variables strategy motivated by interaction between compulsory schooling and age-at-entry laws
+\vspace{0.05in}
+\begin{itemize}
+\begin{small}
+\item Students can typically drop out on the day they turn 16
+\vspace{0.05in}
+\item Birth date cutoff for starting age: Usually start in the fall of the calendar year in which they turn six
+\end{small}
+\end{itemize}
+\vspace{0.05in}
+\item Generates differences in mean attainment by date of birth
+\end{small}
+\end{itemize}
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/qob_chart.pdf}
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/angrist_krueger_1991_f1.pdf}
+}
+
+
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/angrist_krueger_1991_f5.pdf}
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/angrist_krueger_1991_t3.pdf}
+}
+
+
+
+\frame{\frametitle{IV vs. OLS}
+\begin{itemize}
+\begin{small}
+\item AK find IV estimates at least as large as OLS -- seems surprising
+\vspace{0.05in}
+\item Card (1999): same pattern for other instruments
+\vspace{0.05in}
+\item Potential explanations?
+\end{small}
+\end{itemize}
+}
+
+\frame{\frametitle{IV vs. OLS}
+\begin{itemize}
+\begin{small}
+\item AK find IV estimates at least as large as OLS -- seems surprising
+\vspace{0.05in}
+\item Card (1999): same pattern for other instruments (can you think of some instruments for schooling?)
+\vspace{0.05in}
+\item Potential explanations:
+\vspace{0.05in}
+\begin{itemize}
+\begin{small}
+\item Pure opportunity cost
+\vspace{0.05in}
+\item Measurement error
+\vspace{0.05in}
+\item Publication bias / File Drawer Problem
+\vspace{0.05in}
+\item IV estimates a local average treatment effect for a particular group of individuals known as compliers (we will come back to this in Econ 628). 
+\end{small}
+\end{itemize}
+\end{small}
+\end{itemize}
+}
+
+\frame{\frametitle{Challenges to QOB}
+\begin{itemize}
+\begin{small}
+\item Challenges to validity and interpretation of QOB estimates?
+\end{small}
+\end{itemize}
+}
+
+\frame{\frametitle{Challenges to QOB}
+\begin{itemize}
+\begin{small}
+\item What do you think are the challenges to the interpretation of these IV estimates?
+\bigskip
+\item We will now review some more recent estimates of the returns to education (most of them are based on a RD design).
+\end{small}
+\end{itemize}
+% Age at entry effects
+% Seasonal patterns in family background (Buckles and Hungerman 2013)
+% Many/weak instruments (does not apply to just-id models)
+\pause
+
+}
+
+\frame{\frametitle{Compulsory Schooling Laws in the UK}
+\begin{itemize}
+\begin{small}
+\item More recent estimates of the return to schooling: studies of compulsory schooling reforms in the UK
+\vspace{0.05in}
+\item In 1947, legal school-leaving age in Britain went from 14 to 15
+\vspace{0.05in}
+\item Children born before April 1933 could leave school on their 14th birthdays; children born later could not leave until 15
+\vspace{0.05in}
+\item This change affected nearly half the population
+\vspace{0.05in}
+\item Oreopolous (2006) uses this change in an RD design, finds large returns
+\vspace{0.05in}
+\item Later challenged/updated by Devereux and Hart (2010)
+\vspace{0.05in}
+\item Grenet (2013) studies a similar change from 15 to 16 in 1972
+\end{small}
+\end{itemize}
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/oreopolous_2006_f1.pdf}
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/oreopolous_2006_f1.pdf}
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/oreopolous_2006_f4.pdf}
+}
+
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/oreopolous_2006_f6.pdf}
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/oreopolous_2006_t2.pdf}
+}
+
+\begin{frame}[plain] % plain removes header/footer
+  \frametitle{Devereaux and Hart 2010}
+  \includegraphics[pages=1,scale=0.9]{aux/devereux_hart_2010_f8.pdf}
+\end{frame}
+
+\begin{frame}[plain] % plain removes header/footer
+  \frametitle{Devereaux and Hart 2010}
+  \includegraphics[pages=1,scale=0.9]{aux/devereux_hart_2010_f7.pdf}
+\end{frame}
+
+\begin{frame}[plain] % plain removes header/footer
+  \frametitle{Grenet 2013}
+  \includegraphics[pages=1,scale=0.9]{aux/grenet_2013_t3.pdf}
+\end{frame}
+
+
+\frame{\frametitle{Returns to College for Marginal Students: Zimmerman (JOLE 2014)}
+\begin{itemize}
+\begin{small}
+\item Much of the literature on returns to schooling focuses on students on the margin of dropout in mid-20th century
+\vspace{0.05in}
+\item Perhaps more policy-relevant: Return for current marginal college students
+\vspace{0.05in}
+\item Zimmerman (2014) uses a combined SAT/GPA cutoff to estimate earnings effects at Florida International University (part of the Florida State University System--SUS)
+\vspace{0.05in}
+\end{small}
+\end{itemize}
+}
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/zimm_sum.pdf}
+
+
+{
+
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/zimm1.pdf}
+
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/zimmerman_2013_t4.pdf}
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/zimmerman_2013_f8.pdf}
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/zimmerman_2013_t5.pdf}
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/zimm_het.pdf}
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/zimm_het2.pdf}
+}
+
+\frame{\frametitle{Returns to College Selectivity}
+\begin{itemize}
+\begin{small}
+\item For many students the relevant choice margin is which college to attend rather than years of schooling or college vs. no college
+\vspace{0.05in}
+\item Very large differences in earnings between students attending different US colleges, but also a huge amount of selection into college choice
+\vspace{0.05in}
+\item Hard to find credible experiments/quasi-experiments that induce variation in attendance at more vs. less selective colleges
+\end{small}
+\end{itemize}
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/chetty_etal_f2.pdf}
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/chetty_etal_f3.pdf}
+}
+
+\frame{\frametitle{Returns to College Selectivity: Dale and Krueger}
+\begin{itemize}
+\begin{small}
+\item Dale and Krueger (QJE 2002, JHR 2014) seek to provide some evidence on the returns to college selectivity
+\vspace{0.05in}
+\item Research design: compare students who applied to, and were admitted by, the same colleges, but chose to attend different ones
+\vspace{0.05in}
+\item Intuition: Application choices capture a lot of students' information about their own ability, while admission decisions capture a lot of colleges' information about student ability
+\vspace{0.05in}
+\item A student who was accepted by UBC and chose to attend SFU may better capture UBC students' ``SFU counterfactual" than a random SFU student
+\vspace{0.05in}
+\item Note: this approach is fundamentally based on comparisons of individuals who make different choices
+\end{small}
+\end{itemize}
+}
+
+\frame{\frametitle{Dale and Krueger Approach 1}
+\begin{itemize}
+\begin{small}
+\item Let $j\in\{1...J\}$ index colleges, and $i$ index students
+\vspace{0.05in}
+\item $C_{ij}$ indicates that student $i$ chose to apply to school $j$, and $A_{ij}$ indicates admission to $j$ 
+\vspace{0.05in}
+\item Collect in vectors $C_{i}=(C_{i1}...C_{iJ})$, $A_{i}=(A_{i1}..A_{iJ})$
+\vspace{0.05in}
+\item $D_{i}\in\{1...J\}$ denotes school attended by $i$
+\vspace{0.05in}
+\item Define $Y_{ij}$ to be $i$'s potential earnings if s/he attends college $j$. Observed earnings are $Y_{i}=\sum_{j}1\{D_{i}=j\}Y_{ij}$
+\vspace{0.05in}
+\item DK's first approach is based on the assumption:
+\begin{displaymath}
+(Y_{i1}...Y_{iJ})\Perp D_{i}| (C_{i},A_{i})
+\end{displaymath}
+\end{small}
+\end{itemize}
+}
+
+\frame{\frametitle{Dale and Krueger Approach 1}
+\begin{footnotesize}
+\begin{displaymath}
+(Y_{i1}...Y_{iJ})\Perp D_{i}| (C_{i},A_{i})
+\end{displaymath}
+\begin{itemize}
+\item College choice is ignorable (independent of potential outcomes) conditional on application choices and admission outcomes
+\vspace{0.05in}
+\item Implies school choices are as good as random conditional on $(C_{i},A_{i})$, so
+\begin{displaymath}
+E[Y_{i} | D_{i}=j,C_{i}=c,A_{i}=a] - E[Y_{i} | D_{i}=k,C_{i}=c,A_{i}=a] 
+\end{displaymath}
+\begin{displaymath}
+= E[Y_{ij} - Y_{ik} | C_{i}=c, A_{i}=a]
+\end{displaymath}
+\item Within an application/admission portfolio, comparisons of mean observed outcomes give average treatment effects
+\vspace{0.05in}
+\item Note that such comparisons will be unavailable for most schools. DK aggregate comparisons of schools with higher/lower average SAT scores
+\vspace{0.05in}
+\item DK is a great example of a (credible) research based on a conditional independence assumption (CIA) $\rightarrow$ we will review this in more detail in Econ 628.
+\end{itemize}
+\end{footnotesize}
+}
+
+\frame{\frametitle{Dale and Krueger Approach 2}
+\begin{itemize}
+\begin{small}
+\item Second approach: Control for average SAT score of the portfolio of schools to which a student applied
+\vspace{0.05in}
+\item DK describe this as a ``self-revelation" model: causal interpretation requires that all selection is captured by students' decisions about how selectively to apply. No further information about potential outcomes in portfolio composition, admission decisions, or attendance choices
+\vspace{0.05in}
+\item Stronger assumption than approach 1, but allows for a more parsimonious model and more precision
+\vspace{0.05in}
+\item Still a selection-on-observables approach
+\end{small}
+\end{itemize}
+}
+
+\frame{\frametitle{Dale and Krueger Data}
+\begin{itemize}
+\begin{small}
+\item DK's data come from College and Beyond (C\&B) survey
+\vspace{0.05in}
+\begin{itemize}
+\item Combination of college administrative data and survey data for students enrolled in 34 colleges in 1951, 1976, 1989
+\vspace{0.05in}
+\item Sample of colleges is much more selective than the US average
+\vspace{0.05in}
+\item Includes students' SAT scores, applications, college transcripts
+\vspace{0.05in}
+\item DK (2002) focus on self-reported earnings in 1995 followup survey of students in the 1976 college cohort (mid/late 30s) 
+\end{itemize}
+\vspace{0.05in}
+\item DK (2014) match C\&B to administrative earnings data from Social Security Administration (SSA) tax records through 2007
+\begin{itemize}
+\vspace{0.05in}
+\item Better earnings information
+\vspace{0.05in}
+\item Longer time horizon for 1976 cohort
+\vspace{0.05in}
+\item Can also look at earnings for 1989 cohort
+\end{itemize}
+\end{small}
+\end{itemize}
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/dk_t1.pdf}
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/dk_V.pdf} %COnditionally random, not systematically more likely to choose the more selective college.
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/dk_III.pdf}
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/dk2_t3.pdf}
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/dk2_t5.pdf}
+}
+\begin{frame}{DK has been also replicated in Texas (w/ much better data) by Mountjoy and Hickman (2021)}
+  \includegraphics[width=1\textwidth]{aux/jack1.pdf}
+\end{frame}
+\begin{frame}{Mountjoy and Hickman (2021)}
+  \includegraphics[width=1\textwidth]{aux/jack2.pdf}
+\end{frame}
+
+\frame{\frametitle{Dale and Krueger Summary}
+\begin{itemize}
+\begin{footnotesize}
+\item DK approach is built on comparisons of students who choose more- and less-selective colleges from the same set, for unknown reasons
+\vspace{0.05in}
+\item A natural story is that students with higher unobserved ability choose to matriculate to more selective schools. This would lead to \emph{upward} bias in the comparison of more- and less-selective colleges
+\vspace{0.05in}
+\item Alternatively, perhaps money-conscious students choose the cheaper college option and also seek out higher-paying careers, leading to downward bias
+\vspace{0.05in}
+\item Nonetheless, DK's analysis shows that controlling for basic attributes of students' application portfolios is enough to kill the selective college advantage, a striking fact
+\end{footnotesize}
+\end{itemize}
+}
+\begin{frame}{}
+  \includegraphics[width=1\textwidth]{aux/dk2002concl.png}
+\end{frame}
+\section{Dynamics}
+\frame{\frametitle{The Careers of Young Men: Keane and Wolpin (JPE 1997)}
+\begin{itemize}
+\begin{small}
+\item Now we'll shift gears and consider a structural model more tightly linked to the theory of human capital investment
+\vspace{0.05in}
+\item Keane and Wolpin (JPE 1997) estimate a dynamic model of schooling and occupational choice
+\vspace{0.05in}
+\item Forward-looking individuals choose how long to go to school and where to work
+\vspace{0.05in}
+\item Schooling and experience have heterogeneous effects on earnings by occupation
+\vspace{0.05in}
+\item Relies on strong parametric assumptions, but useful to understand the approach
+\end{small}
+\end{itemize}
+}
+
+\frame{\frametitle{Keane and Wolpin (1997): Notation}
+\begin{itemize}
+\begin{small}
+\item At each age $a$ between 16 and a terminal age $A$, an individual chooses between five alternatives:
+\vspace{0.05in}
+\begin{enumerate}
+\begin{small}
+\item Blue collar job
+\vspace{0.05in}
+\item White collar job
+\vspace{0.05in}
+\item Military 
+\vspace{0.05in}
+\item School
+\vspace{0.05in}
+\item Home production
+\end{small}
+\end{enumerate}
+\vspace{0.05in}
+\item These alternatives are indexed by $m$
+\vspace{0.05in}
+\item The indicator $d_{m}(a)$ is one if the individual chooses alternative $m$ at age $a$
+\end{small}
+\end{itemize}
+}
+
+\frame{\frametitle{Keane and Wolpin (1997): Notation}
+\begin{itemize}
+\begin{small}
+\item $e_{m}(a)$: skill units (human capital) in alternative $m$ at age $a$
+\vspace{0.05in}
+\item $x_{m}(a)$: experience in alternative $m$ up to age $a$, $x_{m}(a)=\sum_{\ell=16}^{a}d_{m}(\ell)$
+\vspace{0.05in}
+\item $w_{m}(a)$: wage in alternative $m$ at age $a$, $w_{m}(a)=r_{m}e_{m}(a)$
+\vspace{0.05in}
+\item $r_{m}$: return to human capital in alternative $m$
+\vspace{0.05in}
+\item $g(a)$: schooling by age $a$, $g(a)=\sum_{\ell=16}^{a}d_{4}(\ell)$
+\end{small}
+\end{itemize}
+}
+
+\frame{\frametitle{Keane and Wolpin (1997): Notation}
+\begin{itemize}
+\begin{small}
+\item Specification for human capital:
+\begin{displaymath}
+e_{m}(a)=\exp\left(e_{m}(16)+e_{m1}g(a)+e_{m2}x_{m}(a) - e_{m3}x_{m}(a)^{2}+\epsilon_{m}(a)\right)
+\end{displaymath}
+\item $e_{m}(16)$ is the initial endowment
+\vspace{0.05in}
+\item $\epsilon_{m}(a)$ is unobserved time-varying heterogeneity
+\vspace{0.05in}
+\item KW assume $\epsilon_{m}(a)\sim \mbox{iid }N(0,\Omega)$
+\end{small}
+\end{itemize}
+}
+
+\frame{\frametitle{Keane and Wolpin (1997): Notation}
+\begin{itemize}
+\begin{small}
+\item Flow utility (``reward") from working in occupation $m$ at age $a$:
+\begin{displaymath}
+R_{m}(a)=r_{m}\cdot \exp\left(e_{m}(16)+e_{m1}g(a)+e_{m2}x_{m}(a) - e_{m3}x_{m}(a)^{2}+\epsilon_{m}(a)\right)
+\end{displaymath}
+\item Utilities for schooling and home production:
+\begin{displaymath}
+R_{4}(a) = e_{4}(16) - tc_{1}\cdot 1\{g(a)\geq 12\} - tc_{2}\cdot 1\{g(a)\geq 16\}+\epsilon_{4}(a)
+\end{displaymath}
+\begin{displaymath}
+R_{5}(a) = e_{5}(16)+\epsilon_{5}(a)
+\end{displaymath}
+\end{small}
+\end{itemize}
+}
+
+\frame{\frametitle{Value Function}
+\begin{itemize}
+\begin{footnotesize}
+\item The vector of state variables is
+\begin{displaymath}
+S(a)=(e(16),x(a),g(a),\epsilon(a))
+\end{displaymath}
+\item $S(a)$ only includes the current-period shock; no history of $\epsilon(a)$
+\item Value function at age $a$:
+\begin{displaymath}
+V(S(a),a)=\displaystyle{\max_{m}V_{m}(S(a),a)}
+\end{displaymath}
+\begin{displaymath}
+V_{m}(S(a),a)=R_{m}(S(a),a)+\delta E\left[V(S(a+1),a+1)|S(a),d_{m}(a)=1\right]\mbox{ for }a<A
+\end{displaymath}
+\begin{displaymath}
+V_{m}(S(A),A)=R_{m}(S(A),A)
+\end{displaymath}
+\item Evolution of state variables:
+\begin{displaymath}
+x_{m}(a+1)=x_{m}(a)+d_{m}(a)
+\end{displaymath}
+\begin{displaymath}
+g(a+1)=g(a)+d_{4}(a)
+\end{displaymath}
+\end{footnotesize}
+\end{itemize}
+}
+
+\frame{\frametitle{Solution}
+\begin{itemize}
+\begin{footnotesize}
+\item In principle the optimization problem can be solved by backward recursion:
+\begin{enumerate}
+\begin{scriptsize}
+\vspace{0.1in}
+\item Begin in period $A$. For all possible $S(A)$, calculate the best choice $d^{*}(S(A),A)$ and corresponding $V(S(A),A)$
+\vspace{0.1in}
+\item Move to period $A-1$. For every $m$ and every $S(A-1)$, use the results from (1) to compute $E[V(S(A),A)|S(A-1),d_{m}(A-1)=1]$. From these values, construct $V_{m}(S(A-1),A-1)$.
+\vspace{0.1in}
+\item Using the results from (2), maximize over $m$ to calculate $d^{*}(S(A-1),A-1)$ and $V(S(A-1),A)$ for every value of $S(A-1)$.
+\vspace{0.1in}
+\item Continue to move backwards, repeating steps (2) and (3) to compute the value function in every period
+\vspace{0.1in}
+\end{scriptsize}
+\end{enumerate}
+\item In practice the state space is too large -- KW use an interpolation method after computing the value function at a subset of points in the state space
+\end{footnotesize}
+\end{itemize}
+}
+\end{frame}
+\begin{frame}
+\centering
+\includegraphics[pages=1,scale=0.4]{aux/jesse.jpg}
+\end{frame}
+
+
+
+
+\frame{\frametitle{Estimation}
+\begin{itemize}
+\begin{footnotesize}
+\item Parameters to be estimated: Returns to schooling and experience, schooling costs, covariance matrix of $\epsilon(a)$, initial endowment $e(16)$
+\vspace{0.05in}
+\item Observed outcomes at age $a$ are $c(a)=\{d_{m}(a),w_{m}(a)\}$ for alternatives 1-3 and $c(a)=\{d_{m}(a)\}$ for alternatives 4-5
+\vspace{0.05in}
+\item Define $\bar{S}(a) = \{e(16),g(a),x(a)\}$, the state vector excluding unobserved shocks
+\vspace{0.05in}
+\item Probability of an individual's choice sequence is
+\begin{displaymath}
+Pr\left[c(16),...,c(A)|g(16),e(16)\right]=\displaystyle{\prod_{a=16}^{A}{Pr[c(a)|\bar{S}(a)]}}
+\end{displaymath}
+\item Solution to the optimization problem is used to compute the choice probabilities
+\vspace{0.05in}
+\item Estimate by maximum simulated likelihood -- no closed form
+\end{footnotesize}
+\end{itemize}
+}
+
+
+
+\frame{\frametitle{Finite Types}
+\begin{itemize}
+\begin{small}
+\item Initial skill endowment $e(16)$ is likely to be heterogeneous
+\vspace{0.05in}
+\item KW allow for a set of $K$ unobserved types. New likelihood function:
+\begin{displaymath}
+Pr\left[c(16),...,c(A)|g(16),e(16)\right]=\displaystyle{\sum_{k=1}^{K}{\prod_{a=16}^{A}{\pi_{k|g(16)}Pr[c(a)|\bar{S}(a),\mbox{type}=k]}}}
+\end{displaymath}
+\item Type proportions are added to vector of parameters to be estimated
+\vspace{0.05in}
+\item ``Finite types" approach is a common approach to modeling unobserved heterogeneity in a tractable way
+\end{small}
+\end{itemize}
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/keane_wolpin_1997_f1.pdf}
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/keane_wolpin_1997_f4.pdf}
+}
+
+\frame{\frametitle{Extended Model}
+\begin{itemize}
+\begin{small}
+\item Basic model fails to fit some important features of the data (e.g. school attendance, persistence in occupational choice, Mincer coefficients) \medskip
+\item KW estimate an ``extended" model adding: \medskip
+\begin{itemize}
+\begin{small}
+\item Extra terms in human capital production function (skill depreciation, age effects, high school/college graduation effects) \medskip
+\item Costs for switching occupations/re-entering school \medskip
+\item Non-pecuniary tastes for occupations
+\end{small}
+\end{itemize}
+\end{small}
+\medskip
+\item Use model to consider counterfactuals (college tuition subsidy).
+\end{itemize}
+}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf{aux/keane_wolpin_1997_t15.pdf}
+}
+
+\section{Signaling}
+
+\begin{frame}{Signaling}
+
+\begin{itemize}
+\item Evidence so far suggests schooling increases earnings \medskip
+\item Conventional human capital view that we have viewed thus far is that schooling investments raise wages by boosting productivity \medskip
+\item Signaling models (Spence, 1973) provide an alternative explanation.
+\item Idea: is that schooling provides a signal to firms that an individual is a ``high-ability" type.  
+\end{itemize}
+\end{frame}
+\begin{frame}{Signaling Evidence}
+\begin{itemize}
+\item Evidence on labor market signaling is hard to come by{\small{}\medskip{}
+}{\small \par}
+\item Ideal data for identifying the returns to a signal would contain
+exogenous variation in signaling status among individuals with similar
+levels of human capital.
+\begin{itemize}
+\medskip
+\item In other words, need workers with identical productivities but different
+values of an observed credential \textendash{} an instrument for schooling
+won't do it{\small{}\medskip{}
+}{\small \par}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Clark and Martorell (2014)}
+
+\begin{itemize}
+\item Clark and Martorell (JPE 2014) estimate the signaling value of a high school diploma. {\small{}\medskip{}
+}{\small \par}
+\item OLS return to education is especially large for grade 12{\small{}\medskip{}
+}{\small \par}
+\item How much of this ``sheepskin effect'' reflects the signaling value
+of the diploma?
+\end{itemize}
+\end{frame}
+\setbeamercolor{background canvas}{bg=} \includepdf{aux/card1999_f2.pdf}
+
+\setbeamercolor{background canvas}{bg=} \includepdf{aux/clark_better.pdf}
+\begin{frame}{Clark and Martorell (2014)}
+
+\begin{itemize}
+\item CM use the fact that students in Texas must pass exams before graduating
+high school{\small{}\medskip{}
+}{\small \par}
+\item Testing starts in 10th grade and students can try multiple times,
+but eventually face a ``last chance'' exam at the end of 12th grade{\small{}\medskip{}
+}{\small \par}
+\item CM combine data on last chance exams with UI earnings data up to 11
+years after graduation, and estimate the effect of diploma receipt
+in an RD design{\small{}\medskip{}
+}{\small \par}
+\item There is some ``slippage'' even with last-chance exams \textendash{}
+so the RD is fuzzy
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Clark and Martorell (2014)}
+
+\begin{itemize}
+\item 2SLS system:
+\begin{align*}
+Y_{i}= & \beta_{0}+\beta_{1}D_{i}+g\left(p_{i};\gamma_{2}\right)+\epsilon_{i}\\
+\\
+D_{i}= & \alpha_{0}+\alpha_{1}PASS_{i}+g(p_{i};\gamma_{1})+\omega_{i}
+\end{align*}
+\end{itemize}
+\end{frame}
+\setbeamercolor{background canvas}{bg=} \includepdf{aux/mc_f1.pdf}
+
+\setbeamercolor{background canvas}{bg=} \includepdf{aux/mc_t2.pdf}
+
+\setbeamercolor{background canvas}{bg=} \includepdf{aux/mc_f2aa.pdf}
+
+\setbeamercolor{background canvas}{bg=} \includepdf{aux/mc_f2a.pdf}
+
+\setbeamercolor{background canvas}{bg=} \includepdf{aux/mc_f2b.pdf}
+
+\setbeamercolor{background canvas}{bg=} \includepdf{aux/mc_f2c.pdf}
+
+\setbeamercolor{background canvas}{bg=} \includepdf{aux/mc_t4.pdf}
+
+\setbeamercolor{background canvas}{bg=} \includepdf{aux/mc_t5.pdf}
+\begin{frame}{Clark and Martorell (2014): Results}
+
+\begin{itemize}
+\item CM show that diploma receipt has no effect on earnings. Does this
+disprove the signaling view of education?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Clark and Martorell (2014): Results}
+
+\begin{itemize}
+\item CM show that diploma receipt has no effect on earnings. Does this
+disprove the signaling view of education?{\small{}\medskip{}
+}
+
+\begin{itemize}
+\item Does the diploma capture information about productivity?{\small{}\medskip{}
+}{\small \par}
+\item Do employers observe diploma status?{\small{}\medskip{}
+}{\small \par}
+\item Can firms observe productivity information for this population from
+other sources?
+\end{itemize}
+\medskip
+\item Consensus seems to be that empirical support for signaling theory is scant (Deming, 2022). 
+\end{itemize}
+\end{frame}
+
+\section{References}
+\begin{frame}{References}
+\begin{scriptsize}
+\begin{itemize}
+\item Angrist, Joshua and Alan Krueger (1991). ``Does Compulsory Schooling Attendance Affect Schooling and Earnings?" Quarterly Journal of Economics 106 (4). 
+\item Arcidiacono, Peter, Patrick Bayer, and Aurel Hizmo (2010). ``Beyond Signaling and Human Capital: Education and the Revelation of Ability." American Economic Journal: Applied Economics 2 (4).
+\item Ashenfelter, Orley, and Cecilia Rouse (1998). ``Income, Schooling and Ability: Evidence from a New Sample of Twins." Quarterly Journal of Economics 113 (1). 
+\item Bedard, Kelly (2001). ``Human Capital Versus Signaling Models: University Access and High School Dropouts." Journal of Political Economy 109 (4).
+\item Ben-Porath, Yoram (1967). ``The Production of Human Capital Over the Life Cycle." Journal of Political Economy 75 (4). 
+\item Bound, John, David Jaeger, and Regina Baker (1995). ``Problems with Instrumental Variables Estimation when the Correlation Between the Instruments and the Endogenous Explanatory Variable is Weak." Journal of the American Statistical Association 90 (430).
+\item Becker, Gary (1993). Human Capital. Chicago: University of Chicago Press.
+\item Buckles, Kasey, and Daniel Hungerman (2013). ``Season of Birth and Later Outcomes: Old Questions, New Answers." Review of Economics and Statistics 95 (3).
+\end{itemize}
+\end{scriptsize}
+\end{frame}
+
+\begin{frame}{References}
+\begin{scriptsize}
+\begin{itemize}
+\item Cameron, Stephen, and Christopher Taber (2004). ``Estimation of Educational Borrowing Constraints Using Returns to Schooling." Journal of Political Economy 112 (1). 
+\item Card, David (1999). ``The Causal Effect of Education on Earnings." Handbook of Labor Economics, Volume 3A. 
+\item Card, David (2001). ``Estimating the Return to Schooling: Progress on Some Persistent Econometric Problems." Econometrica 69 (5). 
+\item Carneiro, Pedro, and James Heckman (2002). ``The Evidence on Credit Constraints in Post-Secondary Schooling." The Economic Journal 112.
+\item Clark, Damon, and Paco Martorell (2014). ``The Signaling Value of a High School Diploma." Journal of Political Economy 122 (2).
+\item Cunha, Flavio, and James Heckman (2007). ``The Technology of Skill Formation." American Economic Review 97 (2).
+\item Dale, Stacy, and Alan Krueger (2002). ``Estimating the Payoff to Attending a More Selective College: An Application of Selection on Observables and Unobservables." Quarterly Journal of Economics 117 (4).
+\item Dale, Stacy, and Alan Krueger (2014). ``Estimating the Effects of College Characteristics Over the Career Using Administrative Earnings Data." Journal of Human Resources 49 (2).
+\item Devereux, Paul, and Robert Hart (2010). ``Forced to be Rich? Returns to Compulsory Schooling in Britain." The Economic Journal 120 (54). 
+\end{itemize}
+\end{scriptsize}
+\end{frame}
+
+\begin{frame}{References}
+\begin{scriptsize}
+\begin{itemize}
+\item Duflo, Esther (2001). ``Schooling and Labor Market Consequences of School Construction in Indonesia: Evidence from an Unusual Policy Experiment." American Economic Review 91 (4).
+\item Grenet, Julien (2013). ``Is Extending Compulsory Schooling Alone Enough to Raise Earnings? Evidence from French and British Compulsory Schooling Laws." Scandinavian Journal of Economics 115 (1).
+\item Griliches, Zvi (1977). ``Estimating the Returns to Schooling: Some Econometric Problems." Econometrica 45 (1).
+\item Heckman, James, and Edward Vytlacil (1998). ``Instrumental Variables Methods for the Correlated Random Coefficient Model: Estimating the Rate of Return to Schooling When the Return is Correlated with Schooling." Journal of Human Resources 33 (4).
+\item Keane, Michael, and Kenneth Wolpin (1997). ``The Career Decisions of Young Men." Journal of Political Economy 105 (3). 
+\item Lang, Kevin, and David Kropp (1986). ``Human Capital Versus Sorting: The Effects of Compulsory Attendance Laws." Quarterly Journal of Economics 101 (3). 
+\item MaCloud, W. Bentley, Evan Riehl, Juan E. Saavedra, and Miguel Urquiola (forthcoming). ``The Big Sort: College Reputation and Labor Market Outcomes." American Economic Journal: Applied Economics.
+\end{itemize}
+\end{scriptsize}
+\end{frame}
+
+\begin{frame}{References}
+\begin{scriptsize}
+\begin{itemize}
+\item Oreopolous, Philip (2006). ``Estimating Average and Local Average Treatment Effects of Education when Compulsory Schooling Laws Really Matter." American Economic Review 96 (1).
+\item Spence, Michael (1973). ``Job Market Signaling." Quarterly Journal of Economics 87 (3).
+\item Stiglitz, Joseph (1975). ``The Theory of 'Screening,' Education, and the Distribution of Income." American Economic Review 65 (3).
+\item Tyler, John, Richard Murnane, and John Willett (2000). ``Estimating the Labor Market Signaling Value of the GED." Quarterly Journal of Economics 115 (2). 
+\item Zimmerman, Seth (2014). ``The Returns to College Admission for Academically Marginal Students." Journal of Labor Economics 32 (4).
+\end{itemize}
+\end{scriptsize}
+\end{frame}
+
+\end{document}
