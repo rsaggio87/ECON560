@@ -116,7 +116,7 @@ Students are expected to attend lectures and complete the problem sets. There wi
 
 ## Problem Sets 
 
-I am planning to give you four problem sets over the term. Due dates to be posted.
+I am planning to give you four problem sets over the term. **Problem Set 1 is due Monday, September 28, before class.** Remaining due dates to be posted.
 
 ## Participation 
 

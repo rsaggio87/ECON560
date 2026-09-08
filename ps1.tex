@@ -1,0 +1,138 @@
+%% LyX 2.4.1 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in,headheight=1in,headsep=1in,footskip=1in}
+\usepackage{amsmath}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\date{Due: September 28th before class.}
+% Added by lyx2lyx
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\title{Econ560: Problem Set 1}
+\maketitle
+\begin{center}
+The solution must be written in Latex, printed, and brought to class. 
+\par\end{center}
+
+\subsection*{Question 1: Returns to Schooling}
+
+Consider an infinitely-lived person making a choice about how long
+to go to school. She faces a discount rate $r$. If she chooses $S$
+years of schooling, she earns $y(S)$ from date $S$ onward. While
+at school, she earns nothing in the labor market, but receives a scholarship
+payment. Specifically, if she attends $S$ years of schooling, she
+is paid a transfer $T$ from time $0$ to time $S$. Her goal is to
+maximize the present value of earnings and scholarship payments.
+\begin{enumerate}
+\item Write down a continuous-time expression for the person's objective
+function. Derive and interpret a condition to characterize the optimal
+duration of schooling.
+\item Suppose that agents differ in ability, $\alpha_{i}$, and the human
+capital production function for individual $i$ takes the form
+\begin{equation}
+y_{i}(S)=\exp(\alpha_{i}+\beta S)
+\end{equation}
+
+Solve for the optimal duration of schooling. Do higher-ability agents
+get more or less schooling? Why?
+
+\item Now suppose both tuition payments and ability
+differ across agents: the scholarship offered agent $i$ is $T_{i}$.
+Derive the probability limit of the slope coefficient from a bivariate
+OLS regression of log earnings on schooling in terms of $\beta$,
+$\sigma_{T}^{2}=Var(\log T_{i})$, $\sigma_{\alpha}^{2}=Var(\alpha_{i})$,
+and $\sigma_{T\alpha}=Cov(\log T_{i},\alpha_{i})$. Discuss how the
+bias of OLS varies with these parameters.
+
+\item Now suppose that $T_{i}=T$ (tuition payments are constant in the population) but $y_{i}(S)=\exp(\alpha_{i}+\beta_{i} S)$ (proportional returns to schooling differ across individuals). Derive the probability limit of the slope coefficient from a bivariate
+OLS regression of log earnings on schooling in terms of $\beta$,
+$\sigma_{\beta}^{2}=Var(\beta_{i})$, $\sigma_{\alpha}^{2}=Var(\alpha_{i})$,
+and $\sigma_{\beta,\alpha}=Cov(\beta_{i},\alpha_{i})$. 
+
+
+\end{enumerate}
+
+
+\subsection*{Question 2: Keane and Wolpin (1997)}
+
+This question asks you to solve and estimate a simplified version
+of the model from Keane and Wolpin (1997). An agent makes choices
+at two ages, $a\in\{1,2\}$. At each age, she chooses between three
+alternatives: working in a white collar occupation, working in a blue
+collar occupation, and going to school. These alternatives are labeled
+$m\in\{1,2,3\}$. For alternatives 1 and 2, the flow utility of working
+at age $a$ is
+
+\begin{center}
+$R_{m}(a)=\alpha_{m}+\beta_{m}G(a)+\gamma_{m}X_{m}(a)+\epsilon_{m}(a)$,
+\par\end{center}
+
+where $G(a)$ is education and $X_{m}(a)$ is experience in occupation
+$m$. The utility of going to school is
+
+\begin{center}
+$R_{3}(a)=\epsilon_{3}(a)$.
+\par\end{center}
+
+The agent enters period 1 with no experience or education. Assume
+that the $\epsilon_{m}(a)$ are iid draws from an extreme value type
+I distribution, independent over time. The $\epsilon_{m}(2)$ are
+unknown to the agent in period 1. The agent has a discount rate $\delta\in(0,1)$.
+\begin{enumerate}
+\item Let $S(2)$ denote the vector of state variables entering age $2$
+(before the realization of $\epsilon_{m}(2)$). What are the elements
+of this vector? What is the probability that the agent chooses each
+alternative in period 2, as a function of $S(2)$?
+\item Define the value function in period 2, 
+\end{enumerate}
+\begin{center}
+$V_{2}(S(2))={\displaystyle \max_{m\in\{1,2,3\}}R_{m}(2;S(2))}.$
+\par\end{center}
+
+Write down an expression for $E\left[V_{2}(S(2))\right]$ for each
+possible value of $S(2)$ prior to the realization of $\epsilon_{m}(2)$.
+(Hint: In a discrete choice problem where the utility of alternative
+$k$ is $U_{ik}+\eta_{ik}$, where the $\eta_{ik}$ are distributed
+iid extreme value type I, we have $E\left[\max_{k}U_{ik}+\eta_{ik}\right]=\nu+\log\left(\sum_{k}\exp(U_{ik})\right)$,
+where $\nu$ is a constant of integration that you can ignore.)
+\begin{enumerate}
+\item [3.]\setcounter{enumi}{3} Use your results from part (2) to write
+down an expression for the agent's expected payoff from each choice
+in period 1. What is the \emph{ex ante} probability of choosing each
+alternative in period 1, prior to the realization of $\epsilon_{m}(1)$?
+\item [4.]\setcounter{enumi}{4} Suppose you have data for a sample of agents
+choosing according to this model. Let $C_{i}(a)\in\{1,2,3\}$ denote
+individual $i$'s choice at age $a$. The observed data for individual
+$i$ is the choice sequence $(C_{i}(1),C_{i}(2))$. Use your results
+from parts (1) and (3) to write down the likelihood that individual
+$i$ chooses the sequence $(C_{i}(1),C_{i}(2))$. Take the log and
+sum over individuals to obtain an expression for the sample log-likelihood.
+\item [5.]\setcounter{enumi}{5} Download the data set ``kw\_example.csv''
+from the course website. This data set includes 5,000 simulated observations
+from the model. Import the data into a statistical software package
+of your choosing. Estimate the parameter vector
+\end{enumerate}
+\begin{center}
+$\theta\equiv(\alpha_{1},\beta_{1},\gamma_{1},\alpha_{2},\beta_{2},\gamma_{2},\delta)^{\prime}$
+\par\end{center}
+
+by maximum likelihood. (I recommend using Matlab and minimizing the
+negative of the log-likelihood using the \emph{fminunc} routine. You
+may wish to search over log $\delta$ rather than $\delta$ to keep
+the discount rate positive at every evaluation of the likelihood.)
+Attach your computer code, and make a table showing your parameter
+estimates; you may also provide standard errors for extra credit.
+Briefly provide some economic interpretation for your parameter estimates
+and discuss the tradeoffs faced by the agent when choosing an alternative
+in period 1.
+\end{document}
