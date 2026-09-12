@@ -46,35 +46,35 @@ Students are expected to attend lectures and complete the problem sets. There wi
 ## Meeting Schedule
 
 
-| #   | Date   | Day | Class                                                    | Student presenting | Paper                                                                      |
-| --- | ------ | --- | -------------------------------------------------------- | ------------------ | -------------------------------------------------------------------------- |
-| 1   | Sep 9  | Wed | Human Capital                                            |                    |                                                                            |
-| 2   | Sep 14 | Mon | Human Capital                                            |                    |                                                                            |
-| 3   | Sep 16 | Wed | Self-Selection                                           |                    |                                                                            |
-| —   | Sep 21 | Mon | **NO CLASS** — Raffa away                                |                    |                                                                            |
-| —   | Sep 23 | Wed | **NO CLASS** — Raffa away                                |                    |                                                                            |
-| 4   | Sep 28 | Mon | Self-Selection                                           |                    |                                                                            |
-| —   | Sep 30 | Wed | **NO CLASS** — National Day for Truth and Reconciliation |                    |                                                                            |
-| 5   | Oct 5  | Mon | **Presentation**                                         | *TBA*              | Community Colleges and Upward Mobility — Mountjoy                          |
-| 6   | Oct 7  | Wed | **Presentation**                                         | *TBA*              | The Demand for Effective Charter Schools — Walters                         |
-| —   | Oct 12 | Mon | **NO CLASS** — Thanksgiving Day                          |                    |                                                                            |
-| 7   | Oct 14 | Wed | Labor Demand                                             |                    |                                                                            |
-| 8   | Oct 19 | Mon | Inequality Wars                                          |                    |                                                                            |
-| 9   | Oct 21 | Wed | Inequality Wars (part 2)                                 |                    |                                                                            |
-| 10  | Oct 26 | Mon | **Presentation**                                         | *TBA*              | Trade Adjustment: Worker-Level Evidence — Autor et al.                     |
-| 11  | Oct 28 | Wed | **Presentation**                                         | *TBA*              | The Skill Complementarity of Broadband Internet — Akerman et al.           |
-| 12  | Nov 2  | Mon | Search and Unemployment                                  |                    |                                                                            |
-| 13  | Nov 4  | Wed | Search and Unemployment (part 2)                         |                    |                                                                            |
-| —   | Nov 9  | Mon | **NO CLASS** — Fall break                                |                    |                                                                            |
-| —   | Nov 11 | Wed | **NO CLASS** — Fall break                                |                    |                                                                            |
-| 14  | Nov 16 | Mon | **Presentation**                                         | *TBA*              | Wage Insurance for Displaced Workers — Hyman et al.                        |
-| 15  | Nov 18 | Wed | Minimum Wage                                             |                    |                                                                            |
-| 16  | Nov 23 | Mon | Minimum Wage (part 2)                                    |                    |                                                                            |
-| 17  | Nov 25 | Wed | **Presentation**                                         | *TBA*              | The Effect of Minimum Wages on Low-Wage Jobs — Cengiz et al.               |
-| 18  | Nov 30 | Mon | Monopsony                                                |                    |                                                                            |
-| 19  | Dec 2  | Wed | Firms and Inequality                                     |                    |                                                                            |
-| 20  | Dec 7  | Mon | Firms and Inequality (part 2)                            |                    |                                                                            |
-| 21  | Dec 9  | Wed | **Presentation**                                         | *TBA*              | The Gender Pay Gap: Micro Sources and Macro Consequences — Morchio & Moser |
+| #  | Date   | Day | Class                                                    | Student presenting  | Paper                                                                      |
+| -- | ------ | --- | -------------------------------------------------------- | ------------------- | -------------------------------------------------------------------------- |
+| 1  | Sep 9  | Wed | Human Capital                                            |                     |                                                                            |
+| 2  | Sep 14 | Mon | Human Capital                                            |                     |                                                                            |
+| 3  | Sep 16 | Wed | Self-Selection                                           |                     |                                                                            |
+| —  | Sep 21 | Mon | **NO CLASS** — Raffa away                                |                     |                                                                            |
+| —  | Sep 23 | Wed | **NO CLASS** — Raffa away                                |                     |                                                                            |
+| 4  | Sep 28 | Mon | Self-Selection                                           |                     |                                                                            |
+| —  | Sep 30 | Wed | **NO CLASS** — National Day for Truth and Reconciliation |                     |                                                                            |
+| 5  | Oct 5  | Mon | **Presentation**                                         | José & Chenyue      | Community Colleges and Upward Mobility — Mountjoy                          |
+| 6  | Oct 7  | Wed | **Presentation**                                         | Isidora & Xiaoyang  | The Demand for Effective Charter Schools — Walters                         |
+| —  | Oct 12 | Mon | **NO CLASS** — Thanksgiving Day                          |                     |                                                                            |
+| 7  | Oct 14 | Wed | Labor Demand                                             |                     |                                                                            |
+| 8  | Oct 19 | Mon | Inequality Wars                                          |                     |                                                                            |
+| 9  | Oct 21 | Wed | Inequality Wars (part 2)                                 |                     |                                                                            |
+| 10 | Oct 26 | Mon | **Presentation**                                         | Heather & Siyang    | Trade Adjustment: Worker-Level Evidence — Autor et al.                     |
+| 11 | Oct 28 | Wed | **Presentation**                                         | Matías & Callum     | The Skill Complementarity of Broadband Internet — Akerman et al.           |
+| 12 | Nov 2  | Mon | Search and Unemployment                                  |                     |                                                                            |
+| 13 | Nov 4  | Wed | Search and Unemployment (part 2)                         |                     |                                                                            |
+| —  | Nov 9  | Mon | **NO CLASS** — Fall break                                |                     |                                                                            |
+| —  | Nov 11 | Wed | **NO CLASS** — Fall break                                |                     |                                                                            |
+| 14 | Nov 16 | Mon | **Presentation**                                         | Obleo & Rory        | Wage Insurance for Displaced Workers — Hyman et al.                        |
+| 15 | Nov 18 | Wed | Minimum Wage                                             |                     |                                                                            |
+| 16 | Nov 23 | Mon | Minimum Wage (part 2)                                    |                     |                                                                            |
+| 17 | Nov 25 | Wed | **Presentation**                                         | Guillermo & Tatiana | The Effect of Minimum Wages on Low-Wage Jobs — Cengiz et al.               |
+| 18 | Nov 30 | Mon | Monopsony                                                |                     |                                                                            |
+| 19 | Dec 2  | Wed | Firms and Inequality                                     |                     |                                                                            |
+| 20 | Dec 7  | Mon | Firms and Inequality (part 2)                            |                     |                                                                            |
+| 21 | Dec 9  | Wed | **Presentation**                                         | Eloísa & Nicolás    | The Gender Pay Gap: Micro Sources and Macro Consequences — Morchio & Moser |
 
 
 ---
