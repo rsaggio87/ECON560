@@ -1,0 +1,957 @@
+\documentclass[blue]{beamer}
+\usetheme{Madrid}
+%\setbeamertemplate{footline}{Chris Walters (MIT)}
+\usenavigationsymbolstemplate{}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}{}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{graphics}
+\usepackage{multirow}
+\usepackage{xkeyval}
+\usepackage{verbatim}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{pdfpages}
+\usepackage{xcolor}
+\newsavebox\MBox
+\newcommand\Cline[2][red]{{\sbox\MBox{$#2$}%
+  \rlap{\usebox\MBox}\color{#1}\rule[-1.2\dp\MBox]{\wd\MBox}{0.75pt}}}
+\newcommand{\Perp}{\perp \! \! \! \perp}
+
+
+\makeatletter
+\makeatother
+
+\title{Self Selection}
+\author[]{Raffaele Saggio}
+\institute{\small{Econ 560}}
+
+\begin{document}
+
+{
+\thispagestyle{empty}
+\setbeamertemplate{footline}{}
+\frame{\titlepage}
+}
+\frame{
+
+\frametitle{Self-selection}
+\begin{itemize}
+\item {\footnotesize Classic idea in labor economics: }{\footnotesize\emph{Self-selection}}{\footnotesize\medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Individuals choose between opportunities based on heterogeneous
+unobserved returns \medskip{}
+}{\footnotesize\par}
+\item {\footnotesize We've already encountered some versions of this, e.g.
+in Keane and Wolpin (1997) \medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Applications: occupational choice, immigration, labor
+force participation, educational choice, treatment choice, any economics
+subfield... \medskip{}
+}{\footnotesize\par}
+\item {\footnotesize We'll start with general discussion of self-selection
+models and some related econometrics, then look at some applications}{\footnotesize\par}
+\end{itemize}
+}
+
+\frame{
+
+\frametitle{Roy Model}
+\begin{itemize}
+\item {\footnotesize Roy (1951) sought to understand the influence of occupational
+choice on the observed distribution of earnings}{\scriptsize\medskip{}
+}{\scriptsize\par}
+\item {\footnotesize Consider individuals indexed by $i$ choosing a binary
+variable $D_{i}\in\{0,1\}$, e.g. hunting vs. fishing}{\scriptsize\medskip{}
+}{\scriptsize\par}
+\item {\footnotesize$Y_{i1}$ and $Y_{i0}$ are $i$'s potential outcomes
+(e.g. earnings) with and without treatment}{\scriptsize\medskip{}
+}{\scriptsize\par}
+\item {\footnotesize Realized outcome is $Y_{i}=Y_{i0}+(Y_{i1}-Y_{i0})D_{i}$}{\scriptsize\medskip{}
+}{\scriptsize\par}
+\item {\footnotesize Pure Roy (1951) model: Individuals want to maximize
+$Y_{i}$, so choose the alternative with the best potential outcome:}{\footnotesize\par}
+\end{itemize}
+\begin{center}
+{\footnotesize$D_{i}=1\left\{ Y_{i1}>Y_{i0}\right\} $}{\footnotesize\par}
+\par\end{center}
+
+}
+
+\frame{
+
+\frametitle{Roy Model}
+\begin{itemize}
+\item {\footnotesize Questions of interest:\medskip{}
+}{\footnotesize\par}
+\begin{itemize}
+\item {\footnotesize Will the best hunters hunt?\medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Will the best fishermen/women fish?\medskip{}
+}{\footnotesize\par}
+\end{itemize}
+\item {\footnotesize Suppose potential outcomes are given by}{\footnotesize\par}
+\end{itemize}
+\begin{center}
+{\footnotesize$Y_{id}=p_{d}S_{id},\ d\in\{0,1\}$}{\footnotesize\par}
+\par\end{center}
+\begin{itemize}
+\item {\footnotesize$S_{id}$ is skill in occupation $d$, and $p_{d}$
+is price of output\medskip{}
+}{\footnotesize\par}
+\item {\footnotesize A worker who is indifferent between the two occupations
+satisfies}{\footnotesize\par}
+\end{itemize}
+\begin{center}
+{\footnotesize$\log S_{i1}=\log p_{0}-\log p_{1}+\log S_{i0}$}{\footnotesize\par}
+\par\end{center}
+
+}
+
+{ \setbeamercolor{background canvas}{bg=} \includepdf{aux/roy_1}
+}
+
+\frame{
+
+\frametitle{Roy Model: Special Cases}
+\begin{itemize}
+\item {\footnotesize Suppose there is no variation in the non-treated outcome,
+so $S_{i0}=\bar{S}_{0}\ \forall i$\medskip{}
+}{\footnotesize\par}
+\item {\footnotesize In this case the decision rule is}{\footnotesize\par}
+\end{itemize}
+\begin{center}
+{\footnotesize$D_{i}=1\left\{ S_{i1}\geq\left(\tfrac{p_{0}}{p_{1}}\right)\bar{S}_{0}\right\} $}{\footnotesize\par}
+\par\end{center}
+\begin{itemize}
+\item {\footnotesize Those with the most skill in sector 1 choose $D_{i}=1$\medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Everyone with $D_{i}=1$ earns more than anyone with
+$D_{i}=0$}{\footnotesize\par}
+\end{itemize}
+}
+
+{ \setbeamercolor{background canvas}{bg=} \includepdf{aux/roy_2}
+}
+
+\frame{
+
+\frametitle{Roy Model: Special Cases}
+\begin{itemize}
+\item {\footnotesize Suppose we have perfect correlation between $\log S_{i0}$
+and $\log S_{i1}$:}{\footnotesize\par}
+\end{itemize}
+\begin{center}
+{\footnotesize$\log S_{i1}=\alpha_{0}+\alpha_{1}\log S_{i0},\ \alpha_{1}>0$}{\footnotesize\par}
+\par\end{center}
+\begin{itemize}
+\item {\footnotesize This is a one-factor model\medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Decision rule:}{\footnotesize\par}
+\end{itemize}
+\begin{center}
+{\footnotesize$D_{i}=1\left\{ \alpha_{0}+\alpha_{1}\log S_{i0}\geq\log p_{0}-\log p_{1}+\log S_{i0}\right\} $}{\footnotesize\par}
+\par\end{center}
+
+\begin{center}
+{\footnotesize$=1\left\{ (\alpha_{1}-1)\log S_{i0}\geq\log p_{0}-\log p_{1}-\alpha_{0}\right\} $}{\footnotesize\par}
+\par\end{center}
+\begin{itemize}
+\item {\footnotesize Higher skilled choose $D_{i}=1$ iff $\alpha_{1}\geq1$\medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Note that $Var(\log S_{i1})=\alpha_{1}^{2}Var(\log S_{i0})$
+. Higher skilled choose the sector with higher variance of earnings}{\footnotesize\par}
+\end{itemize}
+}
+
+{ \setbeamercolor{background canvas}{bg=} \includepdf{aux/roy_3}
+}
+
+{ \setbeamercolor{background canvas}{bg=} \includepdf{aux/roy_4}
+}
+
+
+\frame{
+
+\frametitle{Generalized Roy Model}
+\begin{itemize}
+\item {\footnotesize Generalized Roy model (Eisenhauer et al., 2015): Preference
+for alternative $d$ depends on $Y_{id}$ as well as a cost $C_{id}$:}{\footnotesize\par}
+\end{itemize}
+\begin{center}
+{\footnotesize$D_{i}=1\left\{ Y_{i1}-C_{i1}>Y_{i0}-C_{i0}\right\} $}{\footnotesize\par}
+\par\end{center}
+\begin{itemize}
+\item {\footnotesize Allows us to ask richer questions about selection on
+both levels and gains\medskip{}
+}{\footnotesize\par}
+\begin{itemize}
+\item {\footnotesize Is average $Y_{i1}$ higher or lower for individuals
+that choose $D_{i}=1$?\medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Is average $Y_{i0}$ higher or lower for individuals
+that choose $D_{i}=1$?\medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Are average }{\footnotesize\emph{gains}}{\footnotesize{}
+$Y_{i1}-Y_{i0}$ larger or smaller for individuals that choose $D_{i}=1$?\medskip{}
+}{\footnotesize\par}
+\end{itemize}
+\item {\footnotesize Close link between generalized Roy model and econometric
+models of treatment effect heterogeneity}{\footnotesize\par}
+\end{itemize}
+}
+
+\frame{
+
+\frametitle{Generalized Roy Model}
+\begin{itemize}
+\item {\footnotesize Write outcomes and costs as functions of characteristics
+$X_{i}$:}{\footnotesize\par}
+\end{itemize}
+\begin{center}
+{\footnotesize$Y_{id}=\mu_{d}(X_{i})+\epsilon_{id},\ C_{id}=\varphi_{d}(X_{i})+\eta_{id},\ d\in\{0,1\}$}{\footnotesize\par}
+\par\end{center}
+\begin{itemize}
+\item {\footnotesize$E[\epsilon_{id}|X_{i}]=E[\eta_{id}|X_{i}]=0$ by definition
+of $\mu_{d}(\cdot)$ and $\varphi_{d}(\cdot)$\medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Decision rule is}{\footnotesize\par}
+\end{itemize}
+\begin{center}
+{\footnotesize$D_{i}=1\left\{ \mu_{1}(X_{i})+\epsilon_{i1}-\varphi_{1}(X_{i})-\eta_{i1}>\mu_{0}(X_{i})+\epsilon_{i0}-\varphi_{0}(X_{i})-\eta_{i0}\right\} $}{\footnotesize\par}
+\par\end{center}
+
+\begin{center}
+{\footnotesize$\implies D_{i}=1\left\{ \psi(X_{i})>v_{i}\right\} $}{\footnotesize\par}
+\par\end{center}
+\begin{itemize}
+\item {\footnotesize Here $\psi(X_{i})=[\mu_{1}(X_{i})-\mu_{0}(X_{i})]-[\varphi_{1}(X_{i})-\varphi_{0}(X_{i})]$,
+and $v_{i}=[\eta_{i1}-\eta_{i0}]-[\epsilon_{i1}-\epsilon_{i0}]$\medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Dependence of decision on potential outcomes is embedded
+in $\psi(\cdot)$ and $v_{i}$}{\footnotesize\par}
+\end{itemize}
+}
+
+\frame{
+
+\frametitle{Roy Model Identification}
+\begin{itemize}
+\item {\scriptsize Consider the regression of $Y_{i}$ on $X_{i}$ in the
+sample of individuals who chose $D_{i}=1$\medskip{}
+}{\scriptsize\par}
+\item {\scriptsize The conditional expectation function is\medskip{}
+ 
+\[
+E[Y_{i1}|X_{i},D_{i}=1]=\mu_{1}(X_{i})+E[\epsilon_{i1}|X_{i},D_{i}=1]
+\]
+\medskip{}
+\[
+=\mu_{1}(X_{i})+E[\epsilon_{i1}|X_{i},v_{i}<\psi(X_{i})]
+\]
+}{\scriptsize\par}
+\item {\scriptsize Since $v_{i}$ includes $\epsilon_{i1}$, generally expect
+$E[\epsilon_{i1}|X_{i},v_{i}<\psi(X_{i})]\neq0$, so observed mean
+outcome does not reflect population mean potential outcome $\mu_{1}(X_{i})$\medskip{}
+}{\scriptsize\par}
+\item {\scriptsize Heckman (1974, 1976, 1979) idea: Work out the bias term
+to correct for self-selection}{\scriptsize\par}
+\end{itemize}
+}
+
+\frame{
+
+\frametitle{Correcting Selection}
+\begin{itemize}
+\item {\footnotesize Suppose 
+\[
+(\epsilon_{id},v_{i})^{\prime}|X_{i}\sim N\left(0,\left[\begin{smallmatrix}\sigma^{2} & \rho_{d}\sigma_{d}\\
+\rho_{d}\sigma_{d} & 1
+\end{smallmatrix}\right]\right),\ d\in\{0,1\}
+\]
+}{\footnotesize\par}
+\item {\footnotesize This implies
+\[
+\epsilon_{id}=\rho_{d}\sigma_{d}v_{i}+e_{id},\mbox{ }E[e_{id}|v_{i},X_{i}]=0
+\]
+}{\footnotesize\par}
+\item {\footnotesize Conditional expectation function in selected sample
+is 
+\[
+E[Y_{i1}|X_{i},D_{i}=1]=\mu_{1}(X_{i})+\rho_{1}\sigma_{1}E[v_{i}|X_{i},v_{i}<\psi(X_{i})]
+\]
+\[
+=\mu_{1}(X_{i})+\rho_{1}\sigma_{1}\lambda_{1}\left(\psi(X_{i})\right)
+\]
+}{\footnotesize\par}
+\item {\footnotesize$\lambda_{1}(c)\equiv-\frac{\phi(c)}{\Phi(c)}$ is the
+inverse Mills ratio\medskip{}
+ }{\footnotesize\par}
+\item {\footnotesize Likewise $E[Y_{i0}|X_{i},D_{i}=0]=\mu_{0}(X_{i})+\rho_{0}\sigma_{0}\lambda_{0}(\psi(X_{i}))$,
+with $\lambda_{0}(c)=\phi(c)/[1-\Phi(c)]$\medskip{}
+}{\footnotesize\par}
+\item {\footnotesize What restrictions on $(\rho_{1}\sigma_{1},\rho_{0}\sigma_{0})$
+are implied by a pure Roy model?}{\footnotesize\par}
+\end{itemize}
+}
+
+\frame{
+
+\frametitle{Generalized Roy Model Identification}
+\begin{itemize}
+\item {\scriptsize Two-step ``Heckit'' approach: Estimate $\psi(X_{i})$
+in a first-step probit, then include $\lambda_{d}(\hat{\psi}(X_{i}))$
+in second-step OLS regression\medskip{}
+}{\scriptsize\par}
+\item {\scriptsize Mills ratio is a }{\scriptsize\textbf{control function}}{\scriptsize{}
+that adjusts for selection bias \medskip{}
+}{\scriptsize\par}
+\item {\scriptsize Problem: Dependent on functional form \medskip{}
+}
+
+{\scriptsize\par}\begin{itemize}
+\item {\scriptsize If $X_{i}$ is a constant, cannot estimate \medskip{}
+}{\scriptsize\par}
+\item {\scriptsize If $\mu(X_{i})$ and $\psi(X_{i})$ are unrestricted,
+cannot estimate\medskip{}
+}{\scriptsize\par}
+\item {\scriptsize Estimable if we restrict $\mu_{d}(X_{i})$ and $\psi(X_{i})$
+(e.g. make them linear) so that $\mu(X_{i})$ is not colinear with
+$\lambda_{d}(\psi(X_{i}))$, but typically no good justification for
+this}{\scriptsize\par}
+\end{itemize}
+\end{itemize}
+}
+
+\frame{
+
+\frametitle{Generalized Roy Model Identification}
+\begin{itemize}
+\item {\footnotesize Solution: Suppose we have another variable $Z_{i}$
+that affects costs but not potential outcomes:}{\footnotesize\par}
+\end{itemize}
+\begin{center}
+{\footnotesize$E[Y_{id}|X_{i},Z_{i}]=\mu_{d}(X_{i}),\ E[C_{id}|X_{i},Z_{i}]=\varphi_{d}(X_{i},Z_{i})$}{\footnotesize\par}
+\par\end{center}
+\begin{itemize}
+\item {\footnotesize Participation rule becomes }{\footnotesize\par}
+\end{itemize}
+\begin{center}
+{\footnotesize$D_{i}=1\left\{ \psi(X_{i},Z_{i})>v_{i}\right\} $.}{\footnotesize\par}
+\par\end{center}
+\begin{itemize}
+\item {\footnotesize Under normality, control function terms equal $\rho_{d}\sigma_{d}\lambda_{d}(\psi(X_{i},Z_{i}))$,
+which vary conditional on $X_{i}$\medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Sound familiar? }{\footnotesize\par}
+\medskip
+\item {\footnotesize More on this in Econ 628! }
+\end{itemize}
+}
+
+\section{Mulligan/Rubinstein}
+
+\frame{
+
+\frametitle{Mulligan and Rubinstein (2008)}
+\begin{itemize}
+\item {\small Mulligan and Rubinstein (QJE 2008) apply the logic of self-selection
+models to study female wages and labor force participation \medskip{}
+}{\small\par}
+\item {\small Since the 1970s, female labor force participation has grown
+dramatically (from 46\% in 1975 to 59\% in 2007) \medskip{}
+}{\small\par}
+\item {\small The male/female wage gap has fallen, but within-gender inequality
+has increased for females\medskip{}
+}{\small\par}
+\item {\small MR hope to make sense of this by studying changes in the pattern
+of selection into the labor market \medskip{}
+}{\small\par}
+\item {\small Idea: Growing returns to human capital may produce more positive
+selection bias, closing the gender wage gap but increasing within-gender
+differences }{\small\par}
+\end{itemize}
+}
+
+{ \setbeamercolor{background canvas}{bg=} \includepdf{aux/MR_f1}
+}
+
+\frame{
+
+\frametitle{Mulligan and Rubinstein (2008)}
+\begin{itemize}
+\item MR begin with the potential log wage equation 
+\[
+w_{it}=\mu_{t}^{w}+g_{i}\gamma_{t}+\sigma_{t}^{w}\epsilon_{it}^{w}
+\]
+\item $\mu_{t}^{w}$ is the overall mean potential log wage at time $t$ 
+\item $\sigma_{t}^{w}$ is the residual standard deviation of wages at time
+$t$ 
+\item $\gamma_{t}$ is the mean gender \emph{potential} wage gap 
+\item \emph{Observed} wage gap $G_{t}$ (assume all men work): 
+\[
+G_{t}=E[w_{it}|g_{i}=1,L_{it}=1]-E[w_{it}|g_{i}=0]
+\]
+\[
+=\gamma_{t}+\sigma_{t}^{w}E[\epsilon_{it}|g_{i}=1,L_{it}=1]
+\]
+\[
+=\gamma_{t}+\sigma_{t}^{w}b_{t}.
+\]
+\end{itemize}
+}
+
+\frame{
+
+\frametitle{Mulligan and Rubinstein (2008)}
+\begin{itemize}
+\item Change in measured wage gaps: 
+\[
+\Delta G_{t}=\Delta\gamma_{t}+b_{t-1}\Delta\sigma_{t}^{w}+\sigma_{t}^{w}\Delta b_{t}
+\]
+\item Components due to change in potential wage gap, change in inequality
+for given selection bias, change in selection bias {\small\medskip{}
+}{\small\par}
+\item MR want to estimate the third term 
+\end{itemize}
+}
+
+\frame{
+
+\frametitle{Mulligan and Rubinstein (2008)}
+\begin{itemize}
+\item {\small Participation determined by reservation wage $r_{it}$: 
+\[
+r_{it}=\mu_{t}^{r}+\sigma_{t}^{r}\epsilon_{it}^{r}
+\]
+}{\small\par}
+\item {\small Work decision is $L_{it}=1\left\{ r_{it}<w_{it}\right\} $,
+so }{\small\par}
+\end{itemize}
+{\small
+\[
+L_{it}=1\{\epsilon_{it}^{r}-\tfrac{\sigma_{t}^{w}}{\sigma_{t}^{r}}\epsilon_{it}^{w}<\tfrac{\gamma_{t}+\mu_{t}^{w}-\mu_{t}^{r}}{\sigma_{t}^{r}}\}
+\]
+}{\small\par}
+\begin{itemize}
+\item {\small Behavioral change driven by factors common to all women (right-hand
+side), or factors that interact with womens' characteristics (left-hand
+side) \medskip{}
+}{\small\par}
+\item {\small With small enough $\sigma_{t}^{w}$ and $\Cov(\epsilon_{it}^{r},\epsilon_{it}^{w})<0$, working
+women will have lower potential wages (selection driven by low reservation
+wages) \medskip{}
+}{\small\par}
+\item {\small As $\sigma_{t}^{w}$ increases, participation increasingly
+driven by high wage offers $\implies$ bias more positive }{\small\par}
+\end{itemize}
+}
+
+{ \setbeamercolor{background canvas}{bg=} \includepdf{aux/MR_f2}
+}
+
+\frame{
+
+\frametitle{Mulligan and Rubinstein (2008)}
+\begin{itemize}
+\item Under normality selection bias can be written 
+\[
+b_{t}=\theta\left(\sigma_{t}^{w}/\sigma_{t}^{r}\right)\lambda\left(P_{t}\right)
+\]
+\item $P_{t}$ is the fraction of women who work; $\sigma_{t}^{w}/\sigma_{t}^{r}$
+is the relative importance of market wages in the participation decision
+{\small\medskip{}
+}{\small\par}
+\item Changes in bias can come from either source {\small\medskip{}
+}{\small\par}
+\item For a fixed selection rule, increasing $P_{t}$ reduces bias; but
+an increase in $\sigma_{t}^{w}$ changes the selection rule, possibly
+increasing bias 
+\end{itemize}
+}
+
+\frame{
+
+\frametitle{Mulligan and Rubinstein (2008)}
+\begin{itemize}
+\item MR assess changes in selection using the March CPS {\small\medskip{}
+}{\small\par}
+\item Two-step approach: 
+\[
+w_{it}=X_{it}\beta_{t}+g_{i}\gamma_{t}+g_{i}\theta_{t}\lambda(Z_{it}\delta_{t})+u_{it}
+\]
+\item $X$: Education, marital status, potential experience, region {\small\medskip{}
+}{\small\par}
+\item $Z$: Same as $X$, plus number of young children...
+\end{itemize}
+}
+
+{ \setbeamercolor{background canvas}{bg=} \includepdf{aux/MR_t1}
+}
+
+{ \setbeamercolor{background canvas}{bg=} \includepdf{aux/MR_f3}
+}
+
+\frame{
+
+\frametitle{Mulligan and Rubinstein (2008)}
+\begin{itemize}
+\item The OLS gender wage gap fell by 16 log points from 1975-1995 {\small\medskip{}
+}{\small\par}
+\item Controlling for the Mills ratio, the gap \emph{widened} {\small\medskip{}
+}{\small\par}
+\item Two-step estimates suggest a reversal of bias, from negative in the
+1970s to positive in the 1990s {\small\medskip{}
+}{\small\par}
+\item Taken at face value, the results imply that all of the decrease in
+the gender wage gap was due to changing selection 
+\end{itemize}
+}
+
+{ \setbeamercolor{background canvas}{bg=}
+
+\section{Chandra and Staiger}
+
+\frame{
+
+\frametitle{Chandra and Staiger (2007)}
+\begin{itemize}
+\item {\small Chandra and Staiger (JPE 2007) consider self selection in a
+different context: treatment choice in health care \medskip{}
+}{\small\par}
+\item {\small Stylized fact: Large differences in medical treatments/spending
+across areas, without commensurate differences in outcomes (see Dartmouth
+map, or Atul Gawande) \medskip{}
+}{\small\par}
+\item {\small\textbf{Flat of the curve }}{\small explanation: High-use areas
+perform a lot of expensive treatments with low returns, so big gains
+could be had by cutting back \medskip{}
+}{\small\par}
+\item {\small CS ask whether this interpretation is compromised by self-selection }{\small\par}
+\end{itemize}
+}
+
+{ \setbeamercolor{background canvas}{bg=} \includepdf{aux/skinner_1}
+}
+
+\frame{
+
+\frametitle{Chandra and Staiger (2007)}
+\begin{itemize}
+\item {\footnotesize CH model: Treatment choice with productivity spillovers
+\medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Consider the case of heart attacks (acute myocardial
+infarction, AMI) \medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Two possible treatments: \medskip{}
+}
+
+\begin{enumerate}
+\item {\footnotesize Non-intensive medical management \medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Intensive intervetion (surgery; bypass or angioplasty)
+\medskip{}
+}{\footnotesize\par}
+\end{enumerate}
+\item {\footnotesize Physician chooses treatment option $i\in\{1,2\}$ that
+maximizes utility for each patient, which depends on survival probability
+$Survival_{i}$ and cost $Cost_{i}$ \medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Survival probability depends positively on population
+share receiving the same treatment, $P_{i}$ $\implies$ positive
+productivity externality \medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Justifications: Learning by doing (``see one, do one,
+teach one''), availability of support services for commonly used
+treatments, physician sorting }{\footnotesize\par}
+\end{itemize}
+}
+
+\frame{
+
+\frametitle{Chandra and Staiger (2007)}
+\begin{itemize}
+\item Formal Roy model: For $i\in\{1,2\}$ 
+\[
+Survival_{i}=\beta_{i}^{s}Z+\alpha_{i}^{s}P_{i}+\epsilon_{i}^{s}
+\]
+\[
+Cost_{i}=\beta_{i}^{c}Z+\alpha_{i}^{c}P_{i}+\epsilon_{i}^{c}
+\]
+\[
+U_{i}=Survival_{i}-\lambda Cost_{i}
+\]
+\[
+=\beta_{i}Z+\alpha_{i}P_{i}+\epsilon_{i}
+\]
+\item Intensive treatment probability 
+\[
+Pr[i=2]=Pr[U_{2}>U_{1}]
+\]
+\[
+=Pr[(\beta_{2}-\beta_{1})Z+\alpha_{2}P_{2}-\alpha_{1}(1-P_{2})+(\epsilon_{2}-\epsilon_{1})>0]
+\]
+\[
+=Pr[\alpha P_{2}-\alpha_{1}+\beta Z>\epsilon]
+\]
+\end{itemize}
+}
+
+\frame{
+
+\frametitle{Chandra and Staiger (2007)}
+\begin{itemize}
+\item Equilibrium: $P_{2}$ must equal the fraction of individuals for whom
+treatment 2 is chosen (fixed point) 
+\[
+P_{2}=\int Pr[\alpha P_{2}-\alpha_{1}+\beta Z>\epsilon]dF(Z)
+\]
+\[
+=G(P_{2})
+\]
+\item Equilibrium proportion of intensive treatments must generate external
+benefits that justify treating this proportion intensively {\small\medskip{}
+}{\small\par}
+\item Produces the possibility of multiple equilibria 
+\end{itemize}
+}
+
+{ \setbeamercolor{background canvas}{bg=} \includepdf{aux/CS_f1b}
+}
+
+{ \setbeamercolor{background canvas}{bg=} \includepdf{aux/CS_f1a}
+}
+
+{ \setbeamercolor{background canvas}{bg=} \includepdf{aux/CS_f2a}
+}
+
+{ \setbeamercolor{background canvas}{bg=} \includepdf{aux/CS_f2b}
+}
+
+\frame{
+
+\frametitle{Chandra and Staiger (2007)}
+\begin{itemize}
+\item {\scriptsize Implications of the CS model: \medskip{}
+}
+
+{\scriptsize\par}\begin{itemize}
+\item {\scriptsize Possibly multiple equilibia \medskip{}
+}{\scriptsize\par}
+\item {\scriptsize Large differences in treatment rates can be generated
+by small differences in patient characteristics \medskip{}
+}{\scriptsize\par}
+\item {\scriptsize Identical patients may be treated differently depending
+on population treatment rate \medskip{}
+}{\scriptsize\par}
+\item {\scriptsize Gains to intensive treatment are larger for individuals
+who are most likely to be treated intensively ($TOT>ATE$) \medskip{}
+}{\scriptsize\par}
+\item {\scriptsize Being in an intensive area is good for those most appropriate
+for the intensive treatment, and worse for those least appropriate
+\medskip{}
+}{\scriptsize\par}
+\item {\scriptsize Marginal patient receiving the intensive treatment in
+an intensive area will be less appropriate for this treatment \medskip{}
+}{\scriptsize\par}
+\item {\scriptsize For a given patient, treatment effect of intensive treatment
+is larger in an intensive area \medskip{}
+}{\scriptsize\par}
+\end{itemize}
+\item {\scriptsize This model can explain why we might see large differences
+in treatment intensity without large differences in average outcomes }{\scriptsize\par}
+\end{itemize}
+}
+
+\frame{
+
+\frametitle{Chandra and Staiger (2007)}
+\begin{itemize}
+\item {\small Welfare (expected utility): If differences in intensity are
+generated by multiple equilibria w/identical patients, can rank equilibria
+by computing costs and outcomes \medskip{}
+}{\small\par}
+\item {\small In this case, social planner will want to reduce variation
+in intensity (switch to less intense equilibrium) if intense areas
+have higher costs and no better outcomes \medskip{}
+}{\small\par}
+\item {\small If there is a single equilibrium with intensity that varies
+because of differences in patient characteristics, }{\small\emph{not
+enough}}{\small{} variation in intensity -- social planner would be
+willing to harm marginal patient to increase utility of inframarginal
+patients, and by assumption, decisionmaker (physician/patient) is
+not. }{\small\par}
+\end{itemize}
+}
+
+\frame{
+
+\frametitle{Chandra and Staiger (2007)}
+\begin{itemize}
+\item {\footnotesize CS try to test the implications of their model \medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Focus on heart attacks. Appropriate because: \medskip{}
+}
+
+\begin{itemize}
+\item {\footnotesize A leading cause of death in the US \medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Geographically distinct markets \medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Two starkly different treatments: Intensive surgery
+(bypass), non-intensive management (thrombolytics) \medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Large differences across markets in intensity, but also
+variation in appropriateness across patients \medskip{}
+}{\footnotesize\par}
+\end{itemize}
+\item {\footnotesize CS look at the effects of intensive treatment using
+data from the Cooperative Cardiovascular Project (CCP), a data set
+collected to try to analyze quality of heart attack treatment }{\footnotesize\par}
+\end{itemize}
+}
+
+\frame{
+
+\frametitle{Chandra and Staiger (2007)}
+\begin{itemize}
+\item {\footnotesize Model for intensive treatment receipt: 
+\[
+Pr[\mbox{Cardiac Cath}_{ij}=1|X_{i},j]=G(\theta_{0}+\theta_{j}+X_{i}\Phi)
+\]
+}{\footnotesize\par}
+\item {\footnotesize Now $i$ is patient, $j$ is hospital referral region
+\medskip{}
+}{\footnotesize\par}
+\item {\footnotesize$X_{i}$ is detailed set of characteristics from patient
+chart \medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Fitted value $\hat{G}(\theta_{0}+X_{i}\Phi)$ captures
+appropriateness after taking out HRR effect \medskip{}
+}{\footnotesize\par}
+\item {\footnotesize$\theta_{j}$ captures differences in treatment rates
+for similar patients \medskip{}
+}{\footnotesize\par}
+\item {\footnotesize CS begin by testing for the presence of Roy selection:
+Are gains to intensive treatment increasing in the odds of getting
+this treatment? \medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Model for effect of intensive treatment: 
+\[
+Y_{ij}=\beta_{0}+\beta_{1}\mbox{Cardiac Cath}_{ij}+X_{i}\Pi+u_{ijk}
+\]
+}{\footnotesize\par}
+\item {\footnotesize Instrument using differential distance to nearest cath
+hospital, splitting sample by $\hat{G}$ }{\footnotesize\par}
+\end{itemize}
+}
+
+{ \setbeamercolor{background canvas}{bg=} \includepdf{aux/CS_t2}
+}
+
+{ \setbeamercolor{background canvas}{bg=} \includepdf{aux/CS_t1}
+}
+
+{ \setbeamercolor{background canvas}{bg=} \includepdf{aux/CS_f3}
+}
+
+\frame{
+
+\frametitle{Chandra and Staiger (2007)}
+
+\begin{small} 
+\begin{itemize}
+\item {\small Next, look for evidence of productivity spillovers \medskip{}
+}
+
+\begin{itemize}
+\item {\small Is the quality of medical management worse in areas that do
+less of it? \medskip{}
+}{\small\par}
+\item {\small Are identical individuals more likely to get intensive treatment
+in areas where other patients are more appropriate for it? \medskip{}
+}{\small\par}
+\item {\small Is the return to intensive treatment higher in higher-intensity
+areas? Roy model with spillovers says yes -- flat-of-the-curve explanation
+says no \medskip{}
+}{\small\par}
+\item {\small Are the most-appropriate patients better off in high-intensity
+regions? Are the least-appropriate patients worse off? }{\small\par}
+\end{itemize}
+\end{itemize}
+\end{small} 
+
+}
+
+{ \setbeamercolor{background canvas}{bg=}\includepdf{aux/CS_4}
+}
+
+{ \setbeamercolor{background canvas}{bg=} \includepdf{aux/CS_t6}
+}
+
+{ \setbeamercolor{background canvas}{bg=} \includepdf{aux/CS_t7}
+}
+
+\frame{
+
+\frametitle{Chandra and Staiger (2007)}
+\begin{itemize}
+\item {\footnotesize Many predictions of the CS model with spillovers have
+support in the data \medskip{}
+}{\footnotesize\par}
+\item {\footnotesize Suggests that differences in treatment intensity across
+areas may be due to optimal decision-making in the presence of productivity
+spillovers, rather than inefficient utilization of care \medskip{}
+}{\footnotesize\par}
+\item {\footnotesize At the same time, welfare implications unclear \medskip{}
+}
+
+\begin{itemize}
+\item {\footnotesize If patients are identical across areas, larger costs
+with the same outcomes implies that expected utility could be increased
+by reducing treatment intensity, regardless of whether variation is
+caused by productivity spillovers/multiple equilibria or flat of the
+curve \medskip{}
+}{\footnotesize\par}
+\item {\footnotesize If source of variation in intensity is patient heterogeneity,
+we need }{\footnotesize\emph{more}}{\footnotesize{} specialization \medskip{}
+}{\footnotesize\par}
+\end{itemize}
+\item {\footnotesize Not obvious how to test whether variation is due to
+single vs. multiple equilibria }{\footnotesize\par}
+\end{itemize}
+}
+
+
+\section{References}
+
+\frame{ 
+
+\frametitle{References}
+\begin{itemize}
+\item {\scriptsize Abramitzky, Ran, Leah Boustan, and Katherine Ericksson
+(2012). ``Europe's Tired, Poor, Huddled Masses: Self-selection and
+Economic Outcomes in the Age of Mass Migration.'' }{\scriptsize\emph{American
+Economic Review }}{\scriptsize 102.}{\scriptsize\par}
+\item {\scriptsize Bjorklund, Anders, and Robert Moffitt (1987). ``The Estimation
+of Wage Gains and Welfare Gains in Self-Selection Models.'' }{\scriptsize\emph{Review
+of Economics and Statistics }}{\scriptsize 69.}{\scriptsize\par}
+\item {\scriptsize Borjas, George (1987). ``Self-selection and the Earnings
+of Immigrants.'' }{\scriptsize\emph{American Economic Review }}{\scriptsize 77.}{\scriptsize\par}
+\item {\scriptsize Brinch, Christian, Magne Mogstad, and Matthew Wiswall
+(2017). ``Beyond LATE with a Discrete Instrument.'' }{\scriptsize\emph{Journal
+of Political Economy }}{\scriptsize 125.}{\scriptsize\par}
+\item {\scriptsize Carneiro, Pedro, James Heckman, and Edward Vytlacil (2010).
+``Evaluating Marginal Policy Changes and the Average Effect of Treatment
+for Individuals at the Margin.'' }{\scriptsize\emph{Econometrica
+}}{\scriptsize 78.}{\scriptsize\par}
+\item {\scriptsize Chandra, Amitabh and Douglas Staiger (2007). \textquotedblleft Productivity
+Spillovers in Health Care: Evidence from the Treatment of Heart Attacks.\textquotedblright{}
+}{\scriptsize\textit{Journal of Political Economy}}{\scriptsize{} 115.}{\scriptsize\par}
+\item {\scriptsize Chiquiar, Daniel and Gordon Hanson (2005). ``International
+Migration, Self-selection, and the Distribution of Wages: Evidence
+from Mexico and the United States.'' }{\scriptsize\emph{Journal of
+Political Economy }}{\scriptsize 113.}{\scriptsize\par}
+\end{itemize}
+}
+
+\frame{ 
+
+\frametitle{References}
+\begin{itemize}
+\item {\scriptsize Cornelissen, Thomas, Christian Dustmann, Anna Raute, and
+Uta Schonberg (forthcoming). ``Who Benefits From Universal Child
+Care? Estimating Marginal Returns to Early Child Care Attendance.''
+}{\scriptsize\emph{Journal of Political Economy.}}{\scriptsize\par}
+\item {\scriptsize Dahl, Gordon (2002). \textquotedblleft Mobility and the
+Return to Education: Testing a Roy Model with Multiple Markets.\textquotedblright{}
+}{\scriptsize\textit{Econometrica}}{\scriptsize{} 70.}{\scriptsize\par}
+\item {\scriptsize Eisenhauer, Philipp, James Heckman, and Edward Vytlacil
+(2015). ``The Generalized Roy Model and the Cost-Benefit Analysis
+of Social Programs.'' }{\scriptsize\emph{Journal of Political Economy
+}}{\scriptsize 123.}{\scriptsize\par}
+\item {\scriptsize French, Eric, and Christopher Taber (2011). ``Identification
+of Models of the Labor Market.'' }{\scriptsize\uline{Handbook of
+Labor Economics}}{\scriptsize{} Volume 4A.}{\scriptsize\par}
+\item {\scriptsize Gronau, Reuben (1974). ``Wage Comparisons - A Selectivity
+Bias.'' }{\scriptsize\emph{Journal of Political Economy }}{\scriptsize 82.}{\scriptsize\par}
+\item {\scriptsize Heckman, James (1974): \textquotedblleft Shadow prices,
+market wages, and labor supply,\textquotedblright{} }{\scriptsize\emph{Econometrica}}{\scriptsize{}
+42.}{\scriptsize\par}
+\item {\scriptsize Heckman, James (1976). ``The Common Structure of Statistical
+Models of Truncation, Sample Selection and Limited Dependent Variables
+and a Simple Estimator for Such Models.'' }{\scriptsize\emph{Annals
+of Economic and Social Measurement }}{\scriptsize 5.}{\scriptsize\par}
+\end{itemize}
+}
+
+\frame{ 
+
+\frametitle{References}
+\begin{itemize}
+\item {\scriptsize Heckman, James (1979). ``Sample Selection Bias as a Specification
+Error.'' }{\scriptsize\emph{Econometrica }}{\scriptsize 47.}{\scriptsize\par}
+\item {\scriptsize Heckman, James and Bo Honor� (1990). \textquotedblleft The
+Empirical Content of the Roy Model.\textquotedblright{} }{\scriptsize\textit{Econometrica}}{\scriptsize{}
+58.}{\scriptsize\par}
+\item {\scriptsize Heckman, James, Sergio Urzua, and Edward Vytlacil (2006).
+``Understanding Instrumental Variables in Models with Essential Heterogeneity.''
+}{\scriptsize\emph{Review of Economics and Statistics 88.}}{\scriptsize\par}
+\item {\scriptsize Heckman, James, and Edward Vytlacil (2005). ``Structural
+Equations, Treatment Effects, and Econometric Policy Evaluation.''
+}{\scriptsize\emph{Econometrica }}{\scriptsize 73.}{\scriptsize\par}
+\item {\scriptsize Heckman, James, and Edward Vytlacil (2007). ``Econometric
+Evaluation of Social Programs, Part II: Using the Marginal Treatment
+Effect to Organize Alternative Economic Estimators to Evaluate Social
+Programs and to Forecast Their Effects in New Environments.'' }{\scriptsize\uline{Handbook
+of Econometrics}}{\scriptsize{} Volume 6B.}{\scriptsize\par}
+\item {\scriptsize Imbens, Guido, and Joshua Angrist (1994). ``Identification
+and Estimation of Local Average Treatment Effects.'' }{\scriptsize\emph{Econometrica
+}}{\scriptsize 62.}{\scriptsize\par}
+\item {\scriptsize Kirkeboen, Lars, Edwin Leuven, and Magne Mogstad (2016).
+``Field of Study, Earnings, and Self-selection.'' }{\scriptsize\emph{Quarterly
+Journal of Economics }}{\scriptsize 131.}{\scriptsize\par}
+\end{itemize}
+}
+
+\frame{ 
+
+\frametitle{References}
+\begin{itemize}
+\item {\scriptsize Kline, Patrick, and Christopher Walters (2016). ``Evaluating
+Public Programs with Close Substitutes: The Case of Head Start.''
+}{\scriptsize\emph{Quarterly Journal of Economics }}{\scriptsize 132.}{\scriptsize\par}
+\item {\scriptsize Kline, Patrick, and Christopher Walters (2018). ``On
+Heckits, LATE, and Numerical Equivalence.'' Working paper.}{\scriptsize\par}
+\item {\scriptsize Mulligan, Casey and Yona Rubinstein (2008). \textquotedblleft Selection,
+Investment, and Women\textquoteright s Relative Wages Over Time.\textquotedblright{}
+}{\scriptsize\textit{Quarterly Journal of Economics}}{\scriptsize{}
+123.}{\scriptsize\par}
+\item {\scriptsize Olsen, Randall (1980). ``A Least Squares Correction for
+Selectivity Bias.'' }{\scriptsize\emph{Econometrica }}{\scriptsize 48.}{\scriptsize\par}
+\item {\scriptsize Rothschild, Casey and Florian Scheuer (2013). ``Redistributive
+Taxation in the Roy Model.'' }{\scriptsize\emph{Quarterly Journal
+of Economics }}{\scriptsize 123.}{\scriptsize\par}
+\item {\scriptsize Roy, Andrew (1951). \textquotedblleft Some Thoughts on
+the Distribution of Earnings.\textquotedblright{} }{\scriptsize\textit{Oxford
+Economic Papers New Series}}{\scriptsize{} 3.}{\scriptsize\par}
+\item {\scriptsize Vytlacil, Edward (2002). ``Independence, Monotonicity,
+and Latent Index Models: An Equivalence Result.'' }{\scriptsize\emph{Econometrica
+}}{\scriptsize 70.}{\scriptsize\par}
+\end{itemize}
+}
+
+\frame{ 
+
+\frametitle{References}
+\begin{itemize}
+\item {\scriptsize Willis, Robert and Sherwin Rosen (1979). \textquotedblleft Education
+and Self-selection,\textquotedblright{} }{\scriptsize\textit{Journal
+of Political Economy }}{\scriptsize 87.}{\scriptsize\par}
+\item {\scriptsize Walters, Christopher (forthcoming). ``The Demand for
+Effective Charter Schools.'' }{\scriptsize\emph{Journal of Political
+Economy}}{\scriptsize .}{\scriptsize\par}
+\end{itemize}
+}
+\end{document}
