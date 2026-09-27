@@ -15,6 +15,7 @@
 \usepackage{xcolor}
 \usepackage[normalem]{ulem}
 \DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Var}{Var}
 \newsavebox\MBox
 \newcommand\Cline[2][red]{{\sbox\MBox{$#2$}%
   \rlap{\usebox\MBox}\color{#1}\rule[-1.2\dp\MBox]{\wd\MBox}{0.75pt}}}
@@ -477,21 +478,67 @@ $\rho>0$ }{\footnotesize\par}
 
 \frame{
 
-\frametitle{Mulligan and Rubinstein (2008)}
+\frametitle{Why the bias factors}
 \begin{itemize}
-\item Under normality selection bias can be written 
+\item {\small Participation is a \emph{single index} rule: she works iff
+}{\small\par}
+\end{itemize}
+{\small
 \[
-b_{t}=\theta\left(\sigma_{t}^{w}/\sigma_{t}^{r}\right)\lambda\left(P_{t}\right)
+S_{it}\equiv\epsilon_{it}^{r}-\tfrac{\sigma_{t}^{w}}{\sigma_{t}^{r}}\epsilon_{it}^{w}<c_{t}\equiv\tfrac{\gamma_{t}+\mu_{t}^{w}-\mu_{t}^{r}}{\sigma_{t}^{r}}
 \]
-\item $P_{t}$ is the fraction of women who work; $\sigma_{t}^{w}/\sigma_{t}^{r}$
-is the relative importance of market wages in the participation decision
-{\small\medskip{}
 }{\small\par}
-\item Changes in bias can come from either source {\small\medskip{}
+\begin{itemize}
+\item {\small Under joint normality, project the wage draw onto that index
 }{\small\par}
-\item For a fixed selection rule, increasing $P_{t}$ reduces bias; but
-an increase in $\sigma_{t}^{w}$ changes the selection rule, possibly
-increasing bias 
+\end{itemize}
+{\small
+\[
+\epsilon_{it}^{w}=\delta_{t}S_{it}+\nu_{it},\qquad\delta_{t}=\frac{\Cov(\epsilon_{it}^{w},S_{it})}{\Var(S_{it})},\qquad\nu_{it}\Perp S_{it}
+\]
+}{\small\par}
+\begin{itemize}
+\item {\small Selecting on $S_{it}$ leaves $\nu_{it}$ alone, so the bias is
+$\delta_{t}$ times the truncation induced in the index \medskip{}
+}{\small\par}
+\end{itemize}
+{\small
+\[
+b_{t}=E[\epsilon_{it}^{w}|S_{it}<c_{t}]=\delta_{t}\,E[S_{it}|S_{it}<c_{t}]
+\]
+}{\small\par}
+}
+
+\frame{
+
+\frametitle{Why the bias factors}
+\begin{itemize}
+\item {\small Truncating a normal gives $E[S_{it}|S_{it}<c_{t}]=-\sqrt{\Var(S_{it})}\,\lambda(P_{t})$,
+where $P_{t}=\Pr(S_{it}<c_{t})$ is the fraction of women who work and
+$\lambda(P)=\phi(\Phi^{-1}(P))/P$ \medskip{}
+}{\small\par}
+\item {\small Writing $k_{t}\equiv\sigma_{t}^{w}/\sigma_{t}^{r}$ and
+$\rho\equiv\Cov(\epsilon_{it}^{r},\epsilon_{it}^{w})$, we have
+$\Cov(\epsilon_{it}^{w},S_{it})=\rho-k_{t}$ and $\Var(S_{it})=1+k_{t}^{2}-2\rho k_{t}$,
+so }{\small\par}
+\end{itemize}
+{\small
+\[
+b_{t}=\theta(k_{t})\,\lambda(P_{t}),\qquad\theta(k_{t})=\frac{k_{t}-\rho}{\sqrt{1+k_{t}^{2}-2\rho k_{t}}}
+\]
+}{\small\par}
+\begin{itemize}
+\item {\small Two distinct channels: $\theta$ is how heavily the participation
+rule loads on wages, $\lambda$ is how far into the tail you truncate
+\medskip{}
+}{\small\par}
+\item {\small For a fixed selection rule, raising $P_{t}$ lowers $\lambda$ and
+shrinks the bias; but raising $\sigma_{t}^{w}$ changes the rule itself, and
+since $\theta'>0$ it pushes the bias up at any given $P_{t}$ \medskip{}
+}{\small\par}
+\item {\small $\lambda>0$ always, so $\operatorname{sign}(b_{t})=\operatorname{sign}(k_{t}-\rho)$:
+only the selection rule can flip the sign, never the participation rate
+}{\small\par}
 \end{itemize}
 }
 
