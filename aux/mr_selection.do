@@ -1,8 +1,17 @@
+* ----------------------------------------------------------------------
+* Mulligan-Rubinstein: who participates, low vs high wage dispersion.
+* Usage:  do mr_selection <rho> <filename suffix> <rho label>
+*   do mr_selection  0.5 ""     "0.5"    ->  mr_selection.pdf
+*   do mr_selection -0.5 "_neg" "-0.5"   ->  mr_selection_neg.pdf
+* Panel A fixes sigma_w/sigma_r = 0.2, Panel B fixes it at 3; the cutoff is
+* set to 0 so the participation rate is 0.5 in both panels.
+* ----------------------------------------------------------------------
+args RHO TAG RHOLAB
 clear all
 set seed 90210
 set obs 500
 
-local rho = 0.5
+local rho = `RHO'
 local kA  = 0.2
 local kB  = 3
 
@@ -51,9 +60,9 @@ twoway (scatter er ew if workB==0, msymbol(Oh) msize(small) mcolor(gs11))      /
        legend(off) graphregion(color(white)) name(B, replace)
 
 graph combine A B, cols(2) xsize(7) ysize(4.4) graphregion(color(white))         ///
-    note("Simulated draws, {&rho} = Cov({&epsilon}{superscript:r},{&epsilon}{superscript:w}) = 0.5." ///
+    note("Simulated draws, {&rho} = Cov({&epsilon}{superscript:r},{&epsilon}{superscript:w}) = `RHOLAB'." ///
          "Dashed line: participation frontier {&epsilon}{superscript:r} = ({&sigma}{superscript:w}/{&sigma}{superscript:r}){&epsilon}{superscript:w}. Women work below it (solid dots)." ///
          "Vertical line: mean wage draw among participants. Participation rate is 0.5 in both panels.", size(small))
 
-graph export "mr_selection.pdf", replace
+graph export "mr_selection`TAG'.pdf", replace
 display "bA = `bA'  pA = `pA'   bB = `bB'  pB = `pB'"
