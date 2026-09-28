@@ -396,7 +396,7 @@ $t$
 G_{t}=E[w_{it}|g_{i}=1,L_{it}=1]-E[w_{it}|g_{i}=0]
 \]
 \[
-=\gamma_{t}+\sigma_{t}^{w}E[\epsilon_{it}|g_{i}=1,L_{it}=1]
+=\gamma_{t}+\sigma_{t}^{w}E[\epsilon_{it}^{w}|g_{i}=1,L_{it}=1]
 \]
 \[
 =\gamma_{t}+\sigma_{t}^{w}b_{t}.
@@ -511,7 +511,7 @@ b_{t}=E[\epsilon_{it}^{w}|S_{it}<c_{t}]=\delta_{t}\,E[S_{it}|S_{it}<c_{t}]
 
 \frame{
 
-\frametitle{Why the bias factors}
+\frametitle{Working out the bias}
 \begin{itemize}
 \item {\small Truncating a normal gives $E[S_{it}|S_{it}<c_{t}]=-\sqrt{\Var(S_{it})}\,\lambda(P_{t})$,
 where $P_{t}=\Pr(S_{it}<c_{t})$ is the fraction of women who work and
@@ -528,14 +528,6 @@ b_{t}=\theta(k_{t})\,\lambda(P_{t}),\qquad\theta(k_{t})=\frac{k_{t}-\rho}{\sqrt{
 \]
 }{\small\par}
 \begin{itemize}
-\item {\small Two distinct channels: $\theta$ is how heavily the participation
-rule loads on wages, $\lambda$ is how far into the tail you truncate
-\medskip{}
-}{\small\par}
-\item {\small For a fixed selection rule, raising $P_{t}$ lowers $\lambda$ and
-shrinks the bias; but raising $\sigma_{t}^{w}$ changes the rule itself, and
-since $\theta'>0$ it pushes the bias up at any given $P_{t}$ \medskip{}
-}{\small\par}
 \item {\small $\lambda>0$ always, so $\operatorname{sign}(b_{t})=\operatorname{sign}(k_{t}-\rho)$:
 only the selection rule can flip the sign, never the participation rate
 }{\small\par}
