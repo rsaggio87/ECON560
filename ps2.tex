@@ -1,0 +1,107 @@
+%% LyX 2.4.1 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in,headheight=1in,headsep=1in,footskip=1in}
+\usepackage{amsmath}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\date{Due: October 28, 11.59pm}
+% Added by lyx2lyx
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\title{Econ560: Problem Set 2}
+\maketitle
+\begin{center}
+The solution must be written in Latex and emailed to rsaggio@mail.ubc.ca.
+\par\end{center}
+
+\bigskip{}
+
+\subsection*{Question 1: Katz and Murphy (1992)}
+
+Consider the constant elasticity of substitution (CES) production function
+\begin{equation}
+F_{t}(H_{t},L_{t}) = \left(A_{H_{t}}H_{t}^{\frac{\sigma-1}{\sigma}}+A_{L_{t}}L_{t}^{\frac{\sigma-1}{\sigma}}\right)^{\frac{\sigma}{\sigma-1}}
+\end{equation}
+where $\sigma$ is the elasticity of substitution between high and low skilled labor. For now, assume that labor supply is perfectly elastic.
+
+a) Start by considering some special cases of the CES production function
+\begin{itemize}
+\item Take the limit of $F_{t}$ as $\sigma\rightarrow 0$. What is the production function?
+\item Take the limit of $F_{t}$ as $\sigma\rightarrow \infty$. What is the production function?
+\item Take the limit of $F_{t}$ as $\sigma\rightarrow 1$. What is the production function?
+\end{itemize}
+
+b) Assume a perfectly competitive input market. Derive the skill premium $\log \omega_{t}=\log(\dfrac{w_{H_{t}}}{w_{L_{t}}})$ where $w_{H}$ and $w_{L}$ are the wages paid to high and low skilled workers, as a function of the exogenous parameter of the model. What is the  effect of skill biased technological change on the skill premium, $\dfrac{\partial \log \omega_{t}}{\partial \log \frac{A_{H_{t}}}{A_{L_{t}}} }$? What is the effect due to an increase in the relative supply of high skilled workers,  $\dfrac{\partial \log \omega_{t}}{\partial \log \frac{{H_{t}}}{{L_{t}}} }$?
+
+c) Now suppose that labor supply is elastic. The labor supply functions are given by
+\begin{equation}
+H_{t} = H_{0t}w_{H_{t}}^{\epsilon}
+\end{equation}
+\begin{equation}
+L_{t} = L_{0t}w_{L_{t}}^{\epsilon}
+\end{equation}
+where $\epsilon$ is the elasticity of labor supply. Derive a new expression for the skill premium as a function of the exogenous parameters of the model. What is the effect of skill biased technological  change on the skill premium? What is the effect of an exogenous increase in the relative labor supply $\log \frac{{H_{0t}}}{{L_{0t}}}$ ?
+
+d) Suppose that technology evolves according to a stochastic time trend
+
+\begin{equation}
+\log \frac{A_{H_{t}}}{A_{L_{t}}} = \lambda_{0} + \lambda_{1}t+e_{t}
+\end{equation}
+
+where $e_{t}$ is an iid idiosyncratic error term with variance $V_{e}$. The exogenous component of labour supply is given by
+\begin{equation}
+\log \frac{{H_{0t}}}{{L_{0t}}} = \psi_{0} + \nu_{t}
+\end{equation}
+where $\nu_{t}$ is another iid idiosyncratic error term with variance $V_{\nu}$. Consider running a Katz and Murphy style OLS regression of the type
+\begin{equation}
+\log \omega_{t} = \beta_{0}+\beta_{1} t + \beta_{2} \log (\frac{H_{t}}{L_{t}}) + u_{t}
+\end{equation}
+
+Start by assuming that labor supply is elastic. Derive formulas for the population OLS coefficients $\beta_{1}$ and $\beta_{2}$ as a function of the structural parameters of the model. Then consider the cases where (a) $\epsilon=0$, (b) $V_{e}=0$ and (c) $V_{\nu}=0$. In what cases is $\beta_{2}$ equal to the inverse of subtitution elasticity $-\dfrac{1}{\sigma}$? In what cases is $\beta_{1}$ equal to the true trend in technology $\lambda_{1}$?.
+
+e) In view of your results in part (d), comment on the assumptions required for the Katz and Murphy style regression to be meaningful. Do you find these assumptions plausible?
+
+\bigskip{}
+
+\subsection*{Question 2: Complementarities in Production}
+
+Suppose output in a sector is produced according to the following
+function
+
+\[
+Q=\left(\sum\limits _{i}A_{i}\right)^{\alpha}\left(\sum\limits _{i}M_{i}\right)^{\beta}\left(\sum\limits _{i}A_{i}M_{i}\right)^{1-\alpha-\beta}
+\]
+
+where $A_{i}$ is employee $i$'s analytical ability and $M_{i}$
+is their motivation. Such a production process exhibits strong complementarities
+between individual productivities, if one individual has very low
+ability or motivation it can bring down the output of the entire firm.
+There are two types of employees: Hippies $\left(H\right)$ and Nerds
+$\left(N\right)$. Each Hippy supplies one unit of motivation and
+two units of analytical ability. Each Nerd supplies one unit of ability
+and three units of motivation. Note: it is useful to read Rosen (1983,
+Journal of Human Resources) before attempting this question.
+
+\bigskip{}
+
+a) Verify that $Q$ exhibits CRTS in $H$ and $N$. What is the elasticity
+of substitution between $H$ and $N$?
+
+\bigskip{}
+
+b) Assume $\alpha+\beta=1$. Derive a relationship between the wages
+of workers and the marginal productivity of skills. Do the same when
+$\alpha+\beta<1$. Comment on the usefulness of the notion of skill
+prices.
+
+\end{document}
