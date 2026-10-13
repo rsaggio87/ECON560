@@ -1,0 +1,1000 @@
+\documentclass[notes=show]{beamer}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\AtBeginSubsection[
+  {\frame<beamer>{\frametitle{Outline}   
+    \tableofcontents[currentsection,currentsubsection]}}%
+]%
+{
+  \frame<beamer>{ 
+    \frametitle{Outline}   
+    \tableofcontents[currentsection,currentsubsection]}
+}
+\usepackage{ulem}
+\usepackage{pdflscape}
+\setbeamertemplate{caption}{\insertcaption}
+\usepackage{color,xcolor,ucs}
+\usepackage{beamerthemesplit}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{adjustbox}
+\usepackage{pdfpages} 
+\definecolor{mintgreen}{rgb}{0.6, 1.0, 0.6}
+\makeatletter
+\@addtoreset{subfigure}{framenumber}% subfigure counter resets every frame
+\makeatother
+\newcommand*{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
+\newcommand*{\Resize}[2]{\resizebox{#1}{!}{$#2$}}%
+\usepackage{amsfonts}
+\usepackage{booktabs}
+\usepackage{color,soul}
+\usepackage{pdfpages}
+\setboolean{@twoside}{false}
+\usepackage{amsmath}
+\usepackage{pdflscape} 
+\usepackage{eurosym}
+\usepackage{amstext} % for \text
+\DeclareRobustCommand{\officialeuro}{%
+  \ifmmode\expandafter\text\fi
+  {\fontencoding{U}\fontfamily{eurosym}\selectfont e}}
+\usepackage[caption = false]{subfig}
+\usepackage{appendixnumberbeamer} 
+\usepackage{graphicx}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+\usepackage{multimedia}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{verbatim}
+\usepackage{booktabs, multicol, multirow}
+\setcounter{MaxMatrixCols}{10}
+\input{Macros.tex}
+\AtBeginSection[]
+{
+  \begin{frame}[noframenumbering]
+    \frametitle{Outline for section \thesection}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+
+\usepackage{xcolor,soul}
+\renewcommand<>{\hl}[1]{\only#2{\beameroriginal{\hl}}{#1}}
+
+% https://tex.stackexchange.com/questions/41683/why-is-it-that-coloring-in-soul-in-beamer-is-not-visible
+\makeatletter
+\newcommand\SoulColor{%
+  \let\set@color\beamerorig@set@color
+  \let\reset@color\beamerorig@reset@color}
+\makeatother
+\SoulColor
+\AtBeginSection{\frame{\sectionpage}}
+
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+  {\savebox\mybox{#1}\begin{quote}\openautoquote\hspace*{-.7ex}}
+  {\unskip\closeautoquote\vspace*{1mm}\signed{\usebox\mybox}\end{quote}}
+
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{Assumption}[theorem]{Assumption}
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usetheme{Madrid}
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor~~\beamer@ifempty{\insertshortinstitute}{}{(\insertshortinstitute)}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+%    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} % DELETED
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\usepackage[style=british]{csquotes}
+
+\def\signed #1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip1em
+  \hbox{}\nobreak\hfill #1%
+  \parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+  
+\makeatother
+\usepackage{pdfpages}
+\begin{document}
+	\title[]{\large Wage Inequality Wars - Part II 		\vspace{0.5cm}
+	}
+	\author[Raffaele Saggio - Econ 560]{Raffaele Saggio}
+	\institute[]{UBC}
+	\date{\today \\}
+	\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%	
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{footline}[frame number]{}
+
+%gets rid of bottom navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+%gets rid of footer
+%will override 'frame number' instruction above
+%comment out to revert to previous/default definitions
+\setbeamertemplate{footline}{}
+%%%
+\begin{frame}
+\frametitle{Today}
+\begin{itemize}
+\item End of 1990's: consensus on importance of skill biased technological change (SBTC).
+\medskip
+ \begin{aquote}{Card and Di Nardo, 2002}
+      The recent inequality literature reaches virtually unanimous agreement that the relative demand for highly skilled workers increased in the 1980s causing earnings inequality to increase.
+      \end{aquote}
+     \pause 
+\bigskip
+\item Mid 2000's: open war! East-West coast divide 
+\bigskip
+\item Key arguments for the critique: institutions, within group inequality, gender wage inequality, racial wage inequality.
+\end{itemize}
+\end{frame}
+%%%
+\begin{frame}
+\frametitle{East vs. West Coast Battles, Labor Economics style}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/east_coast_}
+\end{figure}
+\end{frame}
+\begin{frame}
+\frametitle{Card and Di Nardo 2002}
+\begin{itemize}
+\item Original title ``10 Things we hate about SBTC"
+\medskip
+\item SBTC provides an incomplete and sometimes undisciplined (``name the residual") account of changes in wage structure.
+\medskip
+\item Highlight: \underline{Problems} (patterns in the data inconsistent with SBTC) \underline{Puzzles} (patterns that could be explained by SBTC but seemed to be due to other factors)
+\medskip
+\pause
+\item Main message: economists love uni-causal stories but in real world is really hard to get ``uni-causal" implications.
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{More moments: 1990s era, flat period of inequality?}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/cdn00}
+\end{figure}
+\end{frame}
+\begin{frame}
+\frametitle{Were the 1980's an aberration?}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/cdnBASE}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Technology or Tautology?}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/cdn1}
+\end{figure}
+\end{frame}
+%%%
+\begin{frame}
+\frametitle{Several puzzles}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.82\textwidth]{aux/cdn4}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Conclusions}
+\begin{itemize}
+\item 76\% of the rise in the 90-10 wage gap b/w 1979-1999 occurred between 1979-1984 $\rightarrow$ first year that the IBM-AT was introduced.
+\medskip
+\item SBTC may have played a role but it is unlikely to be the only story (too many problems/puzzles associated with that).
+\medskip
+\pause
+\item If it's not SBTC then what is it? 
+\end{itemize}
+\end{frame}
+%%
+%%
+\begin{frame}
+\frametitle{Quite a coincidence!}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/cdn5}
+\end{figure}
+\end{frame}
+%%
+%%
+\begin{frame}
+\frametitle{Quite a coincidence!}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/cdn6}
+\end{figure}
+\end{frame}
+%%
+%%
+\begin{frame}
+\frametitle{Lee (1999)}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.9\textwidth]{aux/lee0}
+\end{figure}
+\end{frame}
+%%
+%%
+%%
+\begin{frame}
+\frametitle{Card and Lemieux 2001}
+\begin{itemize}
+\item Original Title: ``It's supply, stupid". 
+\bigskip
+\pause
+\item  Starting point: Are we sure we really need technical change to explain the 80s rise in return to schooling?
+ \bigskip
+ \item What if we are just observing a reduction in relative supply of college grads among recent cohorts?
+  \bigskip
+  \item In order for the last point to have a ``bite" we need to have imperfect substitution across age groups within education category.
+   \bigskip
+   \item International comparison (USA + UK + Canada).
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Starting observation}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.45\textwidth]{aux/cl_base}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Starting observation}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/CL_important}
+\end{figure}
+\end{frame}
+
+\begin{frame}[shrink=5]
+\frametitle{Nested CES}
+\begin{itemize}
+\item Aggregate production function
+\be
+y_{t} = \left(\theta_{ht}H_{t}^{\rho}+\theta_{ct}C_{t}^{\rho}\right)^{\frac{1}{\rho}}
+\ee
+where $(H_{t},C_{t})$ are high school and college equivalent labor aggregates of age groups $j$:
+\be
+H_{t} = \left[\sum_{j}\left(\alpha_{j}H_{jt}^{\eta}\right)\right]^{\frac{1}{\eta}}
+\ee
+\be
+C_{t} = \left[\sum_{j}\left(\beta_{j}C_{jt}^{\eta}\right)\right]^{\frac{1}{\eta}}
+\ee
+\item The relevant elasticities are 
+\be
+\sigma_{A}=(1-\eta)^{-1} \qquad \sigma_{E}=(1-\rho)^{-1}
+\ee
+\item The dogma of perfect competition implies that
+\be
+\log \dfrac{w_{jt}^{c}}{w_{jt}^{h}} = \log\dfrac{\theta_{ct}}{\theta_{ht}} +   \log\dfrac{\beta_{j}}{\alpha_{j}} + (\rho-\eta)\log \dfrac{C_{t}}{H_{t}} + (\eta-1)\log\dfrac{C_{jt}}{H_{jt}}
+\ee
+\end{itemize} 
+\end{frame}
+%%
+\begin{frame}[shrink=5]
+\frametitle{Interpretation}
+\begin{itemize}
+\item It is useful to rearrange the last expression as
+\be
+\log \dfrac{w_{jt}^{c}}{w_{jt}^{h}} =  \log\dfrac{\theta_{ct}}{\theta_{ht}} +   \log\dfrac{\beta_{j}}{\alpha_{j}} -\dfrac{1}{\sigma_{E}}\log \dfrac{C_{t}}{H_{t}} -\dfrac{1}{\sigma_{A}}\left[\log\dfrac{C_{jt}}{H_{jt}}-\log \dfrac{C_{t}}{H_{t}}\right]
+\ee
+\begin{itemize}
+\item What if $\eta =1$?
+\medskip
+\item What if $ \log\dfrac{C_{jt}}{H_{jt}}-\log \dfrac{C_{t}}{H_{t}}$ is constant over time?
+\end{itemize}
+\pause
+\medskip
+\item How to model relative supplies?
+\begin{itemize}
+\item Relative supply of college grads for people aged $j$ largely determined by the college enrollment decision that these individuals made when they were 20
+\be
+\log\dfrac{C_{jt}}{H_{jt}}=\underbrace{\lambda_{t-j}}_{\text{Cohort Effect}}+\underbrace{\phi_{j}}_{\text{Age}}
+\ee
+age effect is constant over-time!
+\end{itemize}
+\medskip
+\item So we get that 
+\be
+\label{CL2001_FINAL}
+\log \dfrac{w_{jt}^{c}}{w_{jt}^{h}} =  \underbrace{\log\dfrac{\theta_{ct}}{\theta_{ht}}}_{\text{Year Effects}} +   \underbrace{\log\dfrac{\beta_{j}}{\alpha_{j}} -\dfrac{1}{\sigma_{A}}\phi_{j}}_{\text{Age}}-\underbrace{(\dfrac{1}{\sigma_{E}}-\dfrac{1}{\sigma_{A}})\log \dfrac{C_{t}}{H_{t}}}_{\text{Year Effects}}-\underbrace{\dfrac{1}{\sigma_{A}}\lambda_{t-j}}_{\text{Cohort}}
+\ee
+\end{itemize} 
+\end{frame}
+
+%%
+\begin{frame}
+\frametitle{Identification}
+\begin{itemize} 
+\item If there are cohort effects $\rightarrow$ imperfect substitution across age groups $\rightarrow$ Katz and Murphy (1992) is misspecified.
+\pause
+\medskip
+\item But how do you estimate a Nested CES?
+\medskip
+\pause
+\item $C_{t}$ and $H_{t}$ are model based! Discipline the model to see whether the model derived supply indexes match the data
+\medskip
+\be
+H_{t} = \left[\sum_{j}\left(\alpha_{j}H_{jt}^{\eta}\right)\right]^{\frac{1}{\eta}}
+\ee
+\be
+C_{t} = \left[\sum_{j}\left(\beta_{j}C_{jt}^{\eta}\right)\right]^{\frac{1}{\eta}}
+\ee 
+\end{itemize} 
+\end{frame}
+%%
+\begin{frame}[shrink=5]
+\frametitle{Identification}
+\begin{itemize} 
+\item Need ($\alpha_{j},\beta_{j},\sigma_{A})$ and I can't use equation (\ref{CL2001_FINAL})
+\pause
+\medskip
+\item Look at relative wage across two different age groups \textit{within the same education category} across years
+\be
+\label{CLA1}
+\log \dfrac{w_{jt}^{C}}{w_{j't}^{C}} = \log \dfrac{\beta_{j}}{\beta_{j}'} + \psi_{t}^{C} -\dfrac{1}{\sigma_{A}}\left(\log \dfrac{C_{jt}}{C_{j't}}\right)
+\ee
+\be
+\label{CLA2}
+\log \dfrac{w_{jt}^{H}}{w_{j't}^{H}} = \log \dfrac{\alpha_{j}}{\alpha_{j}'}+\psi_{t}^{H}-\dfrac{1}{\sigma_{A}}\left(\log \dfrac{H_{jt}}{H_{j't}}\right)
+\ee
+\item Using the equation above one can obtain (upon normalization):  ($\alpha_{j},\beta_{j},\sigma_{A})$.
+\medskip
+\item Steps: 
+\begin{enumerate}
+\item Estimate (\ref{CLA1}) and (\ref{CLA2}) $\rightarrow$ ($\alpha_{j},\beta_{j},\sigma_{A})$.
+\medskip
+\item Use ($\alpha_{j},\beta_{j},\sigma_{A})$ to construct $(H_{t},C_{t})$.
+\medskip
+\item Estimate (\ref{CL2001_FINAL}).
+\end{enumerate}
+\medskip
+\pause
+\item Gimme an overid test to run.
+\end{itemize} 
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Facts}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/cl1}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{USA}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/clUSA}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{UK}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/clUK}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Canada}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/clCA}
+\end{figure}
+\end{frame}
+%%
+%%
+\begin{frame}
+\frametitle{Cohort effects weaken time trends...}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.8\textwidth]{aux/cl2}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{All the college premia driven by young guys not a general rise for all age groups!}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.8\textwidth]{aux/cl2}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Now back-out structural parameters... Begin with CL ``first-stage"}
+\pause
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.6\textwidth]{aux/first_stage_CL}
+\end{figure}
+\end{frame}
+
+%%
+\begin{frame}
+\frametitle{Closing the circle and estimating equation (\ref{CL2001_FINAL})}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/cl3}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{No SBTC in Canada?}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/cl3}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Conclusions}
+\begin{itemize}
+\item Age groups imperfect substitutes $\sigma_{A}\in[4;6]$.
+\medskip
+\item Back to magical number $\sigma_{E}\in[1.1;1.6]$.
+\medskip
+\item $R^{2}$ for the US is 0.95.
+\medskip
+\item Relative supply explains more of growth in inequality than
+previously suggested.
+\medskip
+\item Demand / SBTC somewhat less important than it appears.
+\medskip
+\pause
+\item But why has the supply of college graduates stop increasing?
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Discussion}
+\begin{itemize}
+\item What explains the slowdown of college graduation rates?
+\medskip
+\item CL argued that cohorts at the peak of the baby boom (1950s cohorts essentially) were crowded out of college. 
+\medskip
+\item Cohort crowding is present in all three countries.
+\medskip
+\item In a separate paper CL shows that size of the cohort is able to explain 1/4 of the intercohort slowdown in educational attainment.
+\medskip
+\item Other theories?
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}[plain]{Autor, Levy, Murnane (2003)}
+\begin{itemize}
+\item Response to critiques of computer use correlations
+\item Routinization hypothesis: computers substitute for human in the conduct of routine tasks.
+\item Computers can also complement workers involved in carrying out problem-solving and complex communication activities (“nonroutine” tasks).
+\item Use Dictionary of Occupational Titles (DOT) to figure out task content
+of occupations.
+\item Assess how this influences wage structure following the decrease in the price of computer capital..
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{The Machine's Eye}
+\begin{itemize}
+    \item A task is ``routine" if it can be accomplished by machines following explicit programmed rules.
+    \medskip
+    \item Some tasks are analytical/interactive vs. manual. 
+    \medskip
+    \item Examples: Bank-Teller; Taxi Driver; Economist;
+\end{itemize}
+\end{frame}
+\begin{frame}{Manual/Non-Manual Routine/Non-Routine}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.8\textwidth]{aux/ALM.pdf}
+\end{figure}
+\end{frame} 
+\begin{frame}{Three fundamental Postulates}
+\begin{enumerate}
+    \item Computer capital is more substitutable for human labor in carrying out routine tasks than nonroutine tasks.
+    \medskip
+    \item Routine and nonroutine tasks are themselves imperfect substitutes.
+    \medskip
+    \item Greater intensity of routine inputs increases the marginal productivity of nonroutine inputs.
+\end{enumerate}
+    
+\end{frame}
+
+
+\begin{frame}[plain]{A task-based model}
+
+\begin{itemize}
+\item Total output in the economy is a function of computer capital ($C$), routine ($L_{R}$) and non-routine tasks ($L_{N}$):
+\[
+Q=\left(L_{R}+C\right)^{1-\beta}L_{N}^{\beta}
+\]
+\item Capital elastically provided at price $\rho$ (this is the exogenous force of the model).
+\item Aggregate production follows a Cobb-Douglas production where routine tasks and capital are...
+\item What is the elasticity of substitution between capital/routine and non-routine tasks? Therefore non-routine tasks are...to routine tasks.
+\end{itemize}
+\end{frame}
+\begin{frame}[shrink=10]
+\frametitle{Equilibrium}
+\begin{itemize}
+\item Workers inelastically supplies one unit of labor.
+\item These workers are endowed with heterogeneous productivities in routine and non-routine tasks: $E_{i}=[r_{i},n_{i}]$. 
+\item Endogenously decide to supply R or NR labor based on comparative advantage.
+\pause
+\item How is the equilibrium pinned down?
+\begin{itemize}
+    \item Perfect substitutability of capital and non-routine task implies that 
+    \begin{equation}
+    w_{R}=\rho.
+    \end{equation}
+    \item Let $\eta_{i}=n_{i}/r_{i}$. The marginal worker who is indifferent b/w R and NR jobs has an $\eta_{i}$ such that  
+    \begin{equation}
+        \eta^{*}=w_{R}/w_{N}
+    \end{equation}
+    \item Workers with $\eta_{i}>\eta^{*}$ supply NR labor and workers with $\eta_{i}\leq\eta^{*}$ supply R labor. 
+    \pause
+    \item Given the above, total supply of R and NR labor is given by  $g(\eta^{*})=\sum_{i}r_{i}\mathbf{1}\{\eta_{i}\leq\eta^{*}\}$ and  $h(\eta^{*})=\sum_{i}n_{i}\mathbf{1}\{\eta_{i}>\eta^{*}\}$.
+    \pause
+\medskip
+    \item Productive efficiency requires
+        \begin{equation}
+       w_{R}=\dfrac{\partial Q}{\partial L_{R} }=(1-\beta)\theta^{-\beta}
+    \end{equation}
+      \begin{equation}
+       w_{N}=\dfrac{\partial Q}{\partial L_{N} }=\beta\theta^{1-\beta}
+    \end{equation}
+    \begin{equation}
+    \theta = \dfrac{C + g(\eta^{*})}{h(\eta ^{*})}
+    \end{equation}
+    \item Note that $\theta$ is the ratio of routine to non-routine tasks. 
+    \pause
+    \item Five equations in five unknowns $(C,w_{R},w_{N},\eta^{*},\theta)$!
+\end{itemize}
+\end{itemize}
+\end{frame}
+\begin{frame}[shrink=10]
+\frametitle{Comparative Statics}
+\begin{itemize}
+    \item Exogenous force in the model: a \textit{decrease} in $\rho$ (price of computer capital).
+    \item This is going to increase the relative demand for Routine-Tasks since
+    \begin{equation}
+        \dfrac{\partial \log \theta}{\partial \log \rho} = -\dfrac{1}{\beta}
+    \end{equation}
+    \item But is this increase in demand coming from a rise in computers or routine labor? \pause $\rightarrow$ Need to understand what is happening to supply of NR jobs (endogenous!)
+    \begin{equation}
+        \dfrac{\partial \log (\frac{w_{N}}{w_{R}})}{\partial \log \rho} = -\dfrac{1}{\beta}
+    \end{equation}
+        \begin{equation}
+        \dfrac{\partial \log \eta^{*}}{\partial \log \rho} = \dfrac{1}{\beta}
+    \end{equation}
+    \pause
+    \item The relative wage of non-routine jobs is becoming higher $\rightarrow$ more people now supply non-routine jobs $\rightarrow$ increase in demand for routine tasks will be met by computers, not people!
+    \medskip
+    \item Although routine labor input declines, an inflow of
+computer capital more than compensates, yielding a net increase in the intensity of routine task input in production.
+\end{itemize}
+\end{frame}
+\begin{frame}[plain]{Can we derive now predictions at the industry level?}
+\pause
+\begin{itemize}
+\item Industry $j$'s output ($q_{j}$) is a function of 
+routine ($r_{j}$) and non-routine ($n_{j}$) tasks:
+\[
+q_{j}=\left(r_{j}\right)^{1-\beta_{j}}n_{j}^{\beta_{j}}
+\]
+\item Product price is $p_{j}\left(q_{j}\right)\propto q_{j}^{-\nu}$
+\item New key level of heterogeneity: $\beta_{j}$ $\rightarrow$  industry-specific factor share of nonroutine tasks 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[plain]{Industry-Level Demand}
+
+\begin{itemize}
+\item Industry $j$ takes the wages as given and then chooses quantities to maximize profits:
+
+\begin{eqnarray*}
+n_{j} & = & w_{N}^{-1/\nu}\left(\beta_{j}\left(1-\nu\right)\right)^{1/\nu}\left(\frac{w_{N}}{\rho}\cdot\frac{1-\beta_{j}}{\beta_{j}}\right)^{\left(\left(1-\beta_{j}\right)\left(1-\nu\right)\right)/\nu}\\
+r_{j} & = & \rho^{-1/\nu}\left(\left(1-\beta_{j}\right)\left(1-\nu\right)\right)^{1/\nu}\left(\frac{w_{N}}{\rho}\cdot\frac{1-\beta_{j}}{\beta_{j}}\right)^{\left(\beta_{j}\left(\nu-1\right)\right)/\nu}
+\end{eqnarray*}
+\item Additional predictions from fall in price $\rho$ of routine-replacing capital
+\begin{enumerate}
+\medskip
+\item For a given
+price decline, the proportionate increase in demand for
+routine task input is larger in routine-task-intensive ($\beta_j$
+small) industries.
+\medskip
+\item A decline in the price of computer capital
+also raises demand for nonroutine task input (R and NR are q-complements). This demand increase is proportionately larger in routine-task intensive
+industries.
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%%%
+\begin{frame}{Measurement}
+\begin{itemize}
+    \item Labor’s Dictionary of Occupational Titles (DOT).
+    \medskip
+    \item Evaluates more than 12,000 highly detailed occupations along 44 objective and subjective
+dimensions, including training times, physical demands and required worker aptitudes, temperaments, and interests.
+\medskip
+\item Information collapsed to 3 digits occupation codes (COC) $\rightarrow$ merged to CPS MORG.
+\medskip
+\item Micro-information then is aggregated at the industry level (140 cells). 
+\medskip
+\item How do jobs change overtime?
+\begin{itemize}
+    \item Extensive margin: Changes to the occupational distribution of employment, holding fix the task content at 1977.
+    \medskip
+    \item Intensive Margin: Changes in task content measures within occupations over the period 1977 to 1991. 
+\end{itemize}
+\medskip 
+\end{itemize}
+\end{frame}
+%%%
+%%%
+\begin{frame}{Measurement}
+\begin{itemize}
+    \item DOT analyzes the tasks required to perform a given occupation.
+    \medskip
+    \item To understand, say, whether a job is non-routine ALM look at two variables in DOT evaluations: 
+    \medskip
+    \begin{itemize}
+    \medskip
+        \item Direction, Control, and Planning of activities (DCP)$\rightarrow$ Non-Routine Interactive.
+        \medskip
+        \item GEDMATH, measures quantitative reasoning requirements $\rightarrow$ Non-Routine Analytical.
+        \medskip
+        \item Similarly for Routine Analytical, Routine Manual and Non-Routine Manual. 
+    \end{itemize}
+    \medskip
+    \item These numbers do not provide clear ordinal nor cardinal measures $\rightarrow$ DOT measures converted into percentile values corresponding to their rank in the 1960 distribution of task input.
+    \medskip
+    \item Analyze changes in these tasks from 1960.
+\end{itemize}
+\end{frame}
+\begin{frame}[plain]
+
+\begin{center}
+\includegraphics[scale=0.3]{aux/trends_ALM.pdf}
+\par\end{center}
+
+
+\end{frame}
+%%
+\begin{frame}[plain]
+\frametitle{Tasks seem to change: is it mainly a between vs. a within industry phenomenon?}
+
+\begin{center}
+\includegraphics[scale=0.4]{aux/within_ALM.pdf}
+\par\end{center}
+\end{frame}
+\begin{frame}[plain]{Growth in industry computer use associated w/ shift from routine to
+non-routine tasks}
+
+\begin{center}
+\includegraphics[scale=0.2]{aux/Autor_Levy_Murnane_tab3}
+\par\end{center}
+\pause
+{\tiny{Limitation: measure of computer use comes from CPS and is only available for 80's and 90's. Use National
+Income and Product Accounts (NIPA), which provides detailed
+data on capital stocks across 42 major industries excluding
+government.}}
+\end{frame}
+
+\begin{frame}[plain]{Capital less important than computers?}
+
+\begin{center}
+\includegraphics[scale=0.3]{aux/Autor_Levy_Murnane_tab4}
+\par\end{center}
+
+\end{frame}
+\begin{frame}
+\frametitle{Patterns hold also when looking within Occupations}
+\begin{center}
+\includegraphics[scale=0.45]{aux/ALM_within}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}[shrink=20]
+\frametitle{Does any of this matter?}
+\begin{itemize}
+    \item But how relevant are these shifts in tasks for a quantity like the college wage premium (a key quantity analyzed since KM 1992).
+    \medskip
+    \item Need to provide a mapping between tasks to demand of college graduates.
+    \medskip
+    \item ALM take a three-step process. First, estimate
+    \begin{equation}
+        CollegeShare_j = \alpha + \sum_{k=1}^{4}T_{j}^k\pi_{k} + e_j
+    \end{equation}
+    \medskip
+    \item $CollegeShare_j\equiv$ college-equivalent share of
+employment (in FTEs) in industry or occupation $j$ at the midpoint
+of our samples.
+\medskip
+\item $T_{j}^k\equiv$ industry or occupation task
+input in centiles during the same period.
+\medskip
+\item The coefficients $\pi_{k}$ provide an estimate of the demand of college graduates in the industry (or occupation) $j$ as a function of their underlying task. 
+\pause
+\medskip
+\item ALM calls this a ``fixed-coefficient" specification: it ignores that industries might adjust their composition of college / non-college in response to changes in prices (effectively assuming that $\sigma$=0).
+\medskip
+\item In ALM words: ``This is an imperfect approximation: if the market price of nonroutine relative to routine tasks has risen, this calculation will understate demand shifts favoring nonroutine tasks and, by implication, college graduate employment".
+    \end{itemize}
+    
+\end{frame}
+\begin{frame}{Does any of this matter?}
+\begin{itemize}
+    \item This provides a way to isolate changes in demand for college-educated workers coming from changes in tasks: $\Delta T^{k}_{j,1970-1998}$
+     \begin{equation}
+       \widehat{CollegeShare_{j,1970-1998}} = \sum_{k=1}^{4}\Delta T_{j,1970-1998}\hat{\pi}_{k} 
+    \end{equation}
+    \item Two versions of this: one that uses actual changes in $\Delta T_{j}$ another one that uses predicted changes in $\Delta T_{j}$ predicted from computer adoption (Table 3 and 4). 
+    \medskip
+    \item Final step: benchmark predictions of demand for college grads coming from task-based model to the demand of college workers that would arise in K-M style (what KM calls $D_{t}$ see eq 18 of previous slide deck).
+    \end{itemize}
+    
+\end{frame}
+\begin{frame}[plain]{Changes in task content can explain non-trivial fraction of K-M demand
+effect}
+
+\includegraphics[scale=0.4]{aux/final_ALM0}
+\end{frame}
+
+\begin{frame}[plain]{Changes in task content can explain non-trivial fraction of K-M demand
+effect}
+
+\includegraphics[scale=0.4]{aux/final_ALM}
+\end{frame}
+
+\begin{frame}[plain]{Summary}
+
+\begin{itemize}
+\item Influential reboot of SBTC narrative ($\approx $10000 GS cites)
+\item Task framework clarifies how computerization influences wages
+\item Using DOT to measure tasks provides additional empirical content about mechanisms underlying demand side
+\item Still very indirect evidence of technical change 
+
+\begin{itemize}
+\item Moving the goal posts: now we are explaining industry or occupation
+level moments.
+\item How important are occupations for overall wage inequality? (Firpo,
+Fortin, Lemieux, 2009)
+\end{itemize}
+\item See also Acemoglu and Autor HOLE (2011) for a review of task-based approach in economics. 
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Autor Katz Kearney (2008)}
+\begin{itemize}
+\item Actual title: ``Revising the Revisionists"
+\medskip
+\item Two claims of the Revisionists are under scrutiny:
+\medskip
+\begin{enumerate}
+\item Growth of inequality was episodic rather than a secular phenomenom.
+\medskip
+\item Such episodic rise is largely explained by non-market forces (aka institutions) and labor force composition changes.
+\end{enumerate}
+ \medskip
+\item Data: CPS (March + ORG). Series updated up to 2005. 
+ \medskip
+ \item Potential inconsistencies with ORG CPS due to the major restructuring of the earnings questions that occurred in 1994.
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Where is the agreement? Where is the disagreement?}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.8\textwidth]{aux/akk1}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Revisiting trends}
+\begin{itemize}
+\item 90/10 log wage differential, which is the difference in real log wages between the 90th and the 10th percentile of the wage distribution. 
+\medskip
+\item 90/50 - 50/10 log wage differential which measure upper tail and lower tail inequality
+\medskip
+\item College-HS log wage gap (between group inequality)
+\medskip
+\item 90/10, 90/50, 50/10 residual log wage gaps which are constructed after partialling out education, experience and gender. 
+\medskip
+\item Changes in residual inequality measures changes in inequality that are not explained by changes in the composition of the workforce as measured by these variables.
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Episodic vs. Non Episodic Inequality}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/akk3}
+\end{figure}
+\end{frame}
+\begin{frame}
+\frametitle{Min Wage plausible for lower tail inequality but what about upper tail?}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.85\textwidth]{aux/akk4}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{$\sigma=1.4$ even after controlling for minimum wage}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/akk6}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Extending KM up to 2005....}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/AKK_NEW.pdf}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Extending KM up to 2005....}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/AKK_NEW1.pdf}
+\end{figure}
+\end{frame}
+%%
+%%
+\begin{frame}
+\frametitle{AKK Facts}
+\begin{itemize}
+\item Inequality grew at a lower pace in the 1990s, early 2000s than in the 1980s.
+\medskip
+\item Lower tail inequality largely explained by the minimum wage.
+\medskip
+\item But grow in inequality is not an episodic event! Upper tail inequality continued to increase in recent years while inequality in lower half stabilized somewhat. 
+\medskip
+\item Common theme: polarization. After a monotone surge in inequality from 1979-1987, upper tail inequality continued to grew while lower tail inequality flatted out or even was reduced. 
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{But what explains polarization in inequality?}
+\begin{itemize}
+\item Not due to mechanical shifts in the composition of the workforce.
+\medskip
+\item Not due to minimum wages.
+\medskip
+\item Canonical supply-demand models also do not fully capture what is going on post 1992.
+\pause
+\medskip 
+\item New concept: Tasked based production function (Autor-Levy-Murnane, 2003)
+\begin{itemize}
+\item Computerization has non-monotone effects on demand for skills throughout the earnings distribution.
+\medskip
+\item Sharp raise in the demand for abstract task (complementary).
+\medskip
+\item Reducing demand for clerical, mechanical routine tasks done by individuals in the middle of the earnings distribution (substitution).
+\medskip
+\item But no impact on manual tasks! (still need janitors)
+\end{itemize}
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Census data + Dictionary of Occupational Titles}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.9\textwidth]{aux/akk10}
+\end{figure}
+\end{frame}
+\begin{frame}
+\frametitle{Smoking gun?}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/akk11}
+\end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+\begin{frame}
+\frametitle{Summarizing the saga...}
+\begin{itemize}
+\item (Almost) Unanimous consensus upon the following facts
+\bigskip
+\begin{itemize}
+\item Upper and lower tail inequality exhibit different time series properties.
+\bigskip
+\item Relative supply shifts matters.
+\bigskip
+\item Minimum wage important for lower tail inequality
+\bigskip
+\item Occupational task content models does a good job in predicting polarization in inequality in the 1990s.
+\bigskip
+\item Observables far from explaining all changes to inequality.
+\end{itemize}
+\pause
+\bigskip
+\item Immense literature that generated several ``new" frontiers
+\bigskip
+\begin{itemize}
+\item Minimum Wage.
+\item Trade (China Shocks $\rightarrow $Autor, Dorn and Hanson)
+\item Firms as ``institutions".
+\item Impacts of Robots/AI.
+\end{itemize}
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Foundational Questions}
+\begin{itemize}
+\item US-centric literature (Dustmann, Ludsteck, Schonberg, 2009).
+\bigskip
+\item Largely based on survey data. Key revolution of the 2010s is to bring tax and or administrative records to this literature. 
+\bigskip
+\item Aggregate production function / cost functions? 
+\begin{itemize}
+\bigskip
+\item How to incorporate realistic heterogeneity?
+\item What are the limitations of Nested CES models?
+\end{itemize}
+\bigskip
+\item Always assumed that labor markets are competitive.
+\bigskip
+\begin{itemize}
+\item Maybe different degrees of imperfect competition over-time have role in explaining wage inequality? 
+\bigskip
+\item How to incorporate frictions in S-D-I models? See Daniel Haanwinckel JMP.
+\end{itemize}
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{New Frontiers}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/autor_final.pdf}
+\end{figure}
+\end{frame}
+\begin{frame}
+\frametitle{New Frontiers}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.5\textwidth]{aux/acemoglu_final.pdf}
+\end{figure}
+\end{frame}
+\begin{frame}
+\frametitle{New Frontiers}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.5\textwidth]{aux/acemoglu_final2.pdf}
+\end{figure}
+\end{frame}
+\end{document}
+

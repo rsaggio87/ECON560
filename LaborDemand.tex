@@ -1,0 +1,494 @@
+\documentclass[notes=show]{beamer}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\AtBeginSubsection[
+  {\frame<beamer>{\frametitle{Outline}   
+    \tableofcontents[currentsection,currentsubsection]}}%
+]%
+{
+  \frame<beamer>{ 
+    \frametitle{Outline}   
+    \tableofcontents[currentsection,currentsubsection]}
+}
+\usepackage{ulem}
+\usepackage{pdflscape}
+\setbeamertemplate{caption}{\insertcaption}
+\usepackage{color,xcolor,ucs}
+\usepackage{beamerthemesplit}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{adjustbox}
+\usepackage{pdfpages} 
+\definecolor{mintgreen}{rgb}{0.6, 1.0, 0.6}
+\makeatletter
+\@addtoreset{subfigure}{framenumber}% subfigure counter resets every frame
+\makeatother
+\newcommand*{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
+\newcommand*{\Resize}[2]{\resizebox{#1}{!}{$#2$}}%
+\usepackage{amsfonts}
+\usepackage{booktabs}
+\usepackage{color,soul}
+\usepackage{pdfpages}
+\setboolean{@twoside}{false}
+\usepackage{amsmath}
+\usepackage{pdflscape} 
+\usepackage{eurosym}
+\usepackage{amstext} % for \text
+\DeclareRobustCommand{\officialeuro}{%
+  \ifmmode\expandafter\text\fi
+  {\fontencoding{U}\fontfamily{eurosym}\selectfont e}}
+\usepackage[caption = false]{subfig}
+\usepackage{appendixnumberbeamer} 
+\usepackage{graphicx}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+\usepackage{multimedia}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{verbatim}
+\usepackage{booktabs, multicol, multirow}
+\setcounter{MaxMatrixCols}{10}
+\input{Macros.tex}
+\AtBeginSection[]
+{
+  \begin{frame}[noframenumbering]
+    \frametitle{Outline for section \thesection}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+
+\usepackage{xcolor,soul}
+\renewcommand<>{\hl}[1]{\only#2{\beameroriginal{\hl}}{#1}}
+
+% https://tex.stackexchange.com/questions/41683/why-is-it-that-coloring-in-soul-in-beamer-is-not-visible
+\makeatletter
+\newcommand\SoulColor{%
+  \let\set@color\beamerorig@set@color
+  \let\reset@color\beamerorig@reset@color}
+\makeatother
+\SoulColor
+\AtBeginSection{\frame{\sectionpage}}
+
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+  {\savebox\mybox{#1}\begin{quote}\openautoquote\hspace*{-.7ex}}
+  {\unskip\closeautoquote\vspace*{1mm}\signed{\usebox\mybox}\end{quote}}
+
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{Assumption}[theorem]{Assumption}
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usetheme{Madrid}
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor~~\beamer@ifempty{\insertshortinstitute}{}{(\insertshortinstitute)}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+%    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} % DELETED
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+\usepackage{pdfpages}
+\begin{document}
+	\title[]{\large Labor Demand		\vspace{0.5cm}
+	}
+	\author[Raffaele Saggio]{Raffaele Saggio}
+	\institute[]{UBC}
+	\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%	
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{footline}[frame number]{}
+
+%gets rid of bottom navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+%gets rid of footer
+%will override 'frame number' instruction above
+%comment out to revert to previous/default definitions
+\setbeamertemplate{footline}{}
+\begin{frame}
+\frametitle{Labor Demand}
+\begin{itemize}
+\item Theory of the firm $\rightarrow$ Theory of labor demand $\rightarrow$ Theory of Inequality
+\bigskip
+\begin{itemize}
+\item Demand for inputs (e.g. labor, capital) from optimization.
+\medskip
+\item Key question: what explains the elasticity of demand for labor?
+\end{itemize}
+\bigskip
+\item Today: neo-classical labor demand. 
+\bigskip 
+\item Building block for a variety of ``applied" questions:
+\medskip
+\begin{itemize}
+\medskip
+\item Effects of technology
+\medskip
+\item Effects of immigration / demographics.
+\medskip
+\item Effects of trade
+\medskip
+\item ...
+\medskip 
+\pause
+\item  Some of these will populate the ``Inequality" wars chapter. 
+\end{itemize}
+\end{itemize}
+\end{frame}
+%%
+%%
+\begin{frame}
+\frametitle{The building block}
+\begin{itemize}
+\item Firms produce an output combining multiple inputs:
+\be
+y=f(x_{1},x_{2},\hdots, x_{N})
+\ee
+
+\item Typical assumptions: 
+\begin{itemize}
+\medskip 
+\item $f(.)$ exhibits constant return to scale (CRS). 
+\medskip
+\item work with only two inputs: $y=f(x_{1},x_{2})$.
+\end{itemize}
+
+\bigskip
+\item Notation time-out
+\begin{itemize}
+\medskip
+\item $f_{i}\equiv$ partial derivative of $f$ with respect to $x_{i}$ with $i\in\{1,2\}$. 
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{An Old friend}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/isoquanti}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{An Old friend}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/isoquanti_aug}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Holy Grail: Elasticity of substitution}
+\begin{itemize}
+\item Under CRS and two inputs: shape of the isoquant is going to be given by
+\be
+\sigma = - \dfrac{d log(\frac{x_{1}}{x_{2}})}{d log(\frac{f_{1}}{f_{2}})}
+\ee
+\item Pop-quiz
+\pause
+\bigskip
+\begin{enumerate}
+\item Name of the denominator?
+\medskip
+\item Under perfect competition, what is this denominator?
+\end{enumerate}
+\bigskip
+\pause
+\item Name of the game in labor demand (most of the time): estimate $\sigma$ 
+\end{itemize}
+\end{frame}
+%%%%%
+\begin{frame}
+\frametitle{Special Cases}
+\begin{itemize}
+\item Cobb-Douglas 
+\be
+y=f(x_{1},x_{2})= x_{1}^{\alpha}x_{2}^{1-\alpha}
+\ee
+$\sigma = 1$
+\bigskip
+\item CES: 
+\be
+y=f(x_{1},x_{2})=(\alpha x_{1}^{-\rho}+(1-\alpha)x_{2}^{-\rho})^{-\frac{1}{\rho}}
+\ee
+$\sigma = \dfrac{1}{(1+\rho)}$
+\end{itemize}
+
+\end{frame}
+%%%%
+\begin{frame}
+\frametitle{General Case}
+\begin{itemize}
+\item Want: a general expression for $\sigma$ $\rightarrow$ will be then used to derive ``Marshall (Hicks) Laws"
+\pause
+\bigskip
+\item To make some progress let's consider a cost function $C(w_{1},w_{2},y)$.
+\bigskip
+\item We can rewrite
+\be
+C(w_{1},w_{2},y)=\underbrace{\mu(w_{1},w_{2})}_{\text{Unit Cost}}y
+\ee
+\pause
+\item Why?
+\pause\
+\bigskip
+\item Sheppard's Lemma (Envelope Theorem):
+\be
+x_{1} = C_{1}(w_{1},w_{2},y).
+\ee
+\be
+x_{2} = C_{2}(w_{1},w_{2},y).
+\ee
+\pause
+\item Important: all derivations that are coming up are for a fixed output $y$. 
+\end{itemize}
+\end{frame}
+%%%%
+\begin{frame}
+\frametitle{General case}
+\begin{itemize}
+\item We have that $C_{i}$ is homogenous of degree 0 ($HD_{0})$ , then 
+\be
+x_{1} = C_{1}(\frac{w_{1}}{w_{2}},1,y)\equiv g(\frac{w_{1}}{w_{2}},y)
+\ee
+\be
+x_{2} = C_{2}(\frac{w_{1}}{w_{2}},y)\equiv h(\frac{w_{1}}{w_{2}},y)
+\ee
+\item Then we have that
+\be
+C_{11}=\dfrac{\partial x_{1}}{\partial w_{1}} = \dfrac{1}{w_{2}}g_{1}(\frac{w_{1}}{w_{2}},y)
+\ee
+\be
+C_{21}=\dfrac{\partial x_{2}}{\partial w_{1}} = \dfrac{1}{w_{2}}h_{1}(\frac{w_{1}}{w_{2}},y)
+\ee
+\end{itemize}
+\end{frame}
+%%%%
+\begin{frame}
+\frametitle{General Case}
+\begin{itemize}
+\item Then, for a fixed $y$,
+\be
+log \frac{x_{1}}{x_{2}} = \log g(\frac{w_{1}}{w_{2}},y) - \log h(\frac{w_{1}}{w_{2}},y) 
+\ee
+\item Putting the pieces together
+\be
+\begin{aligned}
+\sigma  & = - \dfrac{\left(\frac{w_{1}}{w_{2}}\right) d \log(\frac{x_{1}}{x_{2}})}{d \frac{w_{1}}{w_{2}}} = - \dfrac{w_{1}}{w_{2}}\left(\dfrac{g_{1}(\frac{w_{1}}{w_{2}},y)}{g}-\dfrac{h_{1}(\frac{w_{1}}{w_{2}},y)}{h}\right) \\ 
+& = -\dfrac{w_{1}}{w_{2}}\left(\dfrac{w_{2}C_{11}}{g}-\dfrac{C_{21}w_{2}}{h}\right) \\
+& \equiv -\dfrac{w_{1}C_{11}}{C_{1}} + \dfrac{w_{1}C_{21}}{C_{2}} 
+\end{aligned}
+\ee
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{General Case}
+\begin{itemize}
+\item Now apply Euler's theorem to the function $C_{j}$ ($HD_{0}$)
+\pause
+\be
+C_{11}w_{1} + C_{12}w_{2} = 0 
+\ee
+\item Based on the above, we arrive at
+\be
+\sigma =  \dfrac{w_{1}C_{21}}{C_{2}} +  \dfrac{w_{2}C_{12}}{C_{1}} = C_{12}\dfrac{(w_{1}C_{1}+w_{2}C_{2})}{C_{1}C_{2}} 
+\ee
+\item Applying Euler's theorem to $C(w_{1},w_{2})$ (which recall is a function $HD_{1}$), that is
+\be
+w_{1}C_{1}+w_{2}C_{2}=C(w_{1},w_{2}) 
+\ee
+\item We finally obtain
+\be
+\sigma = \dfrac{C_{12}C}{C_{1}C_{2}}
+\ee
+\item Extension: partial elasticity of substitution multi-factor production functions
+\be
+\sigma_{ij} =  \dfrac{C_{ij}C}{C_{i}C_{j}}
+\ee
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}[shrink=10]
+\frametitle{Connecting the dots..}
+\begin{itemize}
+\item Why these derivations are useful? Because we can start to see the importance of $\sigma$ in driving quantities that we care about...
+\be
+\begin{aligned}
+\dfrac{\partial x_{1}}{\partial w_{2}} & = C_{12} \\
+\rightarrow & \epsilon_{12} \equiv \dfrac{w_{2}}{x_{1}}\dfrac{\partial x_{1}}{\partial w_{2}} = \dfrac{w_{2} C_{12}}{x_{1}} \\
+& = \dfrac{C_{12}C}{C_{1}C_{2}}\dfrac{w_{2}C_{2}C_{1}}{Cx_{1}} \\ 
+& = \sigma \dfrac{w_{2}x_{2}}{C} \\
+& = \sigma \underbrace{s_{2}}_{\text{Input 2 cost share}}
+\end{aligned}
+\ee
+\item Also, we have that
+\be
+\begin{aligned}
+& w_{1}\dfrac{\partial x_{1}}{\partial w_{1}} + w_{2}\dfrac{\partial x_{1}}{\partial w_{2}} = 0 \\
+& \rightarrow \epsilon_{11} \equiv \dfrac{\partial x_{1}}{\partial w_{1}}\dfrac{w_{1}}{x_{1}} = - \sigma s_{2} = - (1-s_{1})\sigma
+\end{aligned}
+\ee
+\pause
+\item Important reminder: we were holding $y$ fixed thus far!
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Marshall's Laws}
+\begin{itemize}
+\item We are now ready to derive Marshall's Laws for labor demand.
+\bigskip
+\item These laws are derived under the following setup:
+\begin{itemize}
+\bigskip
+\item Perfectly competitive \underline{industry} with CRS and cost function $C(w,y)=\mu(w)y$ where $w=(w_{1},\hdots, w_{N})$. 
+\bigskip
+\item Output is priced at $p=\mu(w)$.
+\bigskip
+\item Downward sloping demand curve for the industry's output $y=D(p)$.
+\end{itemize}
+\bigskip 
+\item Next, we will show how the elasticity of demand for an input $x_{i}$ relates to three key parameters
+\begin{enumerate}
+\medskip
+\item $\eta\equiv$ elasticity of product demand.
+\medskip
+\item $\sigma_{ij}\equiv$ partial elasticity of substitution.
+\medskip
+\item $s_{j}\equiv$ cost shares.
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Marshall's Laws}
+\be
+\begin{aligned}
+x_{i} & = y\mu_{i}(w) \\
+& \rightarrow \log x_{i} = \log y + \log \mu_{i}(w). \\
+& \rightarrow \dfrac{\partial \log x_{i}}{\partial w_{j}} = \dfrac{\partial \log y}{\partial \log p}\dfrac{\partial \log p}{\partial w_{j}}+\dfrac{\mu_{ij}(w)}{\mu_{i}(w)} \\
+& = -\eta \dfrac{\partial \log \mu(w)}{\partial w_{j}} + \dfrac{\mu_{ij}}{\mu_{i}} \\
+& = -\eta \dfrac{\mu_{j}}{\mu} +  \dfrac{\mu_{ij}}{\mu_{i}}\\
+& = -\eta \dfrac{\mu_{j}}{\mu} +  \dfrac{\mu_{ij} \mu}{\mu_{i} \mu_{j}} \dfrac{\mu_{j}}{\mu} \\ 
+& = -\eta \dfrac{\mu_{j}}{\mu} +  \sigma_{ij}\dfrac{\mu_{j}}{\mu} \\
+& = (\sigma_{ij}-\eta)\dfrac{\mu_{j}}{\mu} = (\sigma_{ij}-\eta)\dfrac{x_{j}}{\mu}
+\rightarrow w_{j}\dfrac{\partial \log x_{i}}{\partial w_{j}} = (\sigma_{ij}-\eta)\underbrace{\dfrac{w_{j}x_{j}}{\mu}}_{s_{j}} = \epsilon_{ij}-\eta s_{j}
+\end{aligned}
+\ee
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Marshall's Laws}
+\begin{itemize}
+\item Key relationship:
+\be
+\dfrac{\partial \log x_{i}}{\partial \log w_{j}}=\underbrace{\epsilon_{ij}}_{\text{Substitution Effect}}-\underbrace{\eta s_{j}}_{\text{Scale Effect}}
+\ee
+\item \underline{Substitution Effect}: how much does demand for input $x_{i}$ increases for an increase in the price of input $x_{j}$, \textit{holding y fixed}.
+\bigskip
+\item \underline{Scale Effect}: to understand this, note that since $\mu(w)=p$
+\be
+\begin{aligned}
+\dfrac{\partial \log p}{\partial w_{j}} &  = \dfrac{\mu_{j}(w)}{\mu(w)} \\
+& \dfrac{w_{j}\partial \log p}{\partial w_{j}} &  = \dfrac{w_{j}\mu_{j}(w) y}{\mu(w) y} = \dfrac{w_{j}x_{j}}{C} = s_{j}
+\end{aligned}
+\ee
+Thus, when $w_{j}$ increases by 1\%, industry selling price selling rises by $s_{j}$ and this chokes off demand by $\eta s_{j}\%$
+\bigskip
+\pause
+\item Does this bring back any memories?
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.30\textwidth]{aux/Eugen_slutsky_photo}
+\end{figure}
+\end{frame}
+\begin{frame}
+\frametitle{Discussion}
+\begin{itemize}
+\item Neo-classical labor demand framework $\rightarrow$ national or industry wide changes to the wage structure.
+\bigskip
+\item Firms: all have CRS technology and are price-takers in the input market. 
+\bigskip
+\item Number and size of the firms is indeterminant.
+\bigskip
+\pause
+\item Very different from other fields!  
+\bigskip
+\item IO, Trade: lots of firm level heterogeneity in productivity. Does this productivity heterogeneity ``spills" into wages? 
+\bigskip
+\item Topic of the last two lectures. 
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}[shrink=10]
+\frametitle{Getting ready for war}
+\begin{itemize}
+\item Useful benchmark is the Cobb-Douglas CRS benchmark ($\sigma = 1$)
+\be
+y=f(K,L)=A L^{\alpha} K^{(1-\alpha)}
+\ee
+\item Note that:
+\be
+\begin{aligned}
+w & = \alpha A L^{\alpha-1}K^{1-\alpha} \\
+{wL} & = \alpha A L^{\alpha}K^{1-\alpha} \\
+\dfrac{wL}{y} & = \alpha 
+\end{aligned}
+\ee 
+\item $\alpha$ is the labor share (how much of GDP goes to labor?). 
+\medskip
+\begin{itemize}
+\item An entire generation of economists thought that $\alpha=0.66$. 
+\item Actually declining over the last years (active area of research).
+\end{itemize}
+\medskip
+\item Starting point to understand productivity trends:
+\be
+\underbrace{\dfrac{y}{L}}_{\text{Average Product}}=A(\dfrac{K}{L})^{1-\alpha}
+\ee
+\item Therefore in the C-D marginal product is just average product times a constant
+\be
+w=\dfrac{\partial y}{\partial L} = \alpha\dfrac{y}{L}
+\ee
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Labor Share is declining in many places...}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/labor_share}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Something deep is happening now....}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/productivity_gap}
+\end{figure}
+\end{frame}
+\end{document}
+

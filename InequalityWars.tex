@@ -1,0 +1,589 @@
+\documentclass[notes=show]{beamer}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\AtBeginSubsection[
+  {\frame<beamer>{\frametitle{Outline}   
+    \tableofcontents[currentsection,currentsubsection]}}%
+]%
+{
+  \frame<beamer>{ 
+    \frametitle{Outline}   
+    \tableofcontents[currentsection,currentsubsection]}
+}
+\usepackage{ulem}
+\usepackage{pdflscape}
+\setbeamertemplate{caption}{\insertcaption}
+\usepackage{color,xcolor,ucs}
+\usepackage{beamerthemesplit}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{adjustbox}
+\usepackage{pdfpages} 
+\definecolor{mintgreen}{rgb}{0.6, 1.0, 0.6}
+\makeatletter
+\@addtoreset{subfigure}{framenumber}% subfigure counter resets every frame
+\makeatother
+\newcommand*{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
+\newcommand*{\Resize}[2]{\resizebox{#1}{!}{$#2$}}%
+\usepackage{amsfonts}
+\usepackage{booktabs}
+\usepackage{color,soul}
+\usepackage{pdfpages}
+\setboolean{@twoside}{false}
+\usepackage{amsmath}
+\usepackage{pdflscape} 
+\usepackage{eurosym}
+\usepackage{amstext} % for \text
+\DeclareRobustCommand{\officialeuro}{%
+  \ifmmode\expandafter\text\fi
+  {\fontencoding{U}\fontfamily{eurosym}\selectfont e}}
+\usepackage[caption = false]{subfig}
+\usepackage{appendixnumberbeamer} 
+\usepackage{graphicx}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+\usepackage{multimedia}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{verbatim}
+\usepackage{booktabs, multicol, multirow}
+\setcounter{MaxMatrixCols}{10}
+\input{Macros.tex}
+\AtBeginSection[]
+{
+  \begin{frame}[noframenumbering]
+    \frametitle{Outline for section \thesection}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+
+\usepackage{xcolor,soul}
+\renewcommand<>{\hl}[1]{\only#2{\beameroriginal{\hl}}{#1}}
+
+% https://tex.stackexchange.com/questions/41683/why-is-it-that-coloring-in-soul-in-beamer-is-not-visible
+\makeatletter
+\newcommand\SoulColor{%
+  \let\set@color\beamerorig@set@color
+  \let\reset@color\beamerorig@reset@color}
+\makeatother
+\SoulColor
+\AtBeginSection{\frame{\sectionpage}}
+
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+  {\savebox\mybox{#1}\begin{quote}\openautoquote\hspace*{-.7ex}}
+  {\unskip\closeautoquote\vspace*{1mm}\signed{\usebox\mybox}\end{quote}}
+
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{Assumption}[theorem]{Assumption}
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usetheme{Madrid}
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor~~\beamer@ifempty{\insertshortinstitute}{}{(\insertshortinstitute)}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+%    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} % DELETED
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+\usepackage{pdfpages}
+\begin{document}
+	\title[]{\large Wage Inequality Wars		\vspace{0.5cm}
+	}
+	\author[Raffaele Saggio - Econ 561]{Raffaele Saggio}
+	\institute[]{UBC}
+	\date{\today \\}
+	\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%	
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{footline}[frame number]{}
+
+%gets rid of bottom navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+%gets rid of footer
+%will override 'frame number' instruction above
+%comment out to revert to previous/default definitions
+\setbeamertemplate{footline}{}
+\begin{frame}
+\frametitle{Today}
+\begin{itemize}
+\item Today we will review several papers that have used a ``neo-classical" paradigm to explain the rise of wage inequality in the United States that started approximately in 1980.
+\bigskip
+\item We will start by analyzing how an (exogenous?) increase in the supply of a particular group of workers influence the wages of other workers. 
+\bigskip
+\item We will then move into the so called SBTC literature. This literature argues that increases in wage inequality during the 1980 is driven by increases in technology that have ``pushed up the price" of high skilled workers. 
+\bigskip
+\item The next lecture will examine papers that have criticized the SBTC change and analyzed other factors that might have played a role to explain the rise in inequality.  
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Acemoglu, Autor and Lyle (2004)}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1.1\textwidth]{aux/aal2.png}
+\end{figure}
+\end{frame}
+%%%
+\begin{frame}
+\frametitle{Acemoglu, Autor and Lyle (2004)}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.95\textwidth]{aux/aal1}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Acemoglu, Autor and Lyle (2004)}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/aal3}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Acemoglu, Autor and Lyle (2004)}
+\begin{itemize}
+\item WWII pushed a lot of women into the labor force
+\bigskip
+\item What this (plausibly exogenous) supply shock implied for the earnings of men (and other women)?
+\bigskip
+\item Exploit state level variation in WWII effects on female LFP.
+\begin{itemize}
+\item Massachusetts: 55 percent of men between the ages of 18 and 44 left the labor market to serve in the war.
+\item Georgia: $\approx$ 40-45 percent.
+\end{itemize}
+\pause 
+\medskip
+\item Why these differences?
+\begin{itemize}
+\item Exemptions for farmers; Age composition; Ethic and occupational structures.
+\item Country of origin composition (Italy, German, Japanese).
+\item Idiosyncratic differences in the behavior of local draft boards.
+\end{itemize}
+\end{itemize}
+\end{frame}
+%%
+%%
+\begin{frame}
+\frametitle{Acemoglu, Autor and Lyle (2004)}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/aal4}
+\end{figure}
+\end{frame}
+%%%
+\begin{frame}
+\frametitle{Acemoglu, Autor and Lyle (2004)}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/placeboAAL}
+\end{figure}
+\end{frame}
+%%%
+\begin{frame}[shrink=10]
+\frametitle{Model}
+\begin{itemize}
+\item Think of how wages for men and female are set in a competitive market (State) characterized by different levels of men and women. %price is endogenous; %supply are exogenous. 
+\pause
+\item Three factor nested CES
+\be
+Y_{t}=A_{t}K_{t}^{\alpha}\left[(1-\lambda)(B_{t}^{M}M_{t})^{\rho}+\lambda(B_{t}^{F}F_{t})^{\rho}\right]^{\frac{1-\alpha}{\rho}}
+\ee
+\begin{itemize}
+\item $\rho\leq 1$
+\item $A_{t}\equiv$ neutral productivity.
+\item $B_{t}^{G}$: biased technical shifter for gender $G\in\{M;F\}$.
+\item Elasticity of substitution between L and K?
+\pause
+\item Elasticity of substitution b/w M and F: \pause$\sigma_{MF}\equiv\dfrac{1}{1-\rho} $
+\end{itemize}
+\medskip
+\bigskip
+\item Competitive paradigm implies that
+\be
+w_{t}^{F} = (1-\alpha)\lambda B_{t}^{F}A_{t}K_{t}^{\alpha}(B_{t}^{F}F_{t})^{-\alpha}\left[(1-\lambda)\left(\dfrac{B_{t}^{M}M_{t}}{B_{t}^{F}F_{t}}\right)^{\rho}+\lambda\right]^{\frac{(1-\alpha-\rho)}{\rho}}
+\ee
+\be
+w_{t}^{M} = (1-\alpha)(1-\lambda) B_{t}^{M}A_{t}K_{t}^{\alpha}(B_{t}^{M}M_{t})^{-\alpha}\left[(1-\lambda)+\lambda\left(\dfrac{B_{t}^{F}F_{t}}{B_{t}^{M}M_{t}}\right)^{\rho}\right]^{\frac{(1-\alpha-\rho)}{\rho}}
+\ee
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Derivations}
+\begin{itemize}
+\item Want: ``short run general equilibrium elasticities" (\underline{fixed capital and supply of men})
+\be
+\dfrac{\partial \log w_{t}^{F}}{\partial \log F_{t}} \equiv \dfrac{1}{\sigma_{F}} = -(1-s_{t}^{m})\alpha -s_{t}^{m}\dfrac{1}{\sigma_{MF}}
+\ee\
+where $s_{t}^{m}=\dfrac{w_{t}^{M}M_{t}}{w_{t}^{M}M_{t}+w_{t}^{F}F_{t}}$.
+\be
+\dfrac{\partial \log w_{t}^{M}}{\partial \log F_{t}} \equiv \dfrac{1}{\sigma_{M}} = -(1-s_{t}^{m})\alpha + (1-s_{t}^{m})\dfrac{1}{\sigma_{MF}}
+\ee
+\item Case 1: $\sigma_{MF}=\infty$ $\rightarrow$ male and female wages both have elasticity $-(1-s_{t}^{m})\alpha$. Intuition?
+\item Case 2: $\alpha=0$ additional females raises men wages. Intuition?
+\medskip
+\pause
+\item Anything weird about these calculations? 
+\end{itemize}
+\end{frame}
+\begin{frame}[shrink=10]
+\frametitle{Adding quality}
+\begin{itemize}
+\item Expand the production function as follows now
+\be
+Y_{t}=A_{t}K_{t}^{\alpha}\left\{(B_{t}^{L})^{\zeta}+\underbrace{\left[(B_{t}^{F}F_{t})^{\mu}+(B_{t}^{H}H_{t})^{\mu}\right]^{\frac{\zeta}{\mu}}}_{N_{t}}\right\}^{\frac{1-\alpha}{\zeta}}
+\ee
+\begin{itemize}
+\item $\sigma_{FH}=(1-\mu)^{-1}$; $\sigma_{FN}=(1-\zeta)^{-1}$.
+\medskip
+\item When $\zeta > \mu$ female labor competes more with low skill male labor than high skill male labor.
+\pause
+\end{itemize}
+\item We have now the technology to understand the implications of $\uparrow$ $F_{t}$ on the male skill premium:
+\be
+\omega_{t}=\dfrac{w_{t}^{H}}{w_{t}^{L}} = \dfrac{B_{t}^{H}}{B_{t}^{L}}\dfrac{\left (B_{t}^{H}H_{t}\right)^{\mu-1}\left[(B_{t}^{F}F_{t})^{\mu}(B_{t}^{H}H_{t})^{\mu}\right]^{\frac{\zeta-\mu}{\mu}}}{(B_{t}^{L}L_{t})^{\zeta-1}}
+\ee
+\item This implies that
+\be
+\sign(\dfrac{\partial \log \omega_{t}}{\partial \log F_{t}}) = \sign(\zeta-\mu)
+\ee
+\item An increase in labor supply increases wage inequality when women compete more with low skill men than with high skill men $(\zeta>\mu)$
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}[shrink=10]
+\frametitle{Implementation}
+\begin{itemize}
+\item Data: Microdata from decennial CENSUS (IPUMS) - 1940-1950; 47 States.
+\be
+\log w_{ist} = \delta_{s} + \gamma_{1950} + f_{i}+X_{ist}'\beta_{t}^{g}+\xi\log\left(\dfrac{F_{st}}{M_{st}}\right)+\eta f_{i}\log\left(\dfrac{F_{st}}{M_{st}}\right) + u_{ist}
+\ee
+\item $w_{ist}\equiv$ weekly earnings.
+\medskip
+\item $X_{ist}'\beta_{t}^{g}$ gender specific observables.
+\item $\dfrac{F_{st}}{M_{st}}$: ratio of female to male labor supply (expressed in weeks).
+\pause
+\bigskip
+\bigskip
+\item Model disciplines interpretation of $\eta$ and $\xi$
+\item $\eta=\frac{1}{\sigma_{MF}}$;  $\eta+\xi=1/\sigma_{F}$.
+\medskip
+\item Theoretical restriction
+\be
+\dfrac{1}{\sigma_{F}} = -(1-s_{t}^{M})\alpha-(s_{t}^{M}\sigma_{MF}^{-1})
+\ee
+\item Testing under "calibration": $\alpha=0.33$;  $s_{t}^{M}=0.805$
+\pause
+\item What happened to capital?
+\item What is a ``market" here?
+\item Would you actually run this regression?
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Can reject perfect substitutes and model restriction holds}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/aal5}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}[shrink=20]
+\frametitle{Another estimating equation}
+\be
+\nn
+\log w_{ist}^{M} = \delta_{s} + \gamma_{1950} + c_{i}+X_{ist}'\beta_{t}^{e}+\pi\log\left(\dfrac{F_{st}}{M_{st}}\right)+\theta c_{i}\log\left(\dfrac{F_{st}}{M_{st}}\right) + \nu\log\left(\dfrac{C_{st}^{m}}{H_{st}^{m}}\right)+ r_{ist}
+\ee
+\begin{itemize}
+\item Now just focus on earnings of men: college and high school graduates. 
+\bigskip
+\item $\sigma_{FH}=\frac{1}{\pi} \rightarrow$ cross elasticity b/w females and male high school graduates.
+\bigskip
+\item $\sigma_{FC}=\frac{1}{\pi+\theta}\rightarrow$ cross elasticity b/w females and male college graduates.
+\bigskip
+\item If $\frac{\pi+\theta}{\pi}=\dfrac{\sigma_{FH}}{\sigma_{FC}}<1\rightarrow$ female labor supply has greater impact on high school graduates.
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Women increased inequality among men}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.9\textwidth]{aux/aal6}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Ratio of cross elasticity b/w 0.4-0.6 but imprecisely estimated}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.9\textwidth]{aux/aal6}
+\end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Katz and Murphy 1992}
+\begin{itemize}
+\item They document massive growth in various measures of wage inequality in the late 70's  / early 80's using March CPS file.
+\bigskip
+\pause
+\item Let's open a parenthesis here: Every labor economist must know what March CPS file actually means. 
+\bigskip
+\item CPS stands for the current population survey. It contains two key sources
+\bigskip
+\begin{itemize}
+\item March CPS: retrospective questions on annual earnings, weeks worked and usual hours per week for the year prior to the interview $\rightarrow$ typically used to study annual earnings, weeks worked and ``usual" hours per week in the year prior to the interview
+\bigskip 
+\item May Outgoing Rotation Group: point-in-time estimates of weekly and hourly wages in the week prior to the interview $\rightarrow$ typically used to study hourly wages
+\bigskip
+\item Some inconsistencies over the years. Lots of very smart people spent a significant amount of their time harmonizing these datasets (Autor, Katz and Kearney, 2008). That is just part of the job.
+\end{itemize}
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Starting point}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/km1}
+\end{figure}
+Residualized wage means: ``residuals from a regression of log weekly earnings on a quartic in experience fully interacted with sex and four education level dummies and linear terms in education within these categories"
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Starting point}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/km00}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Trends in Supply}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/km000}
+\end{figure}
+\end{frame}%%
+\begin{frame}
+\frametitle{KM Idea}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/km_idea}
+\end{figure}
+\end{frame}
+\begin{frame}[shrink=30]
+\frametitle{Are these trends supply driven?}
+\begin{itemize}
+\item Multi-factor framework. Let $X_{t}$ denote all labor inputs. 
+\medskip
+\item These inputs obey a labor demand law
+\be
+X_{t} = D(\underbrace{W_{t}}_{\text{Vector of Wages}},\underbrace{Z_{t}}_{\text{Vector of Demand Shifters}})
+\ee 
+\item Total differentiation implies 
+\be
+dX_{t} = D_{w}dW_{t}+D_{z}dZ_{t}
+\ee
+\item Premultiply by $dW_{t}'$ we get
+\be
+dW_{t}^{'}(dX_{t}-D_{z}dZ_{t}) = dW_{t}'D_{w}dW_{t}
+\ee
+\bigskip
+\item Can we sign the right-hand-side?
+\pause
+\be
+dW_{t}^{'}(\underbrace{dX_{t}-D_{z}dZ_{t}}_{\text{``Net" Change in Inputs}}) = dW_{t}'D_{w}dW_{t}\leq0
+\ee
+\bigskip
+\item Now suppose demand shifters did not change over time ($dZ_{t}=0$), then we have the implication that for any time period $t$ and $\tau$
+\be
+(W_{t}-W_{\tau})(X_{t}-X_{\tau})\leq 0
+\ee
+\pause
+\item KM evaluate to what extent changes in \underline{relative} wage change is explained by changes in \underline{relative} supplies.
+\end{itemize}
+\end{frame}
+%%
+%%
+\begin{frame}
+\frametitle{Lots of wrong signed estimates, especially in 1985}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/km2}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}[shrink=10]
+\frametitle{Closing the Circle}
+\begin{itemize}
+\item Conclusion: something must have happened to the \underline{relative} demand for skill $\rightarrow$ Skill biased technological change.
+\pause
+\medskip
+\item Use a CES production function
+\be
+F_{t}(H_{t},L_{t})= (A_{H_{t}}H_{t}^{\rho}+A_{L_{t}}L_{t}^{\rho})^{\frac{1}{\rho}}
+\ee
+\item Remember from previous lecture that $\sigma=\dfrac{1}{1-\rho}$
+\item $(A_{H_{t}},A_{L_{t}})\equiv$ technology parameters that measure the productivity of high and low skilled labor.
+\item In perfectly competitive markets $P=MPL$, therefore
+\be
+\omega_{t} \equiv \dfrac{w_{H_{t}}}{w_{L_{t}}} = \dfrac{A_{H_{t}}}{A_{L_{t}}}\left(\dfrac{H_{t}}{L_{t}}\right)^{\rho-1}
+\ee
+\item This implies that the wage gap between high and low skilled workers is given by 
+\be
+\log \omega_{t} = D_{t}-\dfrac{1}{\sigma}\log\dfrac{H_{t}}{L_{t}}
+\ee
+where $D_{t}=\log(\frac{A_{H_{t}}}{A_{L_{t}}})$
+\medskip
+\item KM take this model to the data parametrizing $D_{t}$ as a linear trends
+\pause
+\medskip
+\item Wait, aren't we regressing price on quantity?(answer: yes).
+\end{itemize}
+\end{frame}
+%
+\begin{frame}
+\frametitle{$\sigma=1.4$ is the magical number!}
+\centering
+\includegraphics[width=1\textwidth]{aux/km1E}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Wrap up}
+\begin{itemize}
+\item KM is the triumph of the supply and demand paradigm.
+\medskip
+\item Incredibly influential (7.5K GS cites)
+\medskip
+\item Skill biased technological change is important to explain changes in wage inequality.
+\pause
+\bigskip
+\bigskip
+\item Clearly, there are several limitations
+\bigskip
+\begin{itemize}
+\item Demand is unobserved (``name the residual").
+\medskip
+\item No mentioning of labor market institutions.
+\medskip
+\item What about imperfect competition?  
+\end{itemize}
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Bound and Johnson (1992)}
+\begin{itemize}
+\item Demand is clearly important. 
+\bigskip
+\item Use industry / demography structure to quantitatively decompose wage gaps into components attributable to Supply / Demand / Institutions.
+\bigskip
+\item Key distinction: other existing theories are not ruled out informally (like in KM) but all alternative theories are encompassed within the same approach! 
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}[shrink=30]
+\frametitle{Conceptual Framework}
+\begin{itemize}
+\item Production in industry $j$ is a function of $I$ demographic groups (age $\times$ gender $\times$ education)
+\be
+Q_{j}= a_{j}\left[\sum_{i=1}\delta_{ij}\left(b_{ij}N_{ij}\right)^{\frac{\sigma-1}{\sigma}}\right]^{\frac{\sigma}{\sigma-1}}
+\ee
+where $a_{j}$ is a ``neutral" shifter in a given industry; $b_{ij}$ is a skilled biased shifter; $\delta_{ij}: ``institutions"$.
+\bigskip
+\item Industry product demand obeys
+\be
+\dfrac{Q_{j}}{Q_{r}} = \theta_{j}P_{j}^{-\epsilon}
+\ee
+\bigskip
+\item Hire until marginal revenue product equals the wage $\rightarrow$ (competitive) wage changes are given by
+\be
+\log d W_{ic} = \left(1-\frac{1}{\sigma}\right)d \log \underbrace{b_{i}}_{\text{SBTC}} - \dfrac{1}{\sigma}d\log \underbrace{N_{i}}_{\text{Supply}} + \dfrac{1}{\sigma}d\log \underbrace{D_{i}}_{\text{Demand}}
+\ee
+\begin{itemize}
+\item $N_{i} = \sum_{j}N_{ij} \rightarrow$ Total employment
+\item $b_{i} = \dfrac{1}{J}\sum_{j}b_{ij} \rightarrow$ technical change for group $i$.
+\item $D_{i} = \sum_{j=1}^{J}\delta_{ij}^{\sigma}\left(\dfrac{b_{ij}}{b_{i}}\right)^{\sigma-1}x_{j}$
+\item $x_{j}=a_{j}\theta_{j}^{\frac{\sigma}{\epsilon}}Q_{j}^{1-\frac{\sigma}{\epsilon}}$
+\end{itemize}
+\end{itemize}
+\pause
+Observed wages may deviate from actual wages because of institutional factors (i.e. unionizations which may vary across industries). 
+
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Identification}
+\begin{itemize}
+\item Assume that SBTC and Demand follow a linear trend
+\bigskip
+\item Use second differences to identify $\sigma$:
+\be
+d^{2} \log W_{i} = constant -\dfrac{1}{\sigma}d^{2}\log N_{i}
+\ee
+\item BJ estimate $\hat{\sigma}=1.7$. Then use model structure to back up importance of $SBTC$ and Demand factors:
+\be
+d \log W_{i} = \left(1-\frac{1}{\hat{\sigma}}\right)d \log \underbrace{b_{i}}_{\text{SBTC}} - \dfrac{1}{\hat{\sigma}}d\log \underbrace{N_{i}}_{\text{Supply}} + \dfrac{1}{\hat{\sigma}}d\log \underbrace{D_{i}}_{\text{Demand}}
+\ee
+\item Industry fixed effects used to infer importance of ``rents" (Krueger and Summer, 1988). 
+
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Conclusion: Supply and SBTC extremely important}
+\centering
+\includegraphics[width=0.9\textwidth]{aux/BJ}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Wrap-up}
+\begin{itemize}
+\item Conceptual framework to quantify competing forces in explaining wage inequality trends.
+\medskip
+\item Industry level analysis suggests demand is not that important $\rightarrow$ key is SBTC.
+\medskip
+\item Lot of important follow up to this work
+\medskip
+\begin{itemize}
+\item Capital skill complementarities (Berman, Bound, Grichiles, 1994; Berman, Bound, Machin,
+1998; Krusell, Ohanion, Rios-Rull, Violante, 2000)
+\item Correlation with computer usage (Krueger 1993; Autor, Katz and Krueger 1993).
+\end{itemize}
+\bigskip
+\bigskip
+\item End of 1990's: near consensus on importance of SBTC.
+\pause
+\medskip
+\item  By mid 2000's: dissensus has emerged. East-West coast war begins 
+\bigskip
+\begin{itemize}
+\item Di Nardo, Fortin and Lemieux, 1996; Card-Lemieux (2001). Card, Di Nardo (2002).
+\medskip
+\item Institutions more important than originally accounted for.
+\end{itemize}
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
