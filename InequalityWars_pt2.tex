@@ -643,46 +643,110 @@ industries.
 \end{itemize}
 \end{frame}
 %%%
-\begin{frame}{Measurement}
+\begin{frame}{Measurement: the Dictionary of Occupational Titles}
 \begin{itemize}
-    \item Labor’s Dictionary of Occupational Titles (DOT).
-    \medskip
-    \item Evaluates more than 12,000 highly detailed occupations along 44 objective and subjective
-dimensions, including training times, physical demands and required worker aptitudes, temperaments, and interests.
+\item {\small Department of Labor examiners physically \emph{visit workplaces} and score each job
+using the \emph{Handbook for Analyzing Jobs}}
 \medskip
-\item Information collapsed to 3 digits occupation codes (COC) $\rightarrow$ merged to CPS MORG.
+\item {\small Result: more than 12,000 highly detailed occupations rated on 44 dimensions ---
+training times, physical demands, required aptitudes, temperaments, interests}
 \medskip
-\item Micro-information then is aggregated at the industry level (140 cells). 
+\item {\small Editions: 1939, 1949, 1965, 1977, 1991. ALM use the 4th (1977) and revised 4th (1991)}
 \medskip
-\item How do jobs change overtime?
-\begin{itemize}
-    \item Extensive margin: Changes to the occupational distribution of employment, holding fix the task content at 1977.
-    \medskip
-    \item Intensive Margin: Changes in task content measures within occupations over the period 1977 to 1991. 
-\end{itemize}
-\medskip 
+\item {\small ALM pick \emph{five} of the 44 variables, one for each cell of their 2$\times$2
+(routine/non-routine $\times$ cognitive/manual), plus non-routine interactive}
+\medskip
+\item {\small Known limitations: thin coverage of services, imprecise constructs, omitted skills}
 \end{itemize}
 \end{frame}
 %%%
-%%%
-\begin{frame}{Measurement}
+\begin{frame}[shrink=12]{Five variables, five tasks (examples from the Handbook)}
 \begin{itemize}
-    \item DOT analyzes the tasks required to perform a given occupation.
-    \medskip
-    \item To understand, say, whether a job is non-routine ALM look at two variables in DOT evaluations: 
-    \medskip
-    \begin{itemize}
-    \medskip
-        \item Direction, Control, and Planning of activities (DCP)$\rightarrow$ Non-Routine Interactive.
-        \medskip
-        \item GEDMATH, measures quantitative reasoning requirements $\rightarrow$ Non-Routine Analytical.
-        \medskip
-        \item Similarly for Routine Analytical, Routine Manual and Non-Routine Manual. 
-    \end{itemize}
-    \medskip
-    \item These numbers do not provide clear ordinal nor cardinal measures $\rightarrow$ DOT measures converted into percentile values corresponding to their rank in the 1960 distribution of task input.
-    \medskip
-    \item Analyze changes in these tasks from 1960.
+\item {\small GED-MATH $\rightarrow$ \underline{non-routine analytic}: bottom ``adds and subtracts
+2-digit numbers''; middle ``computes discount, interest, profit and loss''; top ``oversees analyses
+of aerodynamic and thermodynamic systems to determine suitability of design for aircraft and
+missiles''}
+\medskip
+\item {\small DCP, direction/control/planning $\rightarrow$ \underline{non-routine interactive}:
+``plans and designs private residences, office buildings, factories''; ``conducts prosecution in
+court proceedings''; ``commands fishing vessel crew''}
+\medskip
+\item {\small STS, set limits/tolerances/standards $\rightarrow$ \underline{routine cognitive}:
+``operates a billing machine to transcribe from office records''; ``measures dimensions of bottle
+using gauges and micrometers to verify setup conforms to specifications''; ``prepares and verifies
+voter lists''}
+\medskip
+\item {\small FINGDEX, finger dexterity $\rightarrow$ \underline{routine manual}: ``sews fasteners
+and decorative trimmings to articles''; ``feeds tungsten filament wire coils into machine'';
+``attaches hands to faces of watches''}
+\medskip
+\item {\small EYEHAND, eye-hand-foot coordination $\rightarrow$ \underline{non-routine manual}:
+``drives bus to transport passengers''; ``pilots airplane''; ``performs gymnastic feats of skill
+and balance''}
+\end{itemize}
+\end{frame}
+%%%
+\begin{frame}{Why percentiles?}
+\begin{itemize}
+\item {\small A DCP score of 4 is not ``twice'' a DCP score of 2 --- the DOT scales are neither
+cardinal nor reliably ordinal across variables}
+\medskip
+\item {\small Fix: replace each raw score by its \emph{percentile rank in the 1960 distribution of
+task input across workers}}
+\medskip
+\item {\small Why 1960? It predates the computer era, so the yardstick is fixed before the thing
+being studied starts}
+\medskip
+\pause
+\item {\small This makes the units readable. ``Non-routine analytic input rose 6.8 centiles between
+1970 and 1998'' means: the job of the average 1998 worker would have sat 6.8 percentiles higher in
+the 1960 ranking of jobs by maths content}
+\end{itemize}
+\end{frame}
+%%%
+\begin{frame}[shrink=10]{Aggregation: from one examiner's rating to an industry number}
+\begin{itemize}
+\item {\small Chain of steps:}
+\begin{enumerate}
+\item {\small Examiner rates a \emph{detailed} occupation (12,000 of them) on the five variables}
+\medskip
+\item {\small Collapse to $\approx$450 three-digit Census occupation codes (COC)}
+\medskip
+\item {\small Attach that occupation's five percentiles to \emph{every worker} holding it, in
+Census IPUMS (1960--90) and CPS MORG (1980--98)}
+\medskip
+\item {\small Weight each worker by full-time-equivalent hours (sampling weight $\times$ hours
+$\times$ weeks)}
+\medskip
+\item {\small Average up: over everyone $\rightarrow$ the economy-wide series; over workers within
+an industry $\rightarrow$ 140 consistent industries}
+\end{enumerate}
+\medskip
+\item {\small So an industry's task content is just the \emph{employment-weighted average task
+content of the occupations it hires}}
+\end{itemize}
+\end{frame}
+%%%
+\begin{frame}{A concrete example: banking}
+\begin{itemize}
+\item {\small 1960: a branch is mostly tellers and bookkeeping-machine operators. Those occupations
+score high on STS (``operates a billing machine to transcribe from office records'')
+$\rightarrow$ banking's routine-cognitive input is high}
+\medskip
+\item {\small 1998: ATMs and back-office computers. The mix shifts toward loan officers, analysts
+and managers, who score high on DCP and GED-MATH $\rightarrow$ measured routine-cognitive input
+falls, non-routine analytic and interactive rise}
+\medskip
+\pause
+\item {\small Note what did \emph{not} happen: no single occupation had to be re-rated. The
+industry's number moved purely because the \emph{occupational mix} moved}
+\medskip
+\item {\small That is the \underline{extensive margin}: changes in the occupational distribution of
+employment, holding task content fixed at DOT 1977. Measurable 1960--1998}
+\medskip
+\item {\small The \underline{intensive margin} is the other half: the same occupation re-rated
+between the 1977 and 1991 editions --- the job of a ``secretary'' itself changed. Measurable
+1977--1991}
 \end{itemize}
 \end{frame}
 \begin{frame}[plain]
