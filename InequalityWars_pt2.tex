@@ -817,6 +817,9 @@ Q_{t}=\Bigl[\alpha_{t}(a_{t}N_{ct})^{\rho}+(1-\alpha_{t})(b_{t}N_{ht})^{\rho}\Bi
 \]
 }
 \begin{itemize}
+\item {\small $\alpha_{t}$: how work \emph{activities} are allocated between college and non-college
+labor. \underline{This is the task margin}. When computers take routine tasks away from non-college
+workers, $\alpha_{t}$ moves \medskip}
 \item {\small Equating wages to marginal products and taking the ratio, the common term cancels:}
 \end{itemize}
 {\small
@@ -833,22 +836,8 @@ This is exactly the ``name the residual'' that Card and DiNardo complain about}
 \end{itemize}
 \end{frame}
 %%%
-\begin{frame}{Why split the technology term in two?}
-\begin{itemize}
-\item {\small $\alpha_{t}$: how work \emph{activities} are allocated between college and non-college
-labor. \underline{This is the task margin}. When computers take routine tasks away from non-college
-workers, $\alpha_{t}$ moves \medskip}
-\item {\small $a_{t}/b_{t}$: how productive each type is at what it already does \medskip}
-\pause
-\item {\small KM's $A_{Ht}/A_{Lt}$ is these two bundled into one black box. ALM's idea: go and
-\emph{measure the $\alpha_{t}$ piece directly} from DOT task content, instead of backing out the
-whole of $D_{t}$ as a residual \medskip}
-\item {\small Aside worth noting: the coefficient on $a_{t}/b_{t}$ is $(\sigma-1)$. At $\sigma=1$
-factor-augmenting change cannot move relative demand at all --- only $\alpha_{t}$ can}
-\end{itemize}
-\end{frame}
 %%%
-\begin{frame}[shrink=5]{Step 1: how much college labor does a task bundle require?}
+\begin{frame}[shrink=5]{Step 1: what is the mapping between b/w tasks and relative demand for college grads}
 \begin{itemize}
 \item {\small Cross-section, at the midpoint of the sample, across $j$ = industries (or occupations):}
 \end{itemize}
@@ -861,10 +850,25 @@ factor-augmenting change cannot move relative demand at all --- only $\alpha_{t}
 \item {\small $\text{CollegeShare}_{j}$: college-equivalent share of employment (FTEs) in $j$;
 $T^{k}_{j}$: task input in centiles \medskip}
 \item {\small $\widehat{\pi}_{k}$ answers: if an industry does more of task $k$, how much more
-college labor does it hire? It is a \underline{price list} translating tasks into college workers
+college labor does it hire? 
 \medskip}
-\item {\small Estimated on 140 industries (1980 MORG) for the extensive margin, 470 occupations
-(1984 CPS) for the intensive margin}
+\item {\small Recall that these $\widehat{\pi}_{k}$ are then held \underline{fixed}: an industry's
+college share responds to its \emph{tasks} but not to \emph{wages}. Firms never substitute between
+college and non-college labor when the relative wage moves. That is exactly $\sigma=0$ --- what ALM
+call the ``fixed-coefficient'' specification \medskip}
+\end{itemize}
+{\small
+\[
+\Delta D=\underbrace{\Delta\ln\frac{N_{ct}}{N_{ht}}}_{\text{quantity}}
+\;+\;\sigma\underbrace{\Delta\ln\frac{w_{ct}}{w_{ht}}}_{\text{price}}
+\]
+}
+\begin{itemize}
+\item {\small The task calculation $\sum_{k}\Delta T^{k}_{j}\widehat{\pi}_{k}$ predicts a
+\emph{quantity} --- a change in the college employment share. Calling that $\Delta D$ drops the
+price term, i.e.\ sets $\sigma=0$ \medskip}
+\item {\small The college premium \emph{rose} over 1970--98, so the dropped term is positive and
+$\Delta D$ is \underline{understated}}
 \end{itemize}
 \end{frame}
 %%%
@@ -889,12 +893,9 @@ and you have a task-based number in \emph{the same units as $D_{t}$} \medskip}
 %%%
 \begin{frame}[shrink=5]{Why whatever we get is a \emph{lower} bound}
 \begin{itemize}
-\item {\small The $\widehat{\pi}_{k}$ are held fixed: the college share responds to tasks but
-\underline{not to wages}. That is $\sigma=0$ \medskip}
-\item {\small But $D_{t}=\Delta\ln\frac{N_{c}}{N_{h}}+\sigma\Delta\ln\frac{w_{c}}{w_{h}}$, and
-the task calculation only delivers the first term \medskip}
-\pause
-\item {\small Think of it as omitted variable bias, long vs short:}
+\item {\small Same point, in the language you already know --- omitted variable bias, long vs short.
+The long relationship is $\Delta D=\beta_{T}\Delta T+\beta_{w}\Delta\ln w$ with
+$\beta_{w}=\sigma>0$; ALM run the short one \medskip}
 \end{itemize}
 {\small
 \[
