@@ -793,56 +793,169 @@ government.}}
 
 \end{frame}
 
-\begin{frame}[shrink=20]
-\frametitle{Does any of this matter?}
-\begin{itemize}
-    \item But how relevant are these shifts in tasks for a quantity like the college wage premium (a key quantity analyzed since KM 1992).
-    \medskip
-    \item Need to provide a mapping between tasks to demand of college graduates.
-    \medskip
-    \item ALM take a three-step process. First, estimate
-    \begin{equation}
-        CollegeShare_j = \alpha + \sum_{k=1}^{4}T_{j}^k\pi_{k} + e_j
-    \end{equation}
-    \medskip
-    \item $CollegeShare_j\equiv$ college-equivalent share of
-employment (in FTEs) in industry or occupation $j$ at the midpoint
-of our samples.
-\medskip
-\item $T_{j}^k\equiv$ industry or occupation task
-input in centiles during the same period.
-\medskip
-\item The coefficients $\pi_{k}$ provide an estimate of the demand of college graduates in the industry (or occupation) $j$ as a function of their underlying task. 
-\pause
-\medskip
-\item ALM calls this a ``fixed-coefficient" specification: it ignores that industries might adjust their composition of college / non-college in response to changes in prices (effectively assuming that $\sigma$=0).
-\medskip
-\item In ALM words: ``This is an imperfect approximation: if the market price of nonroutine relative to routine tasks has risen, this calculation will understate demand shifts favoring nonroutine tasks and, by implication, college graduate employment".
-    \end{itemize}
-    
-\end{frame}
 \begin{frame}{Does any of this matter?}
 \begin{itemize}
-    \item This provides a way to isolate changes in demand for college-educated workers coming from changes in tasks: $\Delta T^{k}_{j,1970-1998}$
-     \begin{equation}
-       \widehat{CollegeShare_{j,1970-1998}} = \sum_{k=1}^{4}\Delta T_{j,1970-1998}\hat{\pi}_{k} 
-    \end{equation}
-    \item Two versions of this: one that uses actual changes in $\Delta T_{j}$ another one that uses predicted changes in $\Delta T_{j}$ predicted from computer adoption (Table 3 and 4). 
-    \medskip
-    \item Final step: benchmark predictions of demand for college grads coming from task-based model to the demand of college workers that would arise in K-M style (what KM calls $D_{t}$ see eq 18 of previous slide deck).
-    \end{itemize}
-    
+\item But how relevant are these shifts in tasks for a quantity like the college wage premium
+(a key quantity analyzed since KM 1992).
+\medskip
+\item Need to provide a mapping between tasks to demand of college graduates.
+\medskip
+\pause
+\item Plan: (i) recall what KM's demand index actually \emph{is}; (ii) notice it has a piece that
+tasks should move; (iii) measure that piece directly; (iv) see how much of KM's number it accounts for.
+\end{itemize}
 \end{frame}
-\begin{frame}[plain]{Changes in task content can explain non-trivial fraction of K-M demand
-effect}
+%%%
+\begin{frame}[shrink=5]{First: what is KM's $D_{t}$?}
+\begin{itemize}
+\item {\small ALM write the aggregate production function with \emph{two} technology terms}
+\end{itemize}
+{\small
+\[
+Q_{t}=\Bigl[\alpha_{t}(a_{t}N_{ct})^{\rho}+(1-\alpha_{t})(b_{t}N_{ht})^{\rho}\Bigr]^{1/\rho},
+\qquad\sigma=\tfrac{1}{1-\rho}
+\]
+}
+\begin{itemize}
+\item {\small Equating wages to marginal products and taking the ratio, the common term cancels:}
+\end{itemize}
+{\small
+\[
+\ln\frac{N_{ct}}{N_{ht}}=\underbrace{\sigma\ln\frac{\alpha_{t}}{1-\alpha_{t}}+(\sigma-1)\ln\frac{a_{t}}{b_{t}}}_{\textstyle D_{t}}-\sigma\ln\frac{w_{ct}}{w_{ht}}
+\]
+}
+\begin{itemize}
+\item {\small Rearranged: $D_{t}=\ln\frac{N_{ct}}{N_{ht}}+\sigma\ln\frac{w_{ct}}{w_{ht}}$.
+Given observed quantities, observed wages and an \emph{assumed} $\sigma$, this is arithmetic ---
+nothing is estimated \medskip}
+\item {\small So $D_{t}$ is a \underline{residual}: whatever makes the data sit on the demand curve.
+This is exactly the ``name the residual'' that Card and DiNardo complain about}
+\end{itemize}
+\end{frame}
+%%%
+\begin{frame}{Why split the technology term in two?}
+\begin{itemize}
+\item {\small $\alpha_{t}$: how work \emph{activities} are allocated between college and non-college
+labor. \underline{This is the task margin}. When computers take routine tasks away from non-college
+workers, $\alpha_{t}$ moves \medskip}
+\item {\small $a_{t}/b_{t}$: how productive each type is at what it already does \medskip}
+\pause
+\item {\small KM's $A_{Ht}/A_{Lt}$ is these two bundled into one black box. ALM's idea: go and
+\emph{measure the $\alpha_{t}$ piece directly} from DOT task content, instead of backing out the
+whole of $D_{t}$ as a residual \medskip}
+\item {\small Aside worth noting: the coefficient on $a_{t}/b_{t}$ is $(\sigma-1)$. At $\sigma=1$
+factor-augmenting change cannot move relative demand at all --- only $\alpha_{t}$ can}
+\end{itemize}
+\end{frame}
+%%%
+\begin{frame}[shrink=5]{Step 1: how much college labor does a task bundle require?}
+\begin{itemize}
+\item {\small Cross-section, at the midpoint of the sample, across $j$ = industries (or occupations):}
+\end{itemize}
+{\small
+\[
+\text{CollegeShare}_{j}=\alpha+\sum_{k=1}^{4}T^{k}_{j}\pi_{k}+e_{j}
+\]
+}
+\begin{itemize}
+\item {\small $\text{CollegeShare}_{j}$: college-equivalent share of employment (FTEs) in $j$;
+$T^{k}_{j}$: task input in centiles \medskip}
+\item {\small $\widehat{\pi}_{k}$ answers: if an industry does more of task $k$, how much more
+college labor does it hire? It is a \underline{price list} translating tasks into college workers
+\medskip}
+\item {\small Estimated on 140 industries (1980 MORG) for the extensive margin, 470 occupations
+(1984 CPS) for the intensive margin}
+\end{itemize}
+\end{frame}
+%%%
+\begin{frame}[shrink=5]{Step 2: feed the task changes through the price list}
+{\small
+\[
+\widehat{\Delta\text{CollegeShare}}_{j,1970-1998}=\sum_{k=1}^{4}\Delta T^{k}_{j,1970-1998}\,\widehat{\pi}_{k}
+\]
+}
+\begin{itemize}
+\item {\small Two versions of $\Delta T^{k}_{j}$: \medskip}
+\begin{itemize}
+\item {\small \underline{observed} task change (Table VII panel A) \medskip}
+\item {\small only the part \underline{predicted by computer adoption} (panel B) --- i.e.\ the
+fitted values from regressing task change on computerization \medskip}
+\end{itemize}
+\item {\small Aggregate up, convert into an annual change in log college/non-college employment,
+and you have a task-based number in \emph{the same units as $D_{t}$} \medskip}
+\item {\small Now the two can be compared. That is the whole exercise}
+\end{itemize}
+\end{frame}
+%%%
+\begin{frame}[shrink=5]{Why whatever we get is a \emph{lower} bound}
+\begin{itemize}
+\item {\small The $\widehat{\pi}_{k}$ are held fixed: the college share responds to tasks but
+\underline{not to wages}. That is $\sigma=0$ \medskip}
+\item {\small But $D_{t}=\Delta\ln\frac{N_{c}}{N_{h}}+\sigma\Delta\ln\frac{w_{c}}{w_{h}}$, and
+the task calculation only delivers the first term \medskip}
+\pause
+\item {\small Think of it as omitted variable bias, long vs short:}
+\end{itemize}
+{\small
+\[
+\widetilde{\beta}_{T}=\beta_{T}+\underbrace{\sigma}_{\text{coeff.\ on omitted}}\times
+\underbrace{\frac{\text{Cov}(\Delta T,\Delta\ln w)}{\text{Var}(\Delta T)}}_{\text{auxiliary regression}}
+\]
+}
+\begin{itemize}
+\item {\small Computerization raises non-routine task content \emph{and} bids up the college wage,
+so the covariance is positive and $\sigma>0$ \medskip}
+\item {\small Unusually, the omitted channel pushes the \underline{same} way as the included one.
+Dropping it makes ALM's answer too small, not too big}
+\end{itemize}
+\end{frame}
+%%%
+\begin{frame}[plain]{Table VII, panels A--C: the task changes themselves}
 
 \includegraphics[scale=0.4]{aux/final_ALM0}
 \end{frame}
-
-\begin{frame}[plain]{Changes in task content can explain non-trivial fraction of K-M demand
-effect}
-
-\includegraphics[scale=0.4]{aux/final_ALM}
+%%%
+\begin{frame}[plain]{The number to beat: college demand grew 3.9 log points a year}
+\begin{center}
+\includegraphics[height=0.78\textheight]{aux/alm_tab7_h1}
+\par\end{center}
+\end{frame}
+%%%
+\begin{frame}[plain]{Observed task change explains about a third of it: $1.31/3.86\approx34\%$}
+\begin{center}
+\includegraphics[height=0.78\textheight]{aux/alm_tab7_h2}
+\par\end{center}
+\end{frame}
+%%%
+\begin{frame}[plain]{Add within-occupation change and computers alone explain $2.29/3.81\approx60\%$}
+\begin{center}
+\includegraphics[height=0.78\textheight]{aux/alm_tab7_h3}
+\par\end{center}
+\end{frame}
+%%%
+\begin{frame}[plain]{Caveat: \emph{observed} within-occupation task change contributed nothing ($-0.06$)}
+\begin{center}
+\includegraphics[height=0.78\textheight]{aux/alm_tab7_h4}
+\par\end{center}
+\end{frame}
+%%%
+\begin{frame}[shrink=5]{Bottom line: how much of KM's demand shift is tasks?}
+\begin{itemize}
+\item {\small KM-style benchmark, 1970--98, $\sigma=1.4$: college demand rose \underline{3.9} log
+points per year. That is the black box \medskip}
+\item {\small Observed task shifts (extensive margin) deliver 1.31 $\rightarrow$
+\underline{about a third} of it (39\% against the more comparable $\sigma=0$ benchmark of 3.33)
+\medskip}
+\item {\small For 1980--98, adding within-occupation task change and using only the
+computer-predicted part: 2.29 against 3.81 $\rightarrow$ \underline{60\%} (95\% against $\sigma=0$)
+\medskip}
+\pause
+\item {\small Two honest caveats: (i) computer-predicted change (2.29) \emph{exceeds} total observed
+change (1.51), since non-computer forces pushed the other way within occupations; (ii) fixed
+$\widehat{\pi}_{k}$ means all of these are lower bounds \medskip}
+\item {\small Verdict: tasks are not the whole story, but a single measurable mechanism accounts for
+a third to a half of something KM could only name}
+\end{itemize}
 \end{frame}
 
 \begin{frame}[plain]{Summary}
