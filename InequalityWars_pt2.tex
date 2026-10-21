@@ -865,14 +865,11 @@ call the ``fixed-coefficient'' specification \medskip}
 }
 \begin{itemize}
 \item {\small The task calculation $\sum_{k}\Delta T^{k}_{j}\widehat{\pi}_{k}$ predicts a
-\emph{quantity} --- a change in the college employment share. Calling that $\Delta D$ drops the
-price term, i.e.\ sets $\sigma=0$ \medskip}
-\item {\small The college premium \emph{rose} over 1970--98, so the dropped term is positive and
-$\Delta D$ is \underline{understated}}
+\emph{quantity} --- a change in the college employment share. ALM effectively use this quantity to say how much relative demand for college grads has increased due to changes in tasks.}
 \end{itemize}
 \end{frame}
 %%%
-\begin{frame}[shrink=5]{Step 2: feed the task changes through the price list}
+\begin{frame}[shrink=5]{Step 2: How much of the KM $D_{t}$ can be accounted by Tasks?}
 {\small
 \[
 \widehat{\Delta\text{CollegeShare}}_{j,1970-1998}=\sum_{k=1}^{4}\Delta T^{k}_{j,1970-1998}\,\widehat{\pi}_{k}
@@ -887,27 +884,7 @@ fitted values from regressing task change on computerization \medskip}
 \end{itemize}
 \item {\small Aggregate up, convert into an annual change in log college/non-college employment,
 and you have a task-based number in \emph{the same units as $D_{t}$} \medskip}
-\item {\small Now the two can be compared. That is the whole exercise}
-\end{itemize}
-\end{frame}
-%%%
-\begin{frame}[shrink=5]{Why whatever we get is a \emph{lower} bound}
-\begin{itemize}
-\item {\small Same point, in the language you already know --- omitted variable bias, long vs short.
-The long relationship is $\Delta D=\beta_{T}\Delta T+\beta_{w}\Delta\ln w$ with
-$\beta_{w}=\sigma>0$; ALM run the short one \medskip}
-\end{itemize}
-{\small
-\[
-\widetilde{\beta}_{T}=\beta_{T}+\underbrace{\sigma}_{\text{coeff.\ on omitted}}\times
-\underbrace{\frac{\text{Cov}(\Delta T,\Delta\ln w)}{\text{Var}(\Delta T)}}_{\text{auxiliary regression}}
-\]
-}
-\begin{itemize}
-\item {\small Computerization raises non-routine task content \emph{and} bids up the college wage,
-so the covariance is positive and $\sigma>0$ \medskip}
-\item {\small Unusually, the omitted channel pushes the \underline{same} way as the included one.
-Dropping it makes ALM's answer too small, not too big}
+\item {\small See how much of the KM increase in $D_{t}$ is explained by increases in $\Delta T^{k}_{j}$}
 \end{itemize}
 \end{frame}
 %%%
@@ -933,29 +910,18 @@ Dropping it makes ALM's answer too small, not too big}
 \includegraphics[height=0.78\textheight]{aux/alm_tab7_h3}
 \par\end{center}
 \end{frame}
-%%%
-\begin{frame}[plain]{Caveat: \emph{observed} within-occupation task change contributed nothing ($-0.06$)}
-\begin{center}
-\includegraphics[height=0.78\textheight]{aux/alm_tab7_h4}
-\par\end{center}
-\end{frame}
+
 %%%
 \begin{frame}[shrink=5]{Bottom line: how much of KM's demand shift is tasks?}
 \begin{itemize}
 \item {\small KM-style benchmark, 1970--98, $\sigma=1.4$: college demand rose \underline{3.9} log
 points per year. That is the black box \medskip}
 \item {\small Observed task shifts (extensive margin) deliver 1.31 $\rightarrow$
-\underline{about a third} of it (39\% against the more comparable $\sigma=0$ benchmark of 3.33)
+\underline{about a third} of it.
 \medskip}
 \item {\small For 1980--98, adding within-occupation task change and using only the
-computer-predicted part: 2.29 against 3.81 $\rightarrow$ \underline{60\%} (95\% against $\sigma=0$)
+computer-predicted part: 2.29 against 3.81 $\rightarrow$ \underline{60\%}.
 \medskip}
-\pause
-\item {\small Two honest caveats: (i) computer-predicted change (2.29) \emph{exceeds} total observed
-change (1.51), since non-computer forces pushed the other way within occupations; (ii) fixed
-$\widehat{\pi}_{k}$ means all of these are lower bounds \medskip}
-\item {\small Verdict: tasks are not the whole story, but a single measurable mechanism accounts for
-a third to a half of something KM could only name}
 \end{itemize}
 \end{frame}
 
@@ -976,198 +942,7 @@ Fortin, Lemieux, 2009)
 \item See also Acemoglu and Autor HOLE (2011) for a review of task-based approach in economics. 
 \end{itemize}
 \end{frame}
-%%
-\begin{frame}
-\frametitle{Autor Katz Kearney (2008)}
-\begin{itemize}
-\item Actual title: ``Revising the Revisionists"
-\medskip
-\item Two claims of the Revisionists are under scrutiny:
-\medskip
-\begin{enumerate}
-\item Growth of inequality was episodic rather than a secular phenomenom.
-\medskip
-\item Such episodic rise is largely explained by non-market forces (aka institutions) and labor force composition changes.
-\end{enumerate}
- \medskip
-\item Data: CPS (March + ORG). Series updated up to 2005. 
- \medskip
- \item Potential inconsistencies with ORG CPS due to the major restructuring of the earnings questions that occurred in 1994.
-\end{itemize}
-\end{frame}
-%%
-\begin{frame}
-\frametitle{Where is the agreement? Where is the disagreement?}
-\begin{figure}[htb]
-\centering
-\includegraphics[width=0.8\textwidth]{aux/akk1}
-\end{figure}
-\end{frame}
-%%
-\begin{frame}
-\frametitle{Revisiting trends}
-\begin{itemize}
-\item 90/10 log wage differential, which is the difference in real log wages between the 90th and the 10th percentile of the wage distribution. 
-\medskip
-\item 90/50 - 50/10 log wage differential which measure upper tail and lower tail inequality
-\medskip
-\item College-HS log wage gap (between group inequality)
-\medskip
-\item 90/10, 90/50, 50/10 residual log wage gaps which are constructed after partialling out education, experience and gender. 
-\medskip
-\item Changes in residual inequality measures changes in inequality that are not explained by changes in the composition of the workforce as measured by these variables.
-\end{itemize}
-\end{frame}
-%%
-\begin{frame}
-\frametitle{Episodic vs. Non Episodic Inequality}
-\begin{figure}[htb]
-\centering
-\includegraphics[width=1\textwidth]{aux/akk3}
-\end{figure}
-\end{frame}
-\begin{frame}
-\frametitle{Min Wage plausible for lower tail inequality but what about upper tail?}
-\begin{figure}[htb]
-\centering
-\includegraphics[width=0.85\textwidth]{aux/akk4}
-\end{figure}
-\end{frame}
-%%
-\begin{frame}
-\frametitle{$\sigma=1.4$ even after controlling for minimum wage}
-\begin{figure}[htb]
-\centering
-\includegraphics[width=1\textwidth]{aux/akk6}
-\end{figure}
-\end{frame}
-%%
-\begin{frame}
-\frametitle{Extending KM up to 2005....}
-\begin{figure}[htb]
-\centering
-\includegraphics[width=1\textwidth]{aux/AKK_NEW.pdf}
-\end{figure}
-\end{frame}
-%%
-\begin{frame}
-\frametitle{Extending KM up to 2005....}
-\begin{figure}[htb]
-\centering
-\includegraphics[width=1\textwidth]{aux/AKK_NEW1.pdf}
-\end{figure}
-\end{frame}
-%%
-%%
-\begin{frame}
-\frametitle{AKK Facts}
-\begin{itemize}
-\item Inequality grew at a lower pace in the 1990s, early 2000s than in the 1980s.
-\medskip
-\item Lower tail inequality largely explained by the minimum wage.
-\medskip
-\item But grow in inequality is not an episodic event! Upper tail inequality continued to increase in recent years while inequality in lower half stabilized somewhat. 
-\medskip
-\item Common theme: polarization. After a monotone surge in inequality from 1979-1987, upper tail inequality continued to grew while lower tail inequality flatted out or even was reduced. 
-\end{itemize}
-\end{frame}
-\begin{frame}
-\frametitle{But what explains polarization in inequality?}
-\begin{itemize}
-\item Not due to mechanical shifts in the composition of the workforce.
-\medskip
-\item Not due to minimum wages.
-\medskip
-\item Canonical supply-demand models also do not fully capture what is going on post 1992.
-\pause
-\medskip 
-\item New concept: Tasked based production function (Autor-Levy-Murnane, 2003)
-\begin{itemize}
-\item Computerization has non-monotone effects on demand for skills throughout the earnings distribution.
-\medskip
-\item Sharp raise in the demand for abstract task (complementary).
-\medskip
-\item Reducing demand for clerical, mechanical routine tasks done by individuals in the middle of the earnings distribution (substitution).
-\medskip
-\item But no impact on manual tasks! (still need janitors)
-\end{itemize}
-\end{itemize}
-\end{frame}
-\begin{frame}
-\frametitle{Census data + Dictionary of Occupational Titles}
-\begin{figure}[htb]
-\centering
-\includegraphics[width=0.9\textwidth]{aux/akk10}
-\end{figure}
-\end{frame}
-\begin{frame}
-\frametitle{Smoking gun?}
-\begin{figure}[htb]
-\centering
-\includegraphics[width=1\textwidth]{aux/akk11}
-\end{figure}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%
-\begin{frame}
-\frametitle{Summarizing the saga...}
-\begin{itemize}
-\item (Almost) Unanimous consensus upon the following facts
-\bigskip
-\begin{itemize}
-\item Upper and lower tail inequality exhibit different time series properties.
-\bigskip
-\item Relative supply shifts matters.
-\bigskip
-\item Minimum wage important for lower tail inequality
-\bigskip
-\item Occupational task content models does a good job in predicting polarization in inequality in the 1990s.
-\bigskip
-\item Observables far from explaining all changes to inequality.
-\end{itemize}
-\pause
-\bigskip
-\item Immense literature that generated several ``new" frontiers
-\bigskip
-\begin{itemize}
-\item Minimum Wage.
-\item Trade (China Shocks $\rightarrow $Autor, Dorn and Hanson)
-\item Firms as ``institutions".
-\item Impacts of Robots/AI.
-\end{itemize}
-\end{itemize}
-\end{frame}
-%%
-\begin{frame}
-\frametitle{Foundational Questions}
-\begin{itemize}
-\item US-centric literature (Dustmann, Ludsteck, Schonberg, 2009).
-\bigskip
-\item Largely based on survey data. Key revolution of the 2010s is to bring tax and or administrative records to this literature. 
-\bigskip
-\item Aggregate production function / cost functions? 
-\begin{itemize}
-\bigskip
-\item How to incorporate realistic heterogeneity?
-\item What are the limitations of Nested CES models?
-\end{itemize}
-\bigskip
-\item Always assumed that labor markets are competitive.
-\bigskip
-\begin{itemize}
-\item Maybe different degrees of imperfect competition over-time have role in explaining wage inequality? 
-\bigskip
-\item How to incorporate frictions in S-D-I models? See Daniel Haanwinckel JMP.
-\end{itemize}
-\end{itemize}
-\end{frame}
-\begin{frame}
-\frametitle{New Frontiers}
-\begin{figure}[htb]
-\centering
-\includegraphics[width=1\textwidth]{aux/autor_final.pdf}
-\end{figure}
-\end{frame}
+%%%%
 \begin{frame}
 \frametitle{New Frontiers}
 \begin{figure}[htb]
@@ -1181,6 +956,12 @@ Fortin, Lemieux, 2009)
 \centering
 \includegraphics[width=0.5\textwidth]{aux/acemoglu_final2.pdf}
 \end{figure}
+\end{frame}
+%%%%
+\begin{frame}[plain]{New Frontiers: does AI build expertise or replace it?}
+\begin{center}
+\includegraphics[height=0.84\textheight]{aux/autor_ai_patents}
+\par\end{center}
 \end{frame}
 \end{document}
 

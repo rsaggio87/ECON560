@@ -1,0 +1,1386 @@
+\documentclass[notes=show]{beamer}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\AtBeginSubsection[
+  {\frame<beamer>{\frametitle{Outline}   
+    \tableofcontents[currentsection,currentsubsection]}}%
+]%
+{
+  \frame<beamer>{ 
+    \frametitle{Outline}   
+    \tableofcontents[currentsection,currentsubsection]}
+}
+\usepackage{ulem}
+\usepackage{pdflscape}
+\setbeamertemplate{caption}{\insertcaption}
+\usepackage{color,xcolor,ucs}
+\usepackage{beamerthemesplit}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{adjustbox}
+\usepackage{pdfpages} 
+\definecolor{mintgreen}{rgb}{0.6, 1.0, 0.6}
+\makeatletter
+\@addtoreset{subfigure}{framenumber}% subfigure counter resets every frame
+\makeatother
+\newcommand*{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
+\newcommand*{\Resize}[2]{\resizebox{#1}{!}{$#2$}}%
+\usepackage{amsfonts}
+\usepackage{booktabs}
+\usepackage{color,soul}
+\usepackage{pdfpages}
+\setboolean{@twoside}{false}
+\usepackage{amsmath}
+\usepackage{pdflscape} 
+\usepackage{eurosym}
+\usepackage{amstext} % for \text
+\DeclareRobustCommand{\officialeuro}{%
+  \ifmmode\expandafter\text\fi
+  {\fontencoding{U}\fontfamily{eurosym}\selectfont e}}
+\usepackage[caption = false]{subfig}
+\usepackage{appendixnumberbeamer} 
+\usepackage{graphicx}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+\usepackage{multimedia}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{verbatim}
+\usepackage{booktabs, multicol, multirow}
+\setcounter{MaxMatrixCols}{10}
+\input{Macros.tex}
+\AtBeginSection[]
+{
+  \begin{frame}[noframenumbering]
+    \frametitle{Outline for section \thesection}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+
+\usepackage{xcolor,soul}
+\renewcommand<>{\hl}[1]{\only#2{\beameroriginal{\hl}}{#1}}
+
+% https://tex.stackexchange.com/questions/41683/why-is-it-that-coloring-in-soul-in-beamer-is-not-visible
+\makeatletter
+\newcommand\SoulColor{%
+  \let\set@color\beamerorig@set@color
+  \let\reset@color\beamerorig@reset@color}
+\makeatother
+\SoulColor
+\AtBeginSection{\frame{\sectionpage}}
+
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+  {\savebox\mybox{#1}\begin{quote}\openautoquote\hspace*{-.7ex}}
+  {\unskip\closeautoquote\vspace*{1mm}\signed{\usebox\mybox}\end{quote}}
+
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{Assumption}[theorem]{Assumption}
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usetheme{Madrid}
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor~~\beamer@ifempty{\insertshortinstitute}{}{(\insertshortinstitute)}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+%    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} % DELETED
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\usepackage[style=british]{csquotes}
+
+\def\signed #1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip1em
+  \hbox{}\nobreak\hfill #1%
+  \parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+  
+\makeatother
+\usepackage{pdfpages}
+\begin{document}
+	\title[]{\large Search and Unemployment		\vspace{0.5cm}
+	}
+	\author[Raffaele Saggio - Econ 560]{Raffaele Saggio}
+	\institute[]{UBC}
+	\date{\today \\}
+	\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%	
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{footline}[frame number]{}
+
+%gets rid of bottom navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+%gets rid of footer
+%will override 'frame number' instruction above
+%comment out to revert to previous/default definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\begin{itemize}
+\item What is unemployment?
+\medskip
+\item Concept arose in the 1930s from the US statistics agency in the aftermath of the Great depression.
+\medskip
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Measurament}
+\centering
+\includegraphics[width=1\textwidth]{aux/card_U}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Getting/Losing a Job is a BIG DEAL}
+\centering
+\includegraphics[width=1\textwidth]{aux/manning}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{footline}{}
+\begin{frame}
+\frametitle{Why there is unemployment?}
+\begin{itemize}
+\item Assume an intertemporal labor supply function of the form (Lucas and Rapping, 1969). 
+\begin{equation}
+log h_{it} = \alpha_{i} + x_{it}'\beta + \eta log w_{it} + \epsilon_{it}
+\end{equation}
+\pause
+\begin{equation}
+log h^{*}_{it} = \alpha_{i} + x_{it}'\beta + \eta log \underbrace{w^{*}_{it}}_{\text{expected wages}} + r_{it}
+\end{equation}
+\item This leads to one potential notion of unemployment
+\be
+u_{it}=\lambda(log h^{*}_{it} - log h_{it}) = \lambda\eta  (log {w^{*}_{it}} - log w_{it}) + \lambda(\epsilon_{it}-r_{it})
+\ee
+\pause
+\item When wages are lower than expected, retract labor supply and that goes into leisure.
+\medskip
+\item (Some) Macro guys believe that $\eta=4$ $\rightarrow$ small reduction in wages leads to take a vacation in Greece for a month. 
+\medskip
+\item No space for the concept of ``unemployed" defined as someone actively searching for a job (and is unable to find it!).
+\end{itemize}
+\end{frame}
+%%%
+%%
+\begin{frame}
+\frametitle{Unemployment $\approx$ Leisure in Neo-classical Labor Supply model}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.8\textwidth]{aux/hurst}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Measurament ahead of Theory}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.8\textwidth]{aux/card_U2.jpg}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Search}
+\begin{itemize}
+\item Search models are an alternative (and possibly more reasonable) way to explain why there is unemployment.
+\medskip
+\item Plan:
+\medskip
+\begin{itemize}
+\item Brief discussion of search models and concept of the reservation wage.
+\medskip
+\item The role of Unemployment insurance.
+\medskip
+\item The long-term consequences of becoming unemployed.
+\end{itemize}
+\end{itemize}
+\end{frame}
+%%%
+\section{Search and General Facts About Unemployment}
+\begin{frame}[plain]{McCall (1970)}
+\begin{itemize}
+\item Individuals enter the labor market as unemployed and receive some benefit while unemployed given by $b$. They live forever and are risk neutral with discount factor $\beta = \dfrac{1}{1+r}<1$. 
+\medskip
+\item Each period they search and receive a job offer that can be accepted/rejected. Search has (monetary) cost $\nu$.
+\medskip
+\item Once job is accepted it lasts forever. There is no on the job search (and utility is linear in money). 
+\medskip
+\item Q: what is the p.d.v of working? 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[shrink=10]
+\frametitle{Value Functions}
+\begin{itemize}
+\item Let $U$ denote the optimal utility of a worker who is however currently unemployed. 
+\medskip
+\item When will a worker accept a job?
+\pause
+\item Wages are drawn from \underline{exogenous} offer distribution with cdf $F\left(.\right)$ and pdf $f(.)$.
+\begin{equation}
+\underbrace{U}_{\text{Value of being unemployed}} = b-\nu + \beta \int_{0}^{\infty}\max\{U,\dfrac{w}{1-\beta}\}f(w)d(w)
+\end{equation}
+\item Now define $w^{*}$ has the level of wage such that $\dfrac{w^{*}}{1-\beta}=U$
+\medskip
+\item We call $w^{*}$ the reservation wage: lowest level of wage that will make the worker exit unemployment state.
+\pause
+\medskip
+\item Useful expression that implicity defines the reservation wage:
+\begin{equation}
+w^{*}= b-\nu + \dfrac{1}{r}\E[w-w^{*}\vert w\geq w^{*}]Pr(w\geq w^{*}) 
+\end{equation}
+\end{itemize}
+\end{frame}
+\begin{frame}{Unemployment}
+\begin{itemize}
+    \item All workers here have the same reservation wage.
+    \item Therefore, the probability to leave the unemployment state is given by 
+\begin{equation}
+Pr(w\geq w^{*})=1-F(w^{*})
+\end{equation}
+\item Now the policy question: what happens when we increase unemployment benefits?
+\begin{equation}
+    \dfrac{\partial w^{*}}{\partial b} = \dfrac{1}{1+\dfrac{1}{r}(1-F(w^{*}))}>0
+\end{equation}
+
+
+\pause
+\item Hence, generous unemployment benefits should make searchers picky, raise accepted wages, and lengthen
+unemployment durations.
+\end{itemize}
+\end{frame}
+\begin{frame}{Comments}
+\begin{itemize}
+    \item Constant reservation wage.
+    \medskip
+    \item Hard to get data on offer distribution.
+    \medskip
+    \item Partial equilibrium model (why?).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[plain]{Krueger and Mueller (2016)}
+
+\begin{itemize}
+\item How important are reservation wages, really?
+\medskip
+\item Survey roughly 6,000 unemployed workers in New Jersey over the period
+October 2009 through March 2010. 
+\medskip
+\item Data available \href{http://opr.princeton.edu/archive/njui/.\%20}{online}
+but low (10\%) response rate
+\medskip
+\item Study how reservation wages should vary with unemployment duration
+using non-stationary search model ala Mortensen (1977).
+\item Find that actual behavior is quite different. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[plain]{Model}
+
+\begin{itemize}
+\item {\scriptsize{}The value function of an unemployed worker with $t$
+months of benefits left (there are $T$ months of benefits that the worker can have) is:
+\[
+U\left(t\right)=u\left(b\left(t\right)\right)+\beta\max_{R}\left\{ U\left(t-1\right)+\alpha\int_{R}\left(W\left(x,m=0\right)-U\left(t-1\right)\right)dF\left(x\right)\right\} 
+\]
+where $R$ is the reservation wage, and $W\left(w,m=0\right)$ is
+the value of starting a job paying wage $w$. }{\scriptsize\par}
+\item {\scriptsize{}To qualify for UI benefits, workers must stay with their
+employer for $\bar{m}=6$ months. The value in month $m<\bar{m}$
+of a job paying wage $w$ is:
+\begin{eqnarray*}
+W\left(w,m\right) & = & u\left(w\right)+\beta\left[\left(1-\delta\right)W\left(w,m+1\right)+\delta U\left(0\right)\right]\\
+ &  & +\beta\left[\alpha_{e}\left(1-\delta\right)\int_{w}\left(W\left(x,m+1\right)-W\left(w,m+1\right)\right)dF\left(x\right)\right]
+\end{eqnarray*}
+where $\alpha_{e}$ is the probability of finding another job while
+employed. }{\scriptsize\par}
+\item {\scriptsize{}In months, $m\geq\bar{m}$, the worker has qualified
+for benefits and the problem becomes stationary with:
+\begin{eqnarray*}
+W\left(w,\bar{m}\right) & = & u\left(w\right)+\beta\left[\left(1-\delta\right)W\left(w,\bar{m}\right)+\delta U\left(T\right)\right]\\
+ &  & +\beta\alpha_{e}\left(1-\delta\right)\int_{w}\left(W\left(x,\bar{m}\right)-W\left(w,\bar{m}\right)\right)dF\left(x\right)
+\end{eqnarray*}
+}{\scriptsize\par}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[plain]{Model}
+
+\begin{itemize}
+\item {\footnotesize{}The reservation wage function $R\left(t\right)$ solves
+the following equation:
+\[
+W\left(R\left(t\right),m=0\right)=U\left(t-1\right)
+\]
+}{\footnotesize\par}
+\item {\footnotesize{}No closed form, solve on computer}{\footnotesize\par}
+\end{itemize}
+\centering
+\includegraphics[scale=0.3]{aux/KM_fig1.png}
+\end{frame}
+
+\begin{frame}[plain]{Doesn't seem to work!}
+
+\begin{center}
+\centering
+\includegraphics[scale=0.4]{aux/KM_fig2.png}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}[plain]{Look at the level!}
+
+\begin{center}
+\centering
+\includegraphics[scale=0.4]{aux/KM_fig2A.png}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}[plain]{Focusing on the sample of those that received job offers...}
+
+\begin{center}
+\includegraphics[scale=0.4]{aux/KM_fig3.png}
+\par\end{center}
+
+\end{frame}
+\begin{frame}[plain]{Focusing on the sample of those that received job offers...}
+
+\begin{center}
+\includegraphics[scale=0.4]{aux/KM_fig3_bis}
+\par\end{center}
+e
+\end{frame}
+
+\begin{frame}[plain]{Diverse motives for rejecting offers above reservation}
+
+\begin{center}
+\includegraphics[scale=0.4]{aux/KM_fig4.png}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}[plain]{What is going on?}
+
+\begin{center}
+\includegraphics[scale=0.4]{aux/KM_fig5.png}
+\par\end{center}
+
+\end{frame}
+\begin{frame}[plain]{Summing up}
+
+\begin{itemize}
+\item Limited impact of UI benefits on reservation wages.
+\pause
+\bigskip
+\item But why? Any suggestions?
+\par\end{itemize}
+
+\end{frame}
+\section{Policy Debate over UI}
+\begin{frame}
+\includegraphics[scale=0.2]{aux/shortage}
+\end{frame}
+\begin{frame}
+\includegraphics[scale=0.4]{aux/UI_FT}
+\end{frame}
+
+
+\begin{frame}[plain]{Schmeider, Von Wachter, and Bender (2016)}
+
+\begin{itemize}
+\item In standard search models, lengthening/increasing benefit duration should raise
+reservation wages (thus higher unemployment duration) but also lead to higher re-employment wages
+\medskip
+\item An earlier experimental literature (Meyer, 1996; Robins and Spiegelman,
+2001) finds that hurrying the search process up doesn't do much to
+the re-employment wage
+
+\begin{itemize}
+\item Some of this could just be imprecision
+\end{itemize}
+\item Recent studies use quasi-experiments with massive datasets to look
+for a precise effect.
+\item In Germany, maximum benefit duration increases discontinuously with
+age, leads to a natural RDD to test for impacts on re-employment wage
+\end{itemize}
+\end{frame}
+\begin{frame}{Context}
+\begin{itemize}
+    \item If involuntary separated from the employer at age 42 or younger: 12 months of maximum coverage of UI ($\approx$ 63\% replacement rate if without children, 68\% with children)
+    \medskip
+    \item If involuntary separated from the employer at age 43 or 44: 18 months of UI.
+    \medskip
+    \item At age 45 further increase in maximum duration to 22 months. 
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}[plain]{Strong first stage effect on durations}
+
+\begin{center}
+\includegraphics[scale=0.4]{aux/SvWB_fig2.png}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}[plain]{Extra time = (a) playing Call of Duty or (b) search for better jobs?}
+
+\begin{center}
+\includegraphics[scale=0.35]{aux/SvWB_fig2.png}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}[plain]{Small \emph{negative} impact on re-employment wage!}
+
+\begin{center}
+\includegraphics[scale=0.4]{aux/SvWB_fig3.png}
+\par\end{center}
+
+\end{frame}
+\begin{frame}[plain]{Making sense of the evidence...}
+
+\begin{itemize}
+\item Negative impact on re-employment wages hard to reconcile with standard search models.
+\medskip
+\item Note that these models assume that nothing truly happens to the offer distribution if you stay 12 months unemployed as opposed to only 1 month.
+\medskip
+\item This could unrealistic: skills might decay the more time you spent unemployed. Even if skills don't actually decay, more time spent unemployed can send a negative signal to employers.
+\medskip
+\item This skill decay / duration dependence argument can reconcile the evidence in Schmeider et al. (2016). But do we have any evidence on this?
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[plain]{Making sense of the evidence...}
+
+\begin{itemize}
+\item Negative impact on re-employment wages hard to reconcile with standard search models.
+\medskip
+\item Note that these models assume that nothing truly happens to the offer distribution if you stay 12 months unemployed as opposed to only 1 month.
+\medskip
+\item This could unrealistic: skills might decay the more time you spent unemployed. Even if skills don't actually decay, more time spent unemployed can send a negative signal to employers.
+\medskip
+\item This skill decay / duration dependence argument can reconcile the evidence in Schmeider et al. (2016). But do we have any evidence on this?
+\end{itemize}
+\end{frame}
+\begin{frame}[plain]{}
+
+\includegraphics[scale=0.25]{aux/noto2.jpg}
+\end{frame}
+\begin{frame}[plain]{}
+
+\includegraphics[scale=0.3]{aux/noto3.jpg}
+\end{frame}
+
+\begin{frame}[plain]{Nekoei and Weber (2017)}
+
+\begin{itemize}
+\item Examine an age-based discontinuity in maximum benefit duration in
+Austria
+\item They find that longer durations \emph{increase} the re-employment
+wage
+\item Reconciliation: they argue that duration dependence sometimes outweighs
+reservation wage effects
+\item Provide evidence for this argument via meta-analysis of relationship
+between duration and wage impacts
+\end{itemize}
+\end{frame}
+
+\begin{frame}[plain]{Small increase in the wage}
+
+\includegraphics[scale=0.4]{aux/Nekoei_Weber_fig3}
+\end{frame}
+
+\begin{frame}[plain]{A meta-analysis}
+
+\begin{center}
+\includegraphics[scale=0.3]{aux/Nekoei_Weber_figAA}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}[plain]{A meta-analysis}
+
+\begin{center}
+\includegraphics[scale=0.35]{aux/Nekoei_Weber_fig4}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}[plain]{Thoughts}
+
+\begin{itemize}
+\item Across all studies of this subject, wage effects are very small (but also first stage)
+\medskip
+\begin{itemize}
+\item NW: increase in 10 weeks of UI $\rightarrow$ 2 extra days job less (2\% increase) $\rightarrow$ 0.5 percent higher wage
+\end{itemize}
+\medskip
+\item Nekoei and Weber write a directed search model:
+\begin{enumerate}
+\medskip
+\item UI induces workers to search for better jobs.
+\medskip
+\item But you can also become more picky (search of a perfect job) $\rightarrow$ more unemployed $\rightarrow$ negative duration dependence. 
+\end{enumerate}
+\medskip
+\item Heterogeneity in the matching function can generate  negative relationship between effect of wages and UI unemployment duration. 
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{More recent Evidence}
+\centering
+\includegraphics[scale=0.25]{aux/stepner0}
+\end{frame}
+\begin{frame}
+
+\frametitle{Treated and Control}
+\centering
+\includegraphics[scale=0.3]{aux/stepner1}
+\end{frame}
+\begin{frame}
+\frametitle{Effects on Employment}
+\centering
+\includegraphics[scale=0.3]{aux/stepner2}
+\end{frame}
+\begin{frame}
+\frametitle{An awesome figure}
+\centering
+\includegraphics[scale=0.3]{aux/stepner3}
+\end{frame}
+\begin{frame}[plain]{Krueger and Mueller (2010)}
+
+\begin{itemize}
+\item What does it mean to be unemployed? How can we measure search intensity?
+\item Official definition: ``people are classified as unemployed if they
+do not have a job, have actively looked for work in the prior 4 weeks,
+and are currently available for work.''
+\item Krueger and Mueller study to see what nominally unemployed individuals
+are doing with their time.
+\item Data from ATUS from 2003-2007. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[plain]{Job search does not seem time intensive}
+
+\begin{center}
+\includegraphics[scale=0.4]{aux/KM10_fig1.png}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}[plain]{Unemployed search more than the employed}
+
+\begin{center}
+\includegraphics[scale=0.4]{aux/KM10_fig2}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}[plain]{Benefits strongly correlated with time use}
+
+\begin{center}
+\includegraphics[scale=0.4]{aux/KM10_fig3.png}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}[plain]{Procrastination?}
+
+\begin{center}
+\includegraphics[scale=0.6]{aux/KM10_fig4.png}
+\par\end{center}
+\end{frame}
+
+\begin{frame}[plain]{2020 Version of this plot: Marinescu and Skandalis (2020)}
+
+\begin{center}
+\includegraphics[scale=0.18]{aux/marinescu_skandalis}
+\par\end{center}
+\end{frame}
+
+\begin{frame}[plain]{2020 Version of this plot: DellaVigna, Heining, Schmieder and Trenkle (2020)}
+\begin{center}
+\includegraphics[scale=0.18]{aux/johannes}
+\par\end{center}
+\end{frame}
+
+\begin{frame}[plain]{Unemployment and Well-Being}
+
+\begin{center}
+\includegraphics[scale=0.5]{aux/kruegerWELLBEING.png}
+\par\end{center}
+\end{frame}
+
+\section{The Consequences of losing a job}
+\begin{frame}
+\frametitle{Now let's look at things from a different angle}
+\begin{itemize}
+\item What are the consequences of a job loss \underline{for an individual perspective?}
+\bigskip
+\item Neo-classical theory: I will always get paid my marginal product of labor.
+\bigskip
+\item Things are of course much more complicated (lost of firm specific skills, stigma, rents, etc).
+\end{itemize}
+\end{frame}
+\begin{frame}{Jacobson, LaLonde and Sullivan (1993)}
+\begin{itemize}
+\item {\small{}Jacobson, LaLonde and Sullivan (1993) look at the effects
+of job displacement on workers' earnings trajectories\medskip{}
+}{\small \par}
+\item {\small{}JLS use matched administrative records on workers and firms
+in Pennsylvania to look at what happens when high-tenure (6 or more
+years) workers lose their jobs\medskip{}
+}{\small \par}
+\item {\small{}Worker data: Unemployment insurance records\medskip{}
+}{\small \par}
+\item {\small{}Firm data: ES202 forms (filed by all firms covered by UI)\medskip{}
+}{\small \par}
+\item {\small{}To focus on involuntary job separations, construct a ``mass-layoff''
+sample of separations that occured at firms during times when employment
+dropped by 30\% or more}{\small \par}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Jacobson, LaLonde and Sullivan (1993)}
+
+\begin{itemize}
+\item {\small{}JLS equation:}{\small \par}
+\end{itemize}
+\begin{center}
+{\small{}$y_{it}=\alpha_{i}+\gamma_{t}+x_{it}'\beta+{\displaystyle \sum_{k\geq-m}^{M}D_{it}^{k}\delta_{k}+\epsilon_{it}}$}
+\par\end{center}{\small \par}
+
+\end{frame}
+
+\begin{frame}{Jacobson, LaLonde and Sullivan (1993)}
+
+\begin{itemize}
+\item {\small{}JLS equation:}{\small \par}
+\end{itemize}
+\begin{center}
+{\small{}$y_{it}=\alpha_{i}+\gamma_{t}+x_{it}'\beta+{\displaystyle \sum_{k\geq-m}^{M}D_{it}^{k}\delta_{k}+\epsilon_{it}}$.}
+\par\end{center}{\small \par}
+\begin{itemize}
+\item {Let $t^{*}_{i}$ denote the year of displacement of individual $i$.
+}{\small \par}
+
+\item {\small{}$D_{it}^{k}$: one if individual $i$ was displaced exactly
+$k$ periods before $t$\medskip{}
+}{\small \par}
+\be
+D_{it}^{k} = \mathbf{1}\{t=t^{*}_{i} + k\}
+\ee
+\medskip
+\item {\small{}Since some $k$'s are negative, this specification also looks
+at earnings dynamics before separation $\rightarrow$ pre-trends\medskip{}
+}{\small \par}
+\item {\small{}Worker and time effects $\implies$ this is a differences
+in differences estimator\medskip{}
+}{\small \par}
+\pause
+\item Who is the control group here?
+\medskip
+\item {\small{}$\delta_{k}$ coefficients compare changes in earnings for
+workers whose displacement status changed to changes for workers who
+were not displaced at the same time}{\small \par}
+\end{itemize}
+\end{frame}
+\begin{frame}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.95\textwidth]{aux/jls_f1}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.95\textwidth]{aux/jls_f2}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.95\textwidth]{aux/jls_f3}
+\end{figure}
+\end{frame}
+\begin{frame}{Jacobson, LaLonde and Sullivan (1993)}
+
+\begin{itemize}
+\item {\small{}JLS findings:\medskip{}
+}
+
+\begin{itemize}
+\item {\small{}Relative earnings for workers who will experience mass layoffs
+start to decline in advance, then drop sharply at displacement\medskip{}
+}{\small \par}
+\item {\small{}Quick partial recovery, but stabilize around 25\% below initial
+level\medskip{}
+}{\small \par}
+\item {\small{}Younger workers experience larger losses, but faster recovery\medskip{}
+}{\small \par}
+\item {\small{}Larger losses in mining/construction/public utilities; perhaps
+loss of high-rent union jobs?\medskip{}
+}{\small \par}
+\item {\small{}Long-term losses even for workers reemployed in same industry.
+JLS interpret this as evidence of firm-specific skills...}{\small \par}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Praise of JLS}
+
+\begin{itemize}
+\item Incredibly important paper for empirical labor economics
+\begin{enumerate}
+\bigskip
+\item Empirical tool (Event study design).
+\bigskip
+\item Importance of the question.
+\bigskip
+\item Use of high quality administrative data.
+\bigskip
+\item Transparent design $\rightarrow$ replication in other countries and for different outcomes.
+\end{enumerate}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[shrink=10]
+\frametitle{Other Studies of Job Displacement}
+
+\begin{itemize}
+\item {\small{}Several recent papers by von Wachter and co-authors use JLS-style
+methods to look at job displacement in other contexts\medskip{}
+}
+
+\begin{itemize}
+\item von Wachter, Song and Manchester (2009): Use social security records
+to study long-term effects of displacement in 1982 recession (more
+states, 20 years of follow-up){\small{}\medskip{}
+}{\small \par}
+\item von Wachter and Handwerker (2009): Use California UI records matched
+to CPS interviews. Allows examination of heterogeneity by education{\small{}\medskip{}
+}{\small \par}
+\item Sullivan and von Wachter (2009): Match JLS Pennsylvania data to Social
+Security death records to look at mortality{\small{}\medskip{}
+}{\small \par}
+\item von Wachter, Bender and Schmeider (2009): Use German social security
+data to look at 1982 recession in Germany. Includes detailed information
+(e.g. days worked) on each employment spell, so allows an analysis
+of wages
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.95\textwidth]{aux/till_1_f3}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.95\textwidth]{aux/till_2_f1}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.8\textwidth]{aux/till_3_f2}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.95\textwidth]{aux/till_4_f6}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.95\textwidth]{aux/daily_wages}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Evidence from Europe: Bertheau et al. (2023) }
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/jls_europe.jpg}
+\end{figure}
+\end{frame}
+\begin{frame}
+\frametitle{Evidence from Europe: Bertheau et al. (2023)}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/jls_europe2.jpg}
+\end{figure}
+\end{frame}
+\begin{frame}
+\frametitle{Discussion: Why these enormous effects after losing a job?}
+\begin{itemize}
+\item Ideas? 
+\pause
+\medskip
+\medskip
+\item Jarosch JMP is a nice attempt: structural model that allows for heterogenous jobs in both security and wages. 
+\medskip
+\item Unemployed workers fell off the ladder: sorted into worst jobs + possible depreciation of skills + loss of bargaining chip.  
+\pause
+\includegraphics[width=0.6\textwidth]{aux/gregor}
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{But labor market institutions are also important!}
+\centering
+\includegraphics[width=0.9\textwidth]{aux/jls_europe3}
+\end{frame}
+
+\begin{frame}{Discussion}
+
+\begin{itemize}
+\item {\small{}Displacement costs are real.}{\small \par}
+\item {\small{}Need to re-think carefully about impact of labor demand shocks and/or policies.}{\small \par}
+\item {\small{} What are the labor market consequences to interval/external shocks that might destroy jobs? }{\small \par}
+\item {\small{} China Shock from the presentation that we have seen in class a few weeks ago is one example. \medskip{}
+}{\small \par}
+\item {\small{} Another useful example: Green Policies.}
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}{Walker (2013)}
+  \begin{figure}[htb]
+\centering
+\includegraphics[width=0.95\textwidth]{aux/reed.pdf}
+\end{figure}  
+\end{frame}
+%%
+\begin{frame}{Effects of Child-Birth: Kleven-Landais-Sogaard, 2019}
+\pause
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.95\textwidth]{aux/kleven_child.jpg}
+\end{figure}
+\end{frame}
+\begin{frame}{No sign of convergence 20 years after}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.95\textwidth]{aux/kleven_child2.jpg}
+\end{figure}
+\end{frame}
+\begin{frame}{Culture Matters?}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.95\textwidth]{aux/kleven_child3.jpg}
+\end{figure}
+\end{frame}
+\begin{frame}{Evidence from various countries}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.95\textwidth]{aux/kleven_child4.jpg}
+\end{figure}
+\end{frame}
+\begin{frame}{Evidence from various countries}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.95\textwidth]{aux/kleven_child6.jpg}
+\end{figure}
+\end{frame}
+\begin{frame}{Evidence from various countries}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.95\textwidth]{aux/kleven_child5.jpg}
+\end{figure}
+\end{frame}
+\begin{frame}{Chilbirth of Women Entrepeneurs spillovers into the performance of the firm}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.65\textwidth]{aux/rutigliano.jpg}
+\end{figure}
+\end{frame}
+\begin{frame}{Much more muted effects for men!}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.65\textwidth]{aux/rutigliano2.jpg}
+\end{figure}
+\end{frame}
+
+
+
+%%
+\begin{frame}
+\centering
+\LARGE{Appendix}
+\end{frame}
+\begin{frame}
+\label{derivation}
+\frametitle{A simple Search Model}
+\begin{itemize}
+\item Time is discrete. 
+\item Unemployed individual who is infinitely lived, risk neutral, with discount factor: $\beta=\dfrac{1}{1+r}$
+\item Each period receives a job offer that she can accept/reject.
+\item If job is accepted, it lasts forever. There is no on the job search.
+\item Individual employed at wage $w$ as flow utility  $w$.
+\item Unemployed individual receives benefit $b$ and has flow utility $\nu$.
+\item Wages are drawn from distribution $F(w)$ with pdf $f(w)$.
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}[shrink=10]
+\frametitle{Value Function / Bellman Equation}
+\begin{itemize}
+\item We can set up the bellman equation that defines the value of unemployment
+\be
+V = b - \nu + \beta \int_{0}^{\infty}max(V,\dfrac{w}{1-\beta})f(w)dw
+\ee
+\item This expression can be written as
+\be
+\begin{aligned}
+V &   = b - \nu + \beta \int_{0}^{\infty}\left(V+max(0,\dfrac{w}{1-\beta}-V)\right)f(w)dw \\
+V (1-\beta)  &   =   b - \nu + \dfrac{\beta}{1-\beta} \int_{0}^{\infty}\left(max(0,w-(1-\beta)V)\right)f(w)dw 
+\end{aligned}
+\ee
+
+\item What is the reservation wage? $\dfrac{w^{*}}{1-\beta}=V$
+\item Plugging this expression we then get:
+\be
+w^{*} = b-\nu + \dfrac{1}{r}\int_{0}^{\infty}(w-w^{*})f(w)dw 
+\ee
+\item which can be restated as:
+\be
+w^{*}-(b-\nu)=Pr(w\geq w^{*})\times \dfrac{\E[w-w^{*}\vert w>w^{*}]}{r}
+\ee
+which coincides with equation (\ref{key_Eq})
+\end{itemize}
+\end{frame}
+\begin{frame}{Jarosch (2015)}
+
+\begin{itemize}
+\item {\small{}Jarosch (2015) approaches job displacement with a fresh theoretical
+eye\medskip{}
+}{\small \par}
+\item {\small{}The long-term ``scarring'' effect of job displacement is
+a major reason we're concerned with unemployment\medskip{}
+}{\small \par}
+\item {\small{}But most modern workhorse models used to study unemployment
+(e.g. DMP search models) do not generate an unemployment scar\medskip{}
+}{\small \par}
+\item {\small{}Jarosch proposes a search model that can generate long-term
+effects of job displacement\medskip{}
+}{\small \par}
+\item {\small{}Then applies the model to the German social security data
+studied by von Wachter and co.}{\small \par}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Jarosch (2015): Model}
+
+\begin{itemize}
+\item {\footnotesize{}Jarosch proposes a ``job ladder'' model with on-the-job
+search \medskip{}
+}{\footnotesize \par}
+\item {\footnotesize{}Workers search for new jobs while employed or unemployed\medskip{}
+}{\footnotesize \par}
+\item {\footnotesize{}Jobs are heterogeneous on two dimensions:\medskip{}
+}
+
+\begin{itemize}
+\item {\footnotesize{}Productivity}{\footnotesize \par}
+\item {\footnotesize{}Job security (expected length of match)\medskip{}
+}{\footnotesize \par}
+\end{itemize}
+\item {\footnotesize{}Workers ``climb'' the ladder, searching for better
+and better jobs \textendash{} implies unemployment begets future unemployment
+spells\medskip{}
+}{\footnotesize \par}
+\item {\footnotesize{}Model also allows employment history to alter workers'
+bargaining position, and general human capital to evolve differentially
+for employed and unemployed\medskip{}
+}{\footnotesize \par}
+\item {\footnotesize{}Three mechanisms here that can generate persistent
+displacement effects: position in the job ladder, experience, bargaining
+position}{\footnotesize \par}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Setup}
+
+\begin{itemize}
+\item {\footnotesize{}Firm types: $\theta=[\theta_{y},\theta_{\delta}]$\medskip{}
+}
+
+\begin{itemize}
+\item $\theta_{y}$ is productivity
+\item $\theta_{\delta}$ is job distruction probability (1 - job security){\footnotesize{}\medskip{}
+}{\footnotesize \par}
+\end{itemize}
+\item Workers are homogeneous \emph{ex ante}{\footnotesize{}\medskip{}
+}{\footnotesize \par}
+\item Unemployed workers meet firms with probability $\lambda_{0}$, employed
+workers $\lambda_{1}$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Wages and Value Functions}
+
+\begin{itemize}
+\item {\footnotesize{}Fixed wage contracts, re-bargained when either party
+has a credible threat (sequential auction framework of Cahuc, Postel-Vinay and Robin, 2006)\medskip{}
+}{\footnotesize \par}
+\item {\footnotesize{}$w\left(\theta,\hat{\theta}\right)$: Worker's wage
+when matched with type $\theta$, and $\hat{\theta}$ used as outside
+option in last negotiation (negotiation benchmark)\medskip{}
+}{\footnotesize \par}
+\item {\footnotesize{}Notation for value functions:}
+
+\begin{itemize}
+\item {\footnotesize{}$W(\theta,\hat{\theta})$: employed worker's value}{\footnotesize \par}
+\item {\footnotesize{}$U$: unemployed worker's value}{\footnotesize \par}
+\item {\footnotesize{}$J$: value of a job}{\footnotesize \par}
+\item {\footnotesize{}$S(\theta)$: joint surplus of a match between a worker
+and firm $\theta$}{\footnotesize \par}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Wages}
+
+\begin{itemize}
+\item {\footnotesize{}For bargaining parameter $\alpha\in[0,1]$, wage for
+a newly employed worker at firm type $\theta$ will be negotiated
+to satisfy}{\footnotesize \par}
+\end{itemize}
+\begin{center}
+{\footnotesize{}$W(\theta,u)-U=\alpha S(\theta)$}
+\par\end{center}{\footnotesize \par}
+\begin{itemize}
+\item {\footnotesize{}Suppose a worker at firm type $\theta_{1}$ is offered
+a job at outside firm type $\theta_{2}$\medskip{}
+}{\footnotesize \par}
+\item {\footnotesize{}If $S(\theta_{2})>S(\theta_{1})$, the worker transfers
+to $\theta_{2}$ and $\theta_{1}$ becomes the negotiation benchmark\medskip{}
+}{\footnotesize \par}
+\item {\footnotesize{}New wage $w(\theta_{2},\theta_{1})$ is negotiated
+to satisfy}{\footnotesize \par}
+\end{itemize}
+\begin{center}
+{\footnotesize{}$W(\theta_{2},\theta_{1})-U=S(\theta_{1})+\alpha\left(S(\theta_{2})-S(\theta_{1})\right)$}
+\par\end{center}{\footnotesize \par}
+\begin{itemize}
+\item {\footnotesize{}Worker gains a fraction $\alpha$ of the extra surplus
+generated by the better match}{\footnotesize \par}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Wages}
+
+\begin{itemize}
+\item {\footnotesize{}If $S(\theta_{2})<S(\theta_{1})$ , the worker will
+not transfer, but if $\theta_{2}$ is better than previous negotiation
+benchmark may renegotiate wage at $\theta_{1}$ so that}{\footnotesize \par}
+\end{itemize}
+\begin{center}
+{\footnotesize{}$W(\theta_{1},\theta_{2})-U=S(\theta_{2})+\alpha\left(S(\theta_{1})-S(\theta_{2})\right)$}
+\par\end{center}{\footnotesize \par}
+\begin{itemize}
+\item {\footnotesize{}This suggests the following classification of firms:\medskip{}
+}
+
+\begin{itemize}
+\item {\footnotesize{}$M_{1}(\theta)$: Firm types $x$ such that $S(x)>S(\theta)$}{\footnotesize \par}
+\item {\footnotesize{}$M_{2}(\theta,\hat{\theta})$: Firm types $x$ such
+that $S(\theta)>S(x)>S(\hat{\theta})$ \medskip{}
+}{\footnotesize \par}
+\end{itemize}
+\item {\footnotesize{}A worker at $\theta$ with negotiation benchmark $\hat{\theta}$
+will move if offered something in $M_{1}(\theta)$, stay but renegotiate
+if offered something in $M_{2}(\theta,\hat{\theta})$, and ignore
+if offered anything else}{\footnotesize \par}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Negotiation Capital}
+
+\begin{itemize}
+\item {\footnotesize{}In the sequential auction framework, workers build
+``negotiation capital'' through repeated sampling of outside offers\medskip{}
+}{\footnotesize \par}
+\item {\footnotesize{}Formally, negotiation capital is $W(\theta,\hat{\theta})-W(\theta,u)$\medskip{}
+}{\footnotesize \par}
+\item {\footnotesize{}This is the extra value a worker gets from $\theta$
+because s/he is negotiating based on the benchmark $\hat{\theta}$
+rather than unemployment\medskip{}
+}{\footnotesize \par}
+\item {\footnotesize{}This can generate large cross-sectional wage dispersion\medskip{}
+}{\footnotesize \par}
+\item {\footnotesize{}Also has the potential to generate sharp wage reductions
+following an unemployment spell, as negotiation capital is destroyed
+when a worker enters unemployment}{\footnotesize \par}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Value Function for an Employed Worker}
+
+\begin{center}
+{\footnotesize{}$W(\theta,\hat{\theta})=w(\theta,\hat{\theta})+\beta\times\{\ (1-\theta_{\delta})$}
+\par\end{center}{\footnotesize \par}
+
+\begin{center}
+{\footnotesize{}$\times[\ \lambda_{1}\left({\displaystyle \int_{x\in M_{1}(\theta)}W(x,\theta)dF(x)+\int_{x\in M_{2}(\theta,\hat{\theta)}}W(\theta,x)dF(x)}\right)$}
+\par\end{center}{\footnotesize \par}
+
+\begin{center}
+{\footnotesize{}$+\left(1-\lambda_{1}{\displaystyle \int_{x\in M_{1}(\theta)\cup M_{2}(\theta,\hat{\theta})}dF(x)}\right)W(\theta,\hat{\theta})\ ]+\theta_{\delta}U\ \}$.}
+\par\end{center}{\footnotesize \par}
+\begin{itemize}
+\item {\footnotesize{}Flow utility $w(\theta,\hat{\theta})$ , discount
+rate $\beta$}{\footnotesize \par}
+\item {\footnotesize{}With probability $\theta_{\delta}$, the match ends
+and the worker enters unemployment}{\footnotesize \par}
+\item {\footnotesize{}With probability $(1-\theta_{\delta})$, the match
+doesn't end, and}
+
+\begin{itemize}
+\item {\footnotesize{}With probability $\lambda_{1}$, the worker meets
+a new firm}
+
+\begin{itemize}
+\item {\footnotesize{}In $M_{1}(\theta)$: Switch and get $W(x,\theta)$}{\footnotesize \par}
+\item {\footnotesize{}In $M_{2}(\theta,\hat{\theta}):$ Don't switch but
+renegotiate for $W(\theta,x)$}{\footnotesize \par}
+\item {\footnotesize{}In neither: Stick with $W(\theta,\hat{\theta})$}{\footnotesize \par}
+\end{itemize}
+\item {\footnotesize{}With probability $1-\lambda_{1}$, the worker does
+not meet a firm and keeps $W(\theta,\hat{\theta})$}{\footnotesize \par}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Value Function for an Unemployed Worker}
+
+\begin{center}
+{\footnotesize{}$U=z+\beta\left[\lambda_{0}{\displaystyle \int_{x\in M_{1}(u)}}W(x,u)dF(x)+\left(1-\lambda_{0}{\displaystyle \int_{x\in M_{1}(u)}dF(x)}\right)U\right]$ }
+\par\end{center}{\footnotesize \par}
+\begin{itemize}
+\item {\footnotesize{}Flow utility is unemployment benefit $z$}{\footnotesize \par}
+\item {\footnotesize{}With probability $\lambda_{0}$, the worker meets
+a new firm}
+
+\begin{itemize}
+\item {\footnotesize{}In $M_{1}(u)$: Take the job and get $W(x,u)$}{\footnotesize \par}
+\item {\footnotesize{}Not in $M_{1}(u)$: Reject job, keep $U$}{\footnotesize \par}
+\end{itemize}
+\item {\footnotesize{}With probability $1-\lambda_{0}$, the worker doesn't
+meet a new firm, and keeps $U$}{\footnotesize \par}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Value Function for a Firm}
+
+\begin{center}
+{\footnotesize{}$J(\theta,\hat{\theta})=\theta_{y}-w(\theta,\hat{\theta})+\beta(1-\theta_{\delta})\times[\ \lambda_{1}{\displaystyle \int_{x\in M_{2}(\theta,\hat{\theta})}J(\theta,x)dF(x)}$}
+\par\end{center}{\footnotesize \par}
+
+\begin{center}
+{\footnotesize{}$+\left(1-\lambda_{1}{\displaystyle \int_{x\in<M_{1}(\theta)\cup M_{2}(\theta,\hat{\theta})}dF(x)}\right)J(\theta,\hat{\theta})\ ]$}
+\par\end{center}{\footnotesize \par}
+\begin{itemize}
+\item {\footnotesize{}Flow utility for a firm of type $\theta$ employing
+a worker with benchmark $\hat{\theta}$ is productivity $\theta_{y}$
+minus wage $w(\theta,\hat{\theta})$}{\footnotesize \par}
+\item {\footnotesize{}With probability $\theta_{\delta}$, job is destroyed
+and has no continuation value}{\footnotesize \par}
+\item {\footnotesize{}With probability $(1-\theta_{\delta})$, job continues,
+and}
+
+\begin{itemize}
+\item {\footnotesize{}With probability $\lambda_{1}$, worker finds a new
+job}
+
+\begin{itemize}
+\item {\footnotesize{}In $M_{1}(\theta)$: Job destroyed, no continuation
+value}{\footnotesize \par}
+\item {\footnotesize{}In $M_{2}(\theta,\hat{\theta})$: Renegotiate, get
+$J(\theta,x)$}{\footnotesize \par}
+\item {\footnotesize{}In neither: Stick with $J(\theta,\hat{\theta})$}{\footnotesize \par}
+\end{itemize}
+\item {\footnotesize{}With probability $1-\lambda_{1}$, worker does not
+find a job and firm keeps $J(\theta,\hat{\theta})$}{\footnotesize \par}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Match Surplus}
+
+\begin{itemize}
+\item {\footnotesize{}Match surplus for the worker/firm pair is}{\footnotesize \par}
+\end{itemize}
+\begin{center}
+{\footnotesize{}$S(\theta,\hat{\theta})={\displaystyle \max\left\{ 0,W(\theta,\hat{\theta})-U+J(\theta,\hat{\theta})\right\} }$}
+\par\end{center}{\footnotesize \par}
+\begin{itemize}
+\item {\footnotesize{}Plugging in value functions yields}{\footnotesize \par}
+\end{itemize}
+\begin{center}
+{\footnotesize{}$S(\theta)=\theta_{y}-z+\beta\times\{\ (1-\theta_{\delta})\left(S(\theta)+\alpha\lambda_{1}\int_{x\in M_{1}(\theta)}\left(S(x)-S(\theta)\right)dF(x)\right)$}
+\par\end{center}{\footnotesize \par}
+
+\begin{center}
+{\footnotesize{}$-\alpha\lambda_{0}{\displaystyle \int_{x\in M_{1}(u)}S(x)dF(x)\}}$}
+\par\end{center}{\footnotesize \par}
+\begin{itemize}
+\item {\footnotesize{}Result: Surplus doesn't depend on $\hat{\theta}$,
+so $S(\theta,\hat{\theta})=S(\theta)$}{\footnotesize \par}
+\item {\footnotesize{}Makes sense \textendash{} negotiation benchmark just
+determines split of the surplus}{\footnotesize \par}
+\item {\footnotesize{}This equation can be solved numerically, given parameter
+values}{\footnotesize \par}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Comparative Statics}
+
+\begin{itemize}
+\item {\footnotesize{}Model gives rise to some intuitive comparative statics}
+
+\begin{itemize}
+\item {\footnotesize{}Wages increasing in $\theta_{\delta}$ (compensating
+differential)}{\footnotesize \par}
+\item {\footnotesize{}$\theta_{y}$ has an ambiguous effect on wages, depending
+on $\alpha$}
+
+\begin{itemize}
+\item {\footnotesize{}When $\alpha=0$, moving workers get exactly their
+old match's surplus. Higher productivity firms offer higher growth
+potential and therefore lower wages}{\footnotesize \par}
+\item {\footnotesize{}When $\alpha=1$, workers capture the entire surplus
+and higher productivity firms pay higher wages}{\footnotesize \par}
+\end{itemize}
+\end{itemize}
+\item {\footnotesize{}If $E\left[\theta_{\delta}|\theta_{y}\right]$ and
+$E\left[\theta_{y}|\theta_{\delta}\right]$ are strictly increasing:}
+
+\begin{itemize}
+\item {\footnotesize{}Job security and productivity are increasing in employment
+tenure and job tenure}{\footnotesize \par}
+\item {\footnotesize{}Hazard to unemployment is decreasing in employment
+tenure and job tenure}{\footnotesize \par}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Efficiency}
+
+\begin{itemize}
+\item {\footnotesize{}Jarosch assumes $\lambda_{1}<\lambda_{0}$. This implies
+the model's equilibrium is inefficient if $\alpha<1$}{\footnotesize \par}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Efficiency}
+
+\begin{itemize}
+\item {\footnotesize{}Jarosch assumes $\lambda_{1}<\lambda_{0}$. This implies
+the model's equilibrium is inefficient if $\alpha<1$\medskip{}
+}{\footnotesize \par}
+\item {\footnotesize{}Social planner places more value on unemployment than
+does a matched worker/firm pair, because unemployed workers are available
+to match with other firms, which is not internalized\medskip{}
+}{\footnotesize \par}
+\item {\footnotesize{}Workers therefore overvalue job security, relative
+to the social optimum\medskip{}
+}{\footnotesize \par}
+\item {\footnotesize{}As a result, a positive unemployment benefit financed
+by a lump sum tax on employed workers can improve welfare}{\footnotesize \par}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Worker Skills}
+
+\begin{itemize}
+\item {\footnotesize{}Jarosch extends the model to add worker heterogeneity\medskip{}
+}{\footnotesize \par}
+\item {\footnotesize{}Workers have skill $s$, so productivity is $p(\theta_{y},s)$\medskip{}
+}
+
+\begin{itemize}
+\item {\footnotesize{}Increases probabilistically for employed workers}{\footnotesize \par}
+\item {\footnotesize{}Depreciates probabilisitically for unemployed workers\medskip{}
+}{\footnotesize \par}
+\end{itemize}
+\item {\footnotesize{}Still no permanent }\emph{\footnotesize{}ex ante}{\footnotesize{}
+differences in workers}{\footnotesize \par}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Estimation}
+
+\begin{itemize}
+\item {\footnotesize{}Jarosch uses the model to quantify the importance
+of the job ladder, negotiation capital and experience effects in generating
+the displacement ``scar''\medskip{}
+}{\footnotesize \par}
+\item {\footnotesize{}Matches moments from German social security data,
+1974-2010\medskip{}
+}{\footnotesize \par}
+\item {\footnotesize{}Method of simulated moments estimator fitting various
+moments related to model parameters, e.g.:}
+
+\begin{itemize}
+\item {\footnotesize{}Unemployment rate ($\lambda_{0}$)}{\footnotesize \par}
+\item {\footnotesize{}Job-to-job transition rate ($\lambda_{1})$}{\footnotesize \par}
+\item {\footnotesize{}Unemployment hazard and slope w.r.t. tenure (distribution
+of $\theta_{\delta}$)}{\footnotesize \par}
+\item {\footnotesize{}Relationship between wage and length of unemployment
+duration, w/worker FE (skill depreciation)}{\footnotesize \par}
+\item {\footnotesize{}Relationship between wages and separation rate (correlation
+of $\theta_{\delta}$ and $\theta_{y}$)}{\footnotesize \par}
+\end{itemize}
+\end{itemize}
+\end{frame}
+\setbeamercolor{background canvas}{bg=} \includepdf{aux/jarosch_f6a.pdf}
+
+\setbeamercolor{background canvas}{bg=} \includepdf{aux/jarosch_f6b.pdf}
+
+\setbeamercolor{background canvas}{bg=} \includepdf{aux/jarosch_f6c.pdf}
+
+\setbeamercolor{background canvas}{bg=} \includepdf{aux/jarosch_f6d.pdf}
+\begin{frame}{Decomposition}
+
+\begin{itemize}
+\item {\small{}Three sources of wage scarring:\medskip{}
+}
+
+\begin{itemize}
+\item {\small{}Negotiation rents}{\small \par}
+\item {\small{}Position in job ladder (employer itself)}{\small \par}
+\item {\small{}Human capital/experience\medskip{}
+}{\small \par}
+\end{itemize}
+\item {\small{}Jarosch uses the model to ``turn on'' each component sequentially}{\small \par}
+\end{itemize}
+\end{frame}
+\setbeamercolor{background canvas}{bg=} \includepdf{aux/jarosch_f7.pdf}\end{document}
+
