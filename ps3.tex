@@ -1,0 +1,99 @@
+%% LyX 2.4.1 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in,headheight=1in,headsep=1in,footskip=1in}
+\usepackage{amsmath}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\date{Due: November 16 11.59pm}
+% Added by lyx2lyx
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\title{Econ560: Problem Set 3}
+\maketitle
+\begin{center}
+Send solution to rsaggio@mail.ubc.ca. 
+
+\par\end{center}
+
+\bigskip{}
+
+1. Consider a simple search model with no on-the-job search, no job destruction,. As shown in Lecture, in this model the reservation wage $w^{*}$ is defined by the equation
+
+\begin{equation}
+w^{*} = b-\nu + \dfrac{1}{r}\int_{0}^{\infty}(w-w^{*})f(w)dw 
+\end{equation}
+
+Assume that the offered wage distribution is discrete, $w\in\{w_{1}, \hdots, w_{n}\}$ with distribution function
+\begin{equation}
+\Pr(w=w_{1}) = \Phi(\dfrac{w_{1}-\mu}{\sigma})
+\end{equation}
+\begin{equation}
+\Pr(w=w_{2}) = \Phi(\dfrac{w_{2}-\mu}{\sigma})-\Phi(\dfrac{w_{1}-\mu}{\sigma}) \\ 
+\end{equation}
+\begin{equation}
+\hdots
+\end{equation}
+\begin{equation}
+\Pr(w=w_{n}) = 1-\Phi(\dfrac{w_{n-1}-\mu}{\sigma})
+\end{equation}
+where $\Phi$ is the standard normal d.f., and $(\mu;\sigma)$ are parameters.
+Assume that time in measured in months, and that $b$ = 1000; $r$ = 0.02.
+
+Set up a numerical procedure to find the optimal reservation wage, using a grid with $n = 200;$ and setting $w_{1} =0$ and
+$w_{n}$ =8000 while assuming $\lambda=0.1$ and $\mu=1800$. Find $w^{*}$ for $\sigma= 100;500;1000;1500;2000$: 
+
+Find the expected duration of job search, $d$ for each $\sigma$.  Graph the relationships between $\sigma$, $w$ and $d$.
+
+
+2. This exercise will guide you over a search model with on-the-job search. As in the model seen in class, time is discrete (in months) and individuals are infinitely lived and risk neutral.
+
+Assume that a person employed in a job that pays wage $w$ enjoys a flow utility of $w-c$ where $c$ represents the disutility of work. A person who is searching for a job enjoys a flow utility of $b$, where $b$ is the unemployment benefit (in CAD). There exists a probability $\lambda$ that an individual receives a job offer in each period, irrespective of whether this individual is currently employed or not.  There is also a probability $\delta$ that a given job is going to be destroyed at the end of each period. There are two value functions: a value of $V$ if unemployed (and searching). A value $U(w)$ if holding a job that pays a wage equal to $w$. Let $F(w)$ ($f(w)$) represents the cdf (pdf) of wage offers that an individual might receive (this distribution is the same irrespective of whether the individual is currently employed or not). 
+
+We will make two further (and final) simplifying assumptions. First, we assume that payment of both wages and unemployment benefits occur at end of each month. Hence, flow utilities associated with both $V$ and $U$ are going to be discounted in this model (by $\frac{1}{1+r})$. Second,  newly accepted jobs also have a probability, $\delta$, of being destroyed when entering the next period (so if you receive a job offer at the end of the period there is a probability $\delta$ that this job will disappear in the next period).      
+
+a) Let the value of being employed at wage $w$, $U(w)$, be 
+
+\begin{multline}
+\label{base}
+U(w) = \dfrac{w-c}{1+r}+\dfrac{1}{1+r}\lambda(1-F(w))\left[\delta V + (1-\delta)\int_{w}^{\infty}U(\omega)\dfrac{f(\omega)}{1-F(w)}d\omega\right] \\
+ + \dfrac{1}{1+r}\left(1-\lambda(1-F(w))\right)\left[\delta V + (1-\delta)U(w)\right]
+\end{multline}
+
+Explain the economic intuition and logic behind  each single piece composing this formula.
+
+b) Now use the economic reasoning that you have provided in the previous part to express the value of being employed, $V$, for a given reservation wage $w^{*}$.
+
+c) Based on the expression in part (a) and your answer to part (b), prove that the reservation wage $w^{*}=b+c$. What is the intuition behind this formula? Why this expression is different compared to the simplest model with no on the job search shown in class?
+
+d) What is the expected duration of unemployment in this model? What is the expected wage when exiting unemployment? How do these two expressions vary with $b$? Comment on your results based in light of the discussion that we had in class on the policy implications of extending unemployment benefits.
+
+e) Now suppose that the support of the wage distribution is $[0;\bar{w}]$. Derive an expression for $U(\bar{w})$. Derive an expression for $U(w^{*})$. Provide some intuition about these expressions. 
+
+
+
+f) Compute the derivative $U'(w)$. What is $U'(\bar{w})$? Draw a picture of $U(w)$ and $V$.
+
+g) Next, you will derive a numerical procedure to solve for $U(w)$. Use the fact that $V=U(w^{*})$, to prove that $U(w)$ in (\ref{base}) can be expressed as
+
+\begin{equation}
+\label{base_f}
+U(w) = \dfrac{w-c}{r+\delta}+\dfrac{\delta U(b+c)}{r+\delta}+\dfrac{\lambda(1-\delta)}{r+\delta}\int_{w}^{\bar{w}}(U(\omega)-U(w))f(\omega)d\omega]
+\end{equation}
+
+Note that this is a \textit{functional} equation $U(w)=T\{U(v)\}$, where $T$ maps from the space of functions to the space of functions and we are looking for a fixed point in $T$. Provided that $T$ is a contraction mapping, one can solve using a ``successive approximation" approach.  
+
+Suppose that $b=800$, $c=0$, $\lambda=0.2$, $r=0.02$, and $\delta=0.25$. Also assume that $F(w)=N(1200,400)$ and with this distribution $\bar{w}=2500$ (which is almost true). Develop a numerical procedure to solve for $U(w)$ and $V$. (HINT: take a finite grid of points going from 0 to 2500. Provide an initial guess, $U^{1}(w)$ for all the discretized points of support that you have assumed. Then, using these initial guesses to form new guess of values $U^{2}(w)$ starting from the highest possible value of $\bar{w}$. Iterate until convergence. 
+
+
+
+\end{document}
