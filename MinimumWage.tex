@@ -1,0 +1,582 @@
+\documentclass[notes=show]{beamer}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\AtBeginSubsection[
+  {\frame<beamer>{\frametitle{Outline}   
+    \tableofcontents[currentsection,currentsubsection]}}%
+]%
+{
+  \frame<beamer>{ 
+    \frametitle{Outline}   
+    \tableofcontents[currentsection,currentsubsection]}
+}
+\usepackage{ulem}
+\usepackage{pdflscape}
+\setbeamertemplate{caption}{\insertcaption}
+\usepackage{color,xcolor,ucs}
+\usepackage{beamerthemesplit}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{adjustbox}
+\usepackage{pdfpages} 
+\definecolor{mintgreen}{rgb}{0.6, 1.0, 0.6}
+\makeatletter
+\@addtoreset{subfigure}{framenumber}% subfigure counter resets every frame
+\makeatother
+\newcommand*{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
+\newcommand*{\Resize}[2]{\resizebox{#1}{!}{$#2$}}%
+\usepackage{amsfonts}
+\usepackage{booktabs}
+\usepackage{color,soul}
+\usepackage{pdfpages}
+\setboolean{@twoside}{false}
+\usepackage{amsmath}
+\usepackage{pdflscape} 
+\usepackage{eurosym}
+\usepackage{amstext} % for \text
+\DeclareRobustCommand{\officialeuro}{%
+  \ifmmode\expandafter\text\fi
+  {\fontencoding{U}\fontfamily{eurosym}\selectfont e}}
+\usepackage[caption = false]{subfig}
+\usepackage{appendixnumberbeamer} 
+\usepackage{graphicx}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+\usepackage{multimedia}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{verbatim}
+\usepackage{booktabs, multicol, multirow}
+\setcounter{MaxMatrixCols}{10}
+\input{Macros.tex}
+\AtBeginSection[]
+{
+  \begin{frame}[noframenumbering]
+    \frametitle{Outline for section \thesection}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+
+\usepackage{xcolor,soul}
+\renewcommand<>{\hl}[1]{\only#2{\beameroriginal{\hl}}{#1}}
+
+% https://tex.stackexchange.com/questions/41683/why-is-it-that-coloring-in-soul-in-beamer-is-not-visible
+\makeatletter
+\newcommand\SoulColor{%
+  \let\set@color\beamerorig@set@color
+  \let\reset@color\beamerorig@reset@color}
+\makeatother
+\SoulColor
+\AtBeginSection{\frame{\sectionpage}}
+
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+  {\savebox\mybox{#1}\begin{quote}\openautoquote\hspace*{-.7ex}}
+  {\unskip\closeautoquote\vspace*{1mm}\signed{\usebox\mybox}\end{quote}}
+
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{Assumption}[theorem]{Assumption}
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usetheme{Madrid}
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor~~\beamer@ifempty{\insertshortinstitute}{}{(\insertshortinstitute)}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+%    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} % DELETED
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\usepackage[style=british]{csquotes}
+
+\def\signed #1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip1em
+  \hbox{}\nobreak\hfill #1%
+  \parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+  
+\makeatother
+\usepackage{pdfpages}
+\begin{document}
+	\title[]{\large Minimum Wage		\vspace{0.5cm}
+	}
+	\author[Raffaele Saggio - Econ 560]{Raffaele Saggio}
+	\institute[]{UBC}
+	\date{\today \\}
+	\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%	
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{footline}[frame number]{}
+
+%gets rid of bottom navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+%gets rid of footer
+%will override 'frame number' instruction above
+%comment out to revert to previous/default definitions
+\setbeamertemplate{footline}{}
+\begin{frame}
+\frametitle{Today}
+\begin{itemize}
+\item Minimum wage is at the heart of the labor demand theory
+\bigskip
+\item Plausibly exogenous change in price $\rightarrow$ what happens to quantity demanded.
+\bigskip
+\item Dogma of neo-classical theory: Demand curve slopes down!
+\bigskip
+\pause
+\item Does it really?
+\bigskip
+\pause
+\item Minimum wage literature instrumental for (i) ``Credibility Revolution" (ii) moving away from the perfectly competitive assumption of labor markets.  
+\end{itemize}
+\end{frame}
+%%%
+%%
+\begin{frame}
+\frametitle{Introduction}
+\begin{itemize}
+\item How do employers in low-wage labor markets respond to an increase in minimum wage?
+\medskip
+\item ``Conventional" Economic Theory is unambiguous: cut employment (Stigler, 1946).
+\medskip
+\item Time series regressions (teenager employment on minimum wages).
+\medskip
+\item Aggregate data seems to confirm this prediction (Brown 1982, 1983; Wellington, 1991). 
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Wellington (1991)}
+\begin{figure}[htb]
+\centering
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[width=1.1\textwidth]{aux/well}}
+\end{figure}
+\end{frame}
+\begin{frame}
+\frametitle{The Right Minimum Wage}
+\begin{figure}[htb]
+\centering
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[width=0.8\textwidth]{aux/right_mw}}
+\end{figure}
+\end{frame}
+
+%%
+\begin{frame}
+\frametitle{The power of simplicity and transparency}
+\begin{figure}[htb]
+\centering
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[width=0.9\textwidth]{aux/quote}}
+\end{figure}
+\end{frame}
+%%%
+\begin{frame}
+\frametitle{Card and Krueger (1994)}
+\begin{itemize}
+\item 410 fast-foods restaurants in New Jersey and Pennsylvania following the increase in NJ minimum wage from 4.25\$ to 5.05\$ per hours.
+\bigskip
+\item Two research designs:
+\bigskip
+\begin{itemize}
+\item Difference in Differences (compare NJ and PA before and after law change).
+\medskip
+\item Gap Design. (compare initially low wage establishments to high wage establishments before and after the design).
+\end{itemize}
+\bigskip
+\item The value of surveys and ``zooming" in $\rightarrow$ employment, attrition, etc. 
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Two Waves}
+\begin{figure}[htb]
+\centering
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[width=0.9\textwidth]{aux/ck0}}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Always make sure to measure your treatment reliably!}
+\begin{figure}[htb]
+\centering
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[width=0.9\textwidth]{aux/ck1}}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Ladies and Gentlemen we have a first stage!}
+\begin{figure}[htb]
+\centering
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[width=0.9\textwidth]{aux/ck2}}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{PA fast food restaurants is a good control group?}
+\begin{figure}[htb]
+\centering
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[width=0.9\textwidth]{aux/ck3}}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Things look quite different in second wave (after law is passed)}
+\begin{figure}[htb]
+\centering
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[width=0.9\textwidth]{aux/ck4}}
+\end{figure}
+\end{frame}
+%%
+%%
+\begin{frame}
+\frametitle{Research Design \#1}
+\begin{itemize}
+\item Gap Design
+\be
+\Delta E_{i} = a + b X_{i} + c Gap_{i} + e_{i}
+\ee
+where 
+\be
+Gap_{i} = NJ_{i}\times \max\left(0,\dfrac{5.05-W_{1i}}{W_{1i}}\right)
+\ee
+and $W_{1i}$ is the reported starting wage of store $i$.
+\bigskip
+\item Questions for you:
+\begin{enumerate}
+\bigskip
+\item What is $c$ measuring? (Mean value of $Gap_{i}=0.10$). 
+\bigskip
+\item Do I need PA fast-food restaurants to run this regression?
+\bigskip
+\item Is this a market level response?
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Research Design \#2}
+\begin{itemize}
+\item Difference in Differences
+\be
+E_{it} = \lambda_{t} + \gamma NJ_{i} + \delta ( NJ_{i}\times Post_{t}) + r_{it}
+\ee
+\item Card and Krueger estimate the model above in first differences (and adds controls).
+\begin{enumerate}
+\bigskip
+\item Can you pin down $\delta$ from the previous table? 
+\bigskip
+\item What is the key identifying assumption here? What can go wrong?
+\bigskip
+\item Is $\delta$ identifying a market level response?
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Parallel Trends}
+\begin{figure}[htb]
+\centering
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[width=0.9\textwidth]{aux/parallel}}
+\end{figure}
+\end{frame}
+
+%%
+%%
+\begin{frame}
+\frametitle{Parallel Trends}
+\begin{figure}[htb]
+\centering
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[width=0.9\textwidth]{aux/parallel2}}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Zero or positive?}
+\begin{figure}[htb]
+\centering
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[width=0.9\textwidth]{aux/ck5}}
+\end{figure}
+\end{frame}
+\begin{frame}
+\frametitle{More expensive Big Macs?}
+\begin{figure}[htb]
+\centering
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[width=0.9\textwidth]{aux/ck6}}
+\end{figure}
+\end{frame}
+\begin{frame}
+\frametitle{Modern Version of This}
+\begin{figure}[htb]
+\centering
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[width=0.9\textwidth]{aux/orley}}
+\end{figure}
+\end{frame}
+\begin{frame}[plain]{The power of zero}
+
+\begin{itemize}
+\item A carefully thought out and transparent demonstration of the fragility
+of min wage results
+
+\begin{itemize}
+\item Inferential issue: no clustering \textendash{} but shouldn't affect
+GAP design
+\item Results a bit under-powered to detect clear positive but strong enough
+to reject big negative
+\end{itemize}
+\item Initial reaction of labor economists was not welcoming
+
+\begin{itemize}
+\item Hamermesh (1995): employers anticipated the change in ``before''
+period and ``after'' period too soon for adjustment to occur.
+\item Neumark and Wascher (2000): results driven by measurement problems
+(responded to by Card and Krueger, 2000)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[plain]{The Backlash}
+
+\begin{itemize}
+\item {\footnotesize{}Businessweek: ``A Minimum Wage Study with Minimum
+Credibility'' }{\footnotesize\par}
+\end{itemize}
+\begin{quotation}
+{\footnotesize{}``Political correctness seems to have crept into
+the inner sanctum of the AEA, discrediting its scholarly journal and
+debasing its top prize. Unless the association cleans up its act,
+it can kiss its credibility good­bye''}{\footnotesize\par}
+\end{quotation}
+\begin{itemize}
+\item {\footnotesize{}James Buchanan in the WSJ}{\footnotesize\par}
+\end{itemize}
+\begin{quotation}
+{\footnotesize{}``Just as no physicist would claim that 'water runs
+uphill,' no self-respecting economist would claim that increases in
+the minimum wage increase employment. Such a claim, if seriously advanced,
+becomes equivalent to a denial that there is even minimal scientific
+content in economics, and that, in consequence, economists can do
+nothing but write as advocates for ideological interests.''}{\footnotesize\par}
+\end{quotation}
+\begin{itemize}
+\item {\footnotesize{}Merton Miller in the WSJ}{\footnotesize\par}
+\end{itemize}
+\begin{quotation}
+{\footnotesize{}``Raising the minimum wage by law above its market
+determined equilibrium, they argue, actually costs nobody anything.
+(Or at worst, costs nobody very much because it's only a small, marginal
+increment, after all.) Is all this too good to be true? Damn right.
+But it sure plays well in the opinion polls. I tremble for my profession.''}{\footnotesize\par}
+\end{quotation}
+\end{frame}
+
+\begin{frame}[plain]{Interpretation}
+
+\begin{itemize}
+\item What to make of these results?
+
+\begin{itemize}
+\item Card-Krueger argue that positive employment effects reflect that not all workers are paid ``the margin" but firms have latitude to set wages (like in monospony models).
+\end{itemize}
+\item This is the key punchline of CK! Took many years to labor economists to digest this.
+\end{itemize}
+\bigskip{}
+
+\begin{itemize}
+\item Do GAP design and diff in diff identify the same parameter?
+\begin{itemize}
+\item Diff in diff measures market-wide response
+\item GAP measures effect of raising wage on a single firm holding market
+constant
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[plain]{Harasztosi and Lindner (2018)}
+
+\begin{itemize}
+\item US min wage variation tends to be small and short run in nature
+\item Hungary experienced a large (60\%) and persistent (\textasciitilde 8
+years) increase in min wage in 2001
+\end{itemize}
+\end{frame}
+
+\begin{frame}[plain]{Now we're talking..}
+
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[scale=0.4]{aux/attila1}}
+\end{frame}
+\begin{frame}[plain]{Harasztosi and Lindner (2018)}
+\begin{itemize}
+\item One reform, one country: need a control group!
+\medskip
+\item Lesson learned from CK: use Gap design!
+\pause
+\item Admin data from Hungary $\rightarrow$ can do Gap design on ``steroids"  
+\item Use firm level exposure design to infer MW effects
+\be
+\dfrac{y_{it}-y_{i2000}}{y_{i2000}} = \lambda_{t} + \beta_{t} FA_{i} + r_{it}
+\ee
+where $FA_{i}$ is fraction of workers affected in firm $i$, i.e. the share of workers in firm $i$ being paid below the new minimum wage.
+\medskip
+\item What are the parametric assumptions of this model? 
+\medskip
+\item What would do with dying firms?
+\medskip
+\item What would do with new firms?
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[plain]{Firm exposure  lowers employment}
+\begin{center}
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[scale=0.6]{aux/attila2}}
+\par\end{center}
+\end{frame}
+\begin{frame}[plain]{Is this effect large or small?}
+\begin{center}
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[scale=0.6]{aux/attila2}}
+\par\end{center}
+\end{frame}
+\begin{frame}[plain]{Firm exposure increases wages and total labor costs}
+\begin{center}
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[scale=0.6]{aux/attila3}}
+\par\end{center}
+\end{frame}
+\begin{frame}[plain]{Can you back up an elasticity of labor demand from these graphs?}
+\pause
+\begin{center}
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[scale=0.3]{aux/attila4}}
+\par\end{center}
+\end{frame}
+\begin{frame}[plain]{How do employers respond?}
+\pause
+\begin{center}
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[scale=0.4]{aux/attila5}}
+\par\end{center}
+\end{frame}
+\begin{frame}[plain]{Higher Q or Higher P? Use data on Price indexes for Manufacturing firms}
+\pause
+\begin{center}
+\adjustbox{max width=0.95\textwidth,max totalheight=0.58\textheight}{\includegraphics[scale=0.4]{aux/reveneu_price}}
+\par\end{center}
+\begin{itemize}
+\item How do you think this graph would look for other sectors (i.e. services)?
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}[plain]{Employers in tradable sector responds differently...}
+\begin{center}
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[scale=0.4]{aux/attila8}}
+\par\end{center}
+\end{frame}
+\begin{frame}[plain]{Employers in tradable sector responds differently...}
+\begin{center}
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[scale=0.4]{aux/attila9}}
+\par\end{center}
+\end{frame}
+\begin{frame}[plain]{Who pays for the minimum wage then?}
+\pause
+\centering
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[scale=0.5]{aux/attila_deco}}
+\end{frame}
+\begin{frame}[plain]{Who pays for the minimum wage then?}
+\begin{center}
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[scale=0.5]{aux/attila7}}
+\par\end{center}
+\end{frame}
+
+
+\begin{frame}[plain]{Thoughts}
+
+\begin{itemize}
+\item Negative but small employment elasticity $\rightarrow$ out of 300,000 min wage workers in Hungary 30K lost their job while 270K had their wage rise by 60\%. 
+\medskip
+\item Cost effects of min wage largely passed through to consumers!
+\item In an economy where min wage workers produced goods consumed by ``rich" people, then MW effectively represents a redistribution from rich to poor. 
+\pause
+\bigskip
+\item Attila uses a neoclassical labod demand model (but with imperfect competition on the output market) to ``fit" its reduced form effects.  
+\bigskip
+\begin{itemize}
+\item Unclear how to distinguish effects of \emph{firm}-specific from aggregate
+price shocks at the market level. 
+\item Monopsony model says small and big MW changes can have different signed
+effects
+\end{itemize}
+\bigskip
+\pause{}
+\item Policy implications
+
+\begin{itemize}
+\item Price increases to domestic consumers are somewhat  problematic
+\item Who is consuming these goods?
+\end{itemize}
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Who pays the minimum wage?}
+\begin{center}
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[scale=0.5]{aux/trump_MC.jpg}}
+\par\end{center}
+\end{frame}
+\begin{frame}[plain]
+\begin{center}
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[scale=0.3]{aux/review_MW}}
+\par\end{center}
+\end{frame}
+\begin{frame}
+\frametitle{More recent evidence from US Tax Returns of Independent Businesses: Wage Own Elasticity of around -0.25}
+\begin{center}
+\adjustbox{max width=0.95\textwidth,max totalheight=0.74\textheight}{\includegraphics[scale=0.2]{aux/max}}
+\par\end{center}
+\end{frame}
+
+
+%%
+\begin{frame}[plain]{Dustmann, Lindner, Schonberg, Umkehrer and vom Berge (2021)}
+\begin{itemize}
+\item National wide introduction of the MW in Germany in 2015: 8.50 per hour (affecting around 15\% of workers). 
+\medskip
+\item High-quality matched employer-employee data 
+\medskip
+\item Gap design at individual + region level (they have ``high-quality" panel data) 
+\medskip
+\item Null effect on employment. But large increase in wages for affected workers.  
+\medskip
+\item Key new fact: ``reallocation effect" of the minimum wage. 
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}[plain]{17\% of the wage increase following MW due to Reallocation}
+\begin{center}
+\adjustbox{max width=0.95\textwidth,max totalheight=0.85\textheight}{\includegraphics[scale=0.17]{aux/dustmann}}
+\par\end{center}
+\end{frame}
+%%
+%%
+\begin{frame}[plain]{What explains these positive re-allocation effects?}
+\begin{itemize}
+\item Original motivation to introduce MW in New Zealand (1890): ``helping
+worthwhile companies that employ working class breadwinners against sweatshops that gained market shares by undercutting those worthwhile companies"
+\medskip
+\item Same idea for Scandinavian model: Collective bargaining will drive low performing establishment out of the market. 
+\medskip
+\item Underlying idea: firms have market power to set wages $\rightarrow$ wages depend upon productivity of the employer $\rightarrow$ MW kicks out ``bad" firms. 
+
+\end{itemize}
+\end{frame}
+\end{document}
+
