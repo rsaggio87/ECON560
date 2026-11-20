@@ -1,0 +1,636 @@
+\documentclass[notes=show]{beamer}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\AtBeginSubsection[
+  {\frame<beamer>{\frametitle{Outline}   
+    \tableofcontents[currentsection,currentsubsection]}}%
+]%
+{
+  \frame<beamer>{ 
+    \frametitle{Outline}   
+    \tableofcontents[currentsection,currentsubsection]}
+}
+\usepackage{ulem}
+\usepackage{pdflscape}
+\setbeamertemplate{caption}{\insertcaption}
+\usepackage{color,xcolor,ucs}
+\usepackage{beamerthemesplit}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{adjustbox}
+\usepackage{pdfpages} 
+\definecolor{mintgreen}{rgb}{0.6, 1.0, 0.6}
+\makeatletter
+\@addtoreset{subfigure}{framenumber}% subfigure counter resets every frame
+\makeatother
+\newcommand*{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
+\newcommand*{\Resize}[2]{\resizebox{#1}{!}{$#2$}}%
+\usepackage{amsfonts}
+\usepackage{booktabs}
+\usepackage{color,soul}
+\usepackage{pdfpages}
+\setboolean{@twoside}{false}
+\usepackage{amsmath}
+\usepackage{pdflscape} 
+\usepackage{eurosym}
+\usepackage{amstext} % for \text
+\DeclareRobustCommand{\officialeuro}{%
+  \ifmmode\expandafter\text\fi
+  {\fontencoding{U}\fontfamily{eurosym}\selectfont e}}
+\usepackage[caption = false]{subfig}
+\usepackage{appendixnumberbeamer} 
+\usepackage{graphicx}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+\usepackage{multimedia}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{verbatim}
+\usepackage{booktabs, multicol, multirow}
+\setcounter{MaxMatrixCols}{10}
+\input{Macros.tex}
+\AtBeginSection[]
+{
+  \begin{frame}[noframenumbering]
+    \frametitle{Outline for section \thesection}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+
+\usepackage{xcolor,soul}
+\renewcommand<>{\hl}[1]{\only#2{\beameroriginal{\hl}}{#1}}
+
+% https://tex.stackexchange.com/questions/41683/why-is-it-that-coloring-in-soul-in-beamer-is-not-visible
+\makeatletter
+\newcommand\SoulColor{%
+  \let\set@color\beamerorig@set@color
+  \let\reset@color\beamerorig@reset@color}
+\makeatother
+\SoulColor
+\AtBeginSection{\frame{\sectionpage}}
+
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+  {\savebox\mybox{#1}\begin{quote}\openautoquote\hspace*{-.7ex}}
+  {\unskip\closeautoquote\vspace*{1mm}\signed{\usebox\mybox}\end{quote}}
+
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{Assumption}[theorem]{Assumption}
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usetheme{Madrid}
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor~~\beamer@ifempty{\insertshortinstitute}{}{(\insertshortinstitute)}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+%    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} % DELETED
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\usepackage[style=british]{csquotes}
+
+\def\signed #1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip1em
+  \hbox{}\nobreak\hfill #1%
+  \parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+  
+\makeatother
+\usepackage{pdfpages}
+\begin{document}
+	\title[]{\large Monopsony		\vspace{0.5cm}
+	}
+	\author[Raffaele Saggio - Econ 560]{Raffaele Saggio}
+	\institute[]{UBC}
+	\date{\today \\}
+	\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%	
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{footline}[frame number]{}
+
+%gets rid of bottom navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+%gets rid of footer
+%will override 'frame number' instruction above
+%comment out to revert to previous/default definitions
+\setbeamertemplate{footline}{}
+\begin{frame}[shrink=5]
+\frametitle{Overview}
+\begin{itemize}
+\item What we learned from papers on MW: effects can be null/positive $\rightarrow$ rejection of perfectly competitive model.
+\medskip
+\item Perfectly competitive model basically assumes a balance of power between firms and workers. Firms, in particular, are ``disciplined" by the market. 
+\medskip
+\pause
+\item But is there a theory that can rationalize why MW might have null or even positive effects on employment?
+\medskip
+\item Yes. Simplest model is Monopsony (Joan Robinson, 1933).
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Jobs in a perfectly competitive model}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/cereali.jpg}
+\end{figure}
+\end{frame}
+%%
+
+\begin{frame}{Explaining Monopsony to your Grandma}
+\pause
+\begin{itemize}
+\item But what is Monopsony in its simplest terms?
+\bigskip
+\item  What happens in a perfectly competitive labor market if a firm decides to pay a wage an $\epsilon$ lower than the ``market" wage $w_{M}$?
+\pause
+\bigskip
+\item Think of an experiment where a firm lower the wage of offered position by a dollar. How many people still apply to that job? How do we measure this in economics? 
+\pause
+\bigskip
+\item Monopsony $\rightarrow$ existence of a firm-specific \textit{labor} supply curve. Firms can lower their wage and not loose all its potential employees. 
+\bigskip
+\item A firms' labor market power $\approx$ elasticity of its own labour supply curve. 
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Monopsony in Motion}
+\begin{itemize}
+\item Define revenue function of a given firm as a function of labor employed as $R(L)$.
+\medskip
+\item Upward labor supply curve given by $w(L)$. 
+\medskip
+\item Firm's problem:
+\be
+\max_{L} R(L)-w(L)L 
+\ee
+\item Optimal employment demanded by firm $j$, $L{*}$, is given by
+\be
+R'(L^{*}) = w'(L^{*})L^{*} + w(L^{*})  
+\ee
+\end{itemize}
+\end{frame}
+%%
+%%
+%%
+%%
+\begin{frame}
+\frametitle{An important Person!}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.6\textwidth]{aux/joan_NYT}
+\end{figure}
+\end{frame}
+\begin{frame}
+\frametitle{An important Person!}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.6\textwidth]{aux/joan_NYT2}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Taking a broader view}
+\begin{itemize}
+\item Monopsony useful way to model imperfect competition in labor markets.
+\pause
+\bigskip
+\item But what does it mean to have an imperfect labor market?
+\pause 
+\bigskip
+\item Imperfect labor market $\rightarrow$ Both employer and/or worker enjoy ``rents" from an employment relationship.
+\bigskip
+\begin{itemize}
+\item Employer: worst off if a worker leaves, hard to replace him/her, $w<MPL$.
+\bigskip
+\item Employee: lost of the current job makes the worker worst off $\rightarrow$ no equal job can be found at zero cost. 
+\end{itemize}
+\bigskip
+\item If labor markets are perfectly competitive $\rightarrow$ employers can substitute equally productive workers at the market wage. 
+\begin{itemize}
+\bigskip
+\item And a worker who looses her job immediately finds an equal one in the labor market. 
+\end{itemize}
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{What generates ``Rents" in a Job?}
+\begin{enumerate}
+\item Job differentiation.
+\medskip
+\item Search models.
+\medskip
+\begin{itemize}
+\item Takes time to be matched (imperfect information about labor markets).
+\medskip
+\item What is exactly that workers/employers do not know? 
+\medskip
+\item Is this still true with Linkedin, Burning glass, etc?
+\medskip
+\end{itemize}
+\item Institutions.
+\medskip
+\begin{itemize}
+\item Unions.
+\item Minimum Wage.
+\item Collective Bargaining.
+\medskip
+\item Employer collusion.
+\end{itemize}
+\end{enumerate}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Non-Competes}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.7\textwidth]{aux/naidu_2010}
+\end{figure}
+Taken from Manning (2011) handbook chapter. 
+\end{frame}
+\begin{frame}
+\frametitle{Non-Competes}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/mon2}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Non-Competes}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.5\textwidth]{aux/sj1}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Non-Competes}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.5\textwidth]{aux/sj2}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{From Krueger and Posner, NYT Feb 2018}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.9\textwidth,height=0.78\textheight,keepaspectratio]{aux/mon1}
+\end{figure}
+\end{frame}
+%%
+%%
+\begin{frame}
+\frametitle{The legacy of Alan Krueger...}
+\begin{columns}[T]
+\begin{column}{0.46\textwidth}
+\centering
+\includegraphics[width=\columnwidth,height=0.70\textheight,keepaspectratio]{aux/mon3}
+\end{column}
+\begin{column}{0.52\textwidth}
+\scriptsize
+\textit{Interference With Employment Relations of Others.} ``During the term of this Franchise, Franchisee shall not employ or seek to employ any person who is at the time employed by McDonald's, any of its subsidiaries, or by any person who is at the time operating a McDonald's restaurant or otherwise induce, directly or indirectly, such person to leave such employment. This paragraph 14 shall not be violated if such person has left the employ of any of the foregoing parties for a period in excess of six (6) months.''
+\par\medskip
+\tiny
+\textcolor{gray}{Source: McDonald's standard franchise agreement, Paragraph 14, as reproduced in Krueger and Ashenfelter (2022), ``Theory and Evidence on Employer Collusion in the Franchise Sector,'' \textit{Journal of Human Resources} 57(S): S324--S348.}
+\end{column}
+\end{columns}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Noncompetes: evidence from a field experiment}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth,height=0.78\textheight,keepaspectratio]{aux/cowgill_starr}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}{Taking Stock}
+\begin{itemize}
+    \item Punch line: if there are ``rents" in a job $\rightarrow$ labor markets are imperfect.
+    \medskip
+    \item Ideal experiment to measure the presence of ``rents"?
+\end{itemize}    
+\end{frame}
+\begin{frame}
+\frametitle{How is the pie divided?}
+\begin{itemize}
+\item Let's take for granted that labor markets are imperfect, i.e. there are rents in a given job. 
+\medskip
+\item The next question is understanding how those rents are split b/w workers and employers. 
+\medskip
+\item Where can we see that?
+\pause
+\bigskip
+\item Two (but there are other) models of wage determination:
+\bigskip
+\begin{enumerate}
+\item Ex-post wage bargaining $\rightarrow$ the wage is split after a match is realized.
+\medskip
+\item Ex-ante wage posting $\rightarrow$ the wage is set unilaterally by the employer before the match is realized.
+\end{enumerate} 
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Bargaining Model}
+\begin{itemize}
+\item Static approach. Assume there are firms that differ in their marginal productivity of labor, $p$. Firms can only hire one worker (from unemployment).
+\bigskip
+\item Worker has a leisure value equal to $b$. A firm of type $p$ chooses the wage, $w$, to maximize an asymmetric Nash bargaining criterion
+\be
+(p-w)^{1-\alpha}(w-b)^{\alpha}
+\ee
+which leads to a wage equation
+\be
+w=\alpha p + (1-\alpha)b
+\ee
+where $\alpha$ is the bargaining power of the worker (exogenous).
+\bigskip
+\item Ex-post efficiency (why?) but not ex-ante efficiency (hold-up problems, Grout, 1984; Acemoglu, 2001).
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Posting Model}
+\begin{itemize}
+\item Wages are set before employers meet potential employees.
+\medskip
+\item For the moment assume that this meeting occurs randomly.
+\medskip
+\item Workers differ in their value of leisure $b$ with distribution function $\tilde{G}(.)$.
+\medskip
+\item Expected profit for firms 
+\be
+\pi(w) = (p-w)G(w).
+\ee
+where $G(w)=1-\tilde{G}(w)$
+\item FOC for wages leads to 
+\be
+w(p) =\dfrac{\varepsilon(w(p))}{1+\varepsilon(w(p))}p
+\ee
+where $\varepsilon$ is the elasticity of the function $G()$ at the (endogenous) point $w(p)$. 
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Discussion of posting models}
+\begin{itemize}
+\item Are all positive surplus matches realized here?
+\medskip
+\item Can employers perfectly price discriminate? 
+\medskip
+\item How should we think of $G(w)$?
+\pause
+\item Suppose that
+\be
+L(w)=G(w) = (w-b_{0})^{\varepsilon}
+\ee 
+which implies that
+\be
+w=\dfrac{\varepsilon}{1+\varepsilon}p+\dfrac{1}{1+\varepsilon}b_{0}
+\ee
+\pause
+$\rightarrow$ elasticity of the labor supply curve to the firm $\approx$ bargaining power of workers
+\end{itemize}
+\end{frame}
+%%
+%%
+\begin{frame}
+\frametitle{Discussion}
+\begin{itemize}
+\item Which model is ``right"?
+\medskip
+\item Very hard question to answer empirically! No bargaining for an observed wage:
+  \medskip
+ \begin{itemize} 
+ \item Is it because it's a posting world or the worker was prevented from bargaining? 
+ \end{itemize}
+  \medskip
+  \pause
+  \item Can you think of a moment in the data that can be used to discriminate between the two theories?
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{The Legacy of Alan Krueger strikes again}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth,height=0.78\textheight,keepaspectratio]{aux/hall_krueger}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.7\textwidth]{aux/syde}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.7\textwidth]{aux/raffa_mas}
+\end{figure}
+\end{frame}
+%%
+%%
+\begin{frame}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.7\textwidth]{aux/raffa_mas}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.7\textwidth]{aux/flinn}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{No model to rule them all}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/lor}
+\end{figure}
+\end{frame}
+%%%%
+
+%%%%
+\begin{frame}
+\frametitle{Estimates of rent sharing}
+\begin{itemize}
+\item Abowd and Lemieux (1993) extension of a basic bargaining model.
+\medskip
+\item $F(N)$ is a revenue function that depends on the number of workers, $N$.
+\medskip
+\item Firms bargain with unions which have preferences $N(w-b)$ over both wages and employment
+\medskip
+\item Wages and employment are chosen to maximize
+\be
+[F(N)-wN]^{1-\alpha}[N(w-b)]^{\alpha}
+\ee
+which leads to
+\be
+F'(N) = b
+\ee
+\be
+w= \alpha \dfrac{F(N)}{N} +(1-\alpha)b
+\ee
+\end{itemize}
+\end{frame}
+%%%%
+\begin{frame}
+\frametitle{Identification}
+\begin{itemize}
+\item Rewriting previous equation
+\be
+w= \alpha \dfrac{F(N)}{N} +(1-\alpha)b
+\ee
+\pause
+\item Would OLS work here?
+\medskip
+\item Which IV would you use here?
+\medskip
+\item Which sample would you use here?
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Some estimates}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.6\textwidth,height=0.78\textheight,keepaspectratio]{aux/review}
+\end{figure}
+\end{frame}
+%%
+
+\begin{frame}
+\frametitle{Dube, Jacobs, Naidu, Suri(2018): Monopsony in online labor markets}
+\begin{itemize}
+\item Emergence of \textit{digital} platforms, e.g. Uber, TaskRabbit or Amazon Mechanical Turk.
+\bigskip
+\item Are these labor markets have a higher/lower degree of market power?
+\bigskip
+\pause
+\item Dube et al. formally test the degree of market-power in Amazon Mechanical Turk platform. 
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/turk3}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/turk}
+\end{figure}
+\end{frame}
+\begin{frame}
+\frametitle{Dube, Jacobs, Naidu, Suri(2018): Monopsony in online labor markets}
+\begin{itemize}
+\item Scraped the universe of tasks (HIT) posted on Amazon MTurk.
+\bigskip
+\item Also used data from previous experiments where other people have randomized the wage associated to a given task posted on Amazon MTurk. 
+\bigskip
+\pause
+\item Nice methodological contribution: comparison of experimental estimates with traditional regression techniques (Fixed effects regressions) as well as Machine Learning Techniques (Double Machine Learning Lasso covered in 628). 
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Monopsony in a task market}
+\begin{itemize}
+\item Go back to our original discussion on monopsony. 
+\medskip
+\item Suppose an employer posts a job in MTurk that is 1 dollar (per hour) lower than all the jobs observed in the platform. 
+\medskip 
+\item Why do you think someone might take such a job? 
+\medskip
+\end{itemize}
+\end{frame}
+%%
+%%
+\begin{frame}
+\frametitle{Empirical model}
+\begin{itemize}
+\item Scraper from 2014-2017 of MTurk platoform
+\medskip
+\item $duration_{h}\equiv$ how long a task remained in the platform. 
+\item $reward_{h}\equiv$ observed reward for completing the task. 
+\medskip
+\item First empirical model (FE):
+\be
+\log(duration_{h}) = -\eta_{1}\log(reward_{h})+\rho_{r(h)} + \tau_{t(h)} + \delta_{d(h)} + \epsilon_{h}
+\ee
+$\rho_{r(h)}\equiv$ requester's FE.
+$\delta_{d(h)}\equiv$ deciles of the time allotted by the requester.
+  $\tau_{t(h)}\equiv$ time fixed effect
+\item Double-ML:
+\be
+\log(duration_{h}) = -\eta_{1}\log(reward_{h})+\underbrace{g(Z_{h})}_{\E[\log(duration_{h})\vert Z]}+ \epsilon_{h}
+\ee
++experimental evidence.
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}{Rich set of features}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth,height=0.78\textheight,keepaspectratio]{aux/turk1}
+\end{figure}
+\end{frame}
+\begin{frame}{Rich set of features}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth,height=0.78\textheight,keepaspectratio]{aux/turk2}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{FWL 2.0 }
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{aux/dube11}
+\end{figure}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{FE $\approx$ ML}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth,height=0.56\textheight,keepaspectratio]{aux/dube12}
+\end{figure}
+\vfill
+\footnotesize
+Not in Table 1: using the \emph{experimental} data, the precision-weighted mean labour supply elasticity facing a requester is \textcolor{red}{$0.14$}. The pooled recruitment elasticity on its own is $0.06$, against the $0.08$ of the preferred double-ML specification.
+\par\smallskip
+\tiny
+\textcolor{gray}{Source: Dube, Jacobs, Naidu and Suri (2020), ``Monopsony in Online Labor Markets,'' \textit{American Economic Review: Insights} 2(1): 33--46. The $0.14$ is the precision-weighted mean experimental elasticity reported in Figure 2 of the NBER WP 24416 version of the paper.}
+\end{frame}
+%%%%
+\end{document}
+
