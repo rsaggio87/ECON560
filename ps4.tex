@@ -1,0 +1,140 @@
+%% LyX 2.4.1 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in,headheight=1in,headsep=1in,footskip=1in}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{xurl}
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\date{Due: December 10th 11.59pm.
+}
+% Added by lyx2lyx
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\title{Econ560: Problem Set 4}
+\maketitle
+\begin{center}
+Send solution to rsaggio@mail.ubc.ca.
+
+\par\end{center}
+
+\bigskip{}
+
+1. In the Burdett-Mortensen model, firms are indifferent between wage
+levels and play a mixed wage strategy. This question asks whether
+a static wage posting model can yield similar indifference to wage
+levels.
+
+Suppose a monopsonistic firm faces a labor supply schedule $L\left(w\right)$,
+a linear production technology, and a constant output price $P$ so
+that its profit function is:
+\[
+\pi\left(w\right)=PL\left(w\right)-wL\left(w\right)
+\]
+
+a) Derive the first order condition for a profit maximizing wage
+
+b) Propose a labor supply schedule $L\left(w\right)$ such that the
+profit function is insensitive to the wage.
+
+c) Does your answer to b) imply an elasticity of labor supply to the
+firm that is increasing or decreasing in the wage? Do you think this
+is empirically plausible? Why or why not?
+
+d) Use your answer to b) to plot the inverse labor supply function
+$L^{-1}\left(w\right)=w\left(L\right)$ in a graph where the y-axis
+is the wage and the x-axis is $L$. Also plot the marginal factor
+cost in this graph and the inverse labor demand schedule. What features
+of this graph allow for multiple equilibria?
+
+e) Working again with the supply locus in part b), suppose the firm
+starts at wage $w^{*}<P/2$. What happens to employment (i.e. ``firm
+size'') if a minimum wage is introduced at $\frac{P}{2}$? Provide
+a graph illustrating your answer.
+
+
+\bigskip{}
+
+2. (Hint: It is useful to read Sorkin (2018) before attempting to answer this question)
+Suppose that utility from being employed by a given firm $j$ is equal to
+\begin{equation}
+    V_{j} = \log(\psi_{j}) + \phi \log(a_{j})
+\end{equation}
+where $\phi>0$; $\psi_{j}$ is the pay offered by firm $j$ to its employees and $a_{j}$ is some unobserved amenity offered by firm $j$. Each firm is endowed with some level of productivity $p_{j}$ and costs of supplying the amenity equal to $c_{j}$ so that firm $j$ profits are given by
+
+\begin{equation}
+    \pi_{j}(\psi_{j},a_{j}) = p_{j}-c_{j}a_{j}-\psi_{j}.
+\end{equation}
+Furthermore, each firm in this model is endowed with different levels of utility provisions, $\bar{V}_{j}$. Effectively, this means that in order to operate in the labor market, each firm needs to offer at least $\bar{V}_{j}$ utils to workers.
+
+a) Derive an expression for $\log(\psi_{j})$ and $\log(a_{j})$ set by firm $j$.
+
+b) Suppose all firms offer the same level of utility: $\bar{V}_{j}=\bar{V}$, $\forall j$. What is the implied correlation b/w $\log(\psi_{j})$ and $\log(a_{j})$? What is the intuition behind this result?
+
+c) Suppose all firms have the same technology in delivering the amenity $a_{j}$: $c_{j}=\bar{c} \forall j$. What is the implied correlation b/w $\log(\psi_{j})$ and $\log(a_{j})$? What is the intuition behind this result?
+
+d) Derive a general expression for $Cov(\log(\psi_{j}),\log(a_{j}))$. Is it possible that this covariance is positive? Give some intuition for why that might be the case and comment your result in light of the compensating differential theory discussed in class.
+
+e) Suppose that you have data on $\psi_{j}$ and $\bar{V}_{j}$. Consider the regression of $\log(\psi)_{j}$  on $\bar{V}_{j}$ (and a constant). Write down an expression for the slope coefficient obtained from this regression. Does that regression coefficient identify any structural parameter?
+
+f) Now consider the residual from a regression of $\log(\psi_{j})$  on $\bar{V}_{j}$. Express the variance of this residual in terms of variances and covariances of $c_{j}$ and $\bar{V}_{j}$. In the lens of this model, what does this variance represent? Can one, therefore, identify the percentage of the variance in firm-pay that is driven by what Sorkin (2018) calls ``Rosen-Motives"?
+
+\bigskip{}
+3) (\textbf{AKM}) At this link I created for you a computer generated pseudo matched employer-employee dataset \url{https://www.dropbox.com/s/0xppet65s9aaahm/fake_matched_employer_employee.csv?dl=1}. These data contain 15 million person-year observations so make sure to use a computer with sufficient memory. In these data, each person-year observation provides information on log daily wages of individual $i$ in year $t$, denoted as $w_{it}$, as well as  characteristics of the individual (e.g. gender) and the identity of the employer (``firmid") of individual $i$ in period $t$ which we will denote via the function $J(i,t)$ discussed in class. Notice that this panel is unbalanced. Some workers might be observed in period $t$ and period $t+2$ but not in period $t+1$.). The data span the years 1985 to 2001. In parts a) through f), use \emph{all} the years from 1996 to 2001, i.e. the six years $t\in\{1996,1997,1998,1999,2000,2001\}$, and drop any observation outside that window; from part g) onwards you will instead use the full 1985--2001 span.
+\\ \\
+a) Define an ``event", $t_{i}^{*}$ as year $t$ such that $J(i,t)\neq J(i,t-1)$ and $J(i,t-2)=J(i,t-1)$ and $J(i,t+1)=J(i,t_{i})$. Explain what this event is designed to capture.
+
+b) Calculate
+
+\begin{equation}
+    \bar{w}_{-it} = \dfrac{1}{\sum_{\ell,t ; \ell \neq i}\mathbf{1}\{J(\ell,t)=J(i,t)\}}\sum_{\ell,t; \ell \neq i}w_{\ell,t}\mathbf{1}\{J(\ell,t)=J(i,t)\}.
+\end{equation}
+Explain in plain english what is $\bar{w}_{-it}$ capturing.
+
+c) Consider the sample of individuals where $t_{i}^{*}$ is non-missing. For each event, define the origin employer as $J(i,t^{*}_{i}-1)$ and the destination employer as   $J(i,t^{*}_{i})$. Next, calculate quartiles of the measure defined in part b) in this sample and assign both origin and destination employer to one of these quartiles. Do workers mostly transition from employers in the same quartiles or different ones? Are the number of transitions roughly uniform across the different possible 16 combinations of origin-destination buckets? Is the lack of uniformity a problem for the AKM model discussed in class?
+
+Now divide the set of employers based on quartiles of $\bar{w}_{-it}$. Plot the resulting number of workers transitioning from various quartiles
+
+d) Plot the evolution of (average) log wages in $t^{*}_{i}-2; t^{*}_{i}-1;t^{*}; t^{*}+1$ for workers transitioning from employers in the bottom quartile of the measure defined in part b to employers in the top quartile. Do the same for workers moving in the opposite direction. Do the wage changes between $t^{*}+1$ and $t^{*}_{i}-2$ appear symmetric?
+
+e) Is there evidence of pre-trends in the picture that you have derived in part (d)? Comment.
+
+f) Try to visualize the existence of symmetric wage responses from job transitions from all the 16 types of moves that you can observed in the data. What do you conclude based on this graph?
+
+g) (\textbf{AKM across three intervals}) From here on, use the \emph{entire} 1985--2001 span of the data. Partition the sample period into the three intervals
+\[
+I_{1}=\{1985,\dots,1990\},\qquad I_{2}=\{1991,\dots,1995\},\qquad I_{3}=\{1996,\dots,2001\},
+\]
+and, \emph{separately within each interval}, estimate the AKM model
+\begin{equation}
+w_{it}=\alpha_{i}+\psi_{J(i,t)}+x_{it}'\beta+\varepsilon_{it},
+\end{equation}
+where $x_{it}$ contains a full set of year effects and the square of age, normalized as $\left(\frac{age_{it}-40}{10}\right)^{2}$. Estimating the model interval by interval means that the worker effects $\alpha_{i}$, the firm effects $\psi_{j}$ and the coefficients $\beta$ are all allowed to differ across intervals.
+
+Report, for each interval, the number of person-year observations, the number of distinct workers and distinct firms, the number of movers, and the share of the sample that survives once you restrict attention to the leave-one-out connected set.
+
+h) For each interval, report the plug-in (i.e. uncorrected) estimates of the three variance components
+\[
+Var(\alpha_{i}),\qquad Var(\psi_{J(i,t)}),\qquad 2Cov(\alpha_{i},\psi_{J(i,t)}),
+\]
+together with their bias-corrected counterparts. Now plot the three bias-corrected components across the three intervals, with the intervals on the x-axis and one line per component, and show the corresponding plug-in estimates in the same figure.
+
+i) What do you conclude about the evolution of wage inequality between 1985 and 2001? Specifically: how much of the change in the variance of log wages over this period is accounted for by workers, how much by firms, and how much by the sorting of workers to firms? Would you have reached the same conclusion had you looked only at the plug-in (i.e. without the bias-correction) estimates?
+
+\medskip{}
+
+\emph{Hint.} To find the leave out connected set and derive the bias correction for variance components, read Kline, Saggio and S{\o}lvsten (2020), ``Leave-Out Estimation of Variance Components,'' \emph{Econometrica} 88(5): 1859--1898. You do not need to code the correction from scratch: implementations are available in MATLAB, in R (the \texttt{LeaveOutKSS} package on CRAN) and in Python. \emph{Extra points} if you instead use the recent Stata implementation, \texttt{fevc}, written by Johannes F. Schmieder (Boston University) and documented in NBER Working Paper 35948. Install it from within Stata with \texttt{ssc install fevc}; the package and its documentation live at \url{https://github.com/johannes-schmieder/fevc}. Please let me know if you have any feedback on your experience using this package!
+
+
+
+
+\end{document}
