@@ -544,6 +544,156 @@ w= \alpha \dfrac{F(N)}{N} +(1-\alpha)b
 \end{frame}
 %%
 
+%%%% ---- begin CCHK block, brought over from Firms.tex ----
+\begin{frame}
+\label{cchk}
+\frametitle{Card, Cardoso, Heining and Kline (2018)}
+\begin{itemize}
+\item Wages are set by employers to maximize profits, subject to labour supply constraints. 
+\medskip
+\item No search frictions, No ``unemployment".
+ \medskip
+ \item Workers value employers differently. This gives firms ``market power".
+  \medskip
+  \item CCHK model provides an important theoretical framework to link together rent sharing, monopsony models and firm inequality literature (next topic). 
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Setup}
+\begin{itemize}
+\item $J$ firms and two types of workers: $L$ and $H$. 
+\medskip
+\item Each firm \underline{posts} a pair of wages $(w_{L_{j}},w_{H_{j}})$
+ \medskip
+ \item Workers observe the wages (costlessly). 
+  \medskip
+  \item Firms provide different ``workplace" environments over which workers have heterogenous preferences
+  \be
+  u_{i,S,j} = \beta_{S}\log(w_{S_{j}}-b_{S})+a_{S_{j}} + \epsilon_{i,S,j}
+  \ee
+  \item   $u_{i,S,j}$ indirect utility of worker $i$ in skill group $S$ if she works for firm $j$.
+    \item   $w_{S_{j}}$ wage offered by firm $j$ to individuals in group $S$.
+        \item   $b_{S}$ outside offer (e.g. wage paid in competitive industry).
+         \item   $\epsilon_{i,S,j}$ idiosyncratic preferences (Type-I distributed). 
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}[shrink=20]
+\frametitle{Setup}
+\begin{itemize}
+\item Probability that a worker of type $S$ will show up at firm $j$ if this firm sets wage $w_{S_{j}}$?
+\be
+p_{S_{j}} \equiv \Pr\left(\argmax_{k\in\{0,\hdots,J\}}u_{iSk}=j\right) =\dfrac{\exp(\beta_{S}\log(w_{S_{j}}-b_{S})+a_{S_{j}})}{\sum_{k=1}^{J}\exp(\beta_{S}\log(w_{S_{k}}-b_{S})+a_{S_{k}})}
+\ee
+\item Trick: If $J$ is large then logit probabilities are well approximate by exponential probabilities
+\be
+p_{S_{j}} = \lambda_{S}\exp(\beta_{S}\log(w_{S_{j}}-b_{S})+a_{S_{j}})
+\ee
+where $\lambda_{S}$ constant common across all firms.
+\medskip
+\item If there is a total of $\mathcal{L}$ of low-skilled workers, then the labor supply of low-skilled workers that firm $j$ faces is given by
+\be
+\log(L_{j}(w_{L_{j}}))=\log(\lambda_{L}\mathcal{L}) + \beta_{L}\log(w_{L_{j}}-b_{L}) + a_{L_{j}}
+\ee
+Similarly for high-skilled workers
+\be
+\log(H_{j}(w_{H_{j}}))=\log(\lambda_{L}\mathcal{H}) + \beta_{H}\log(w_{H_{j}}-b_{H}) + a_{H_{j}}
+\ee
+\end{itemize}
+\end{frame}
+%%%%
+%%
+\begin{frame}
+\frametitle{Firm Optimization}
+\begin{itemize}
+\item Firms cannot observe workers' preferences but have knowledge of their supply function.
+\medskip
+\item Assume that firms are price takers in the product market for the moment
+\medskip
+\item Output is produced according to
+\be
+Y_{j} = T_{j}f(L_{j},H_{j})
+\ee
+\medskip
+\item where f(.,.) has CRS and we let $f_{S}\equiv\dfrac{\partial f(L_{j},H_{j})}{\partial S}$ for $S\in\{H,L\}$
+\medskip
+\pause
+\item Firm problem
+\be
+\min_{w_{L_{j}},w_{H_{j}}} w_{L_{j}}L_{j}(w_{L_{j}}) + w_{H_{j}}H_{j}(w_{H_{j}}) \qquad s.t. T_{j}f(L_{j}(w_{L_{j}}),H_{j}(w_{H_{j}})) \geq \bar{Y}
+\ee
+\end{itemize}
+\end{frame}
+%%%%
+\begin{frame}
+\frametitle{Back to something familiar...}
+\begin{itemize}
+\item Taking FOC and rearranging, we obtain that
+\be
+w_{S_{j}} = \dfrac{1}{1+\beta_{S}}b_{S} + \dfrac{\beta_{S}}{1+\beta_{S}}T_{j}f_{S}\underbrace{\mu_{j}}_{\text{Marginal Cost of production}}
+\ee
+\medskip
+\item What happens as $\beta_{S}\rightarrow\infty?$
+\medskip
+\item Who is capturing rents here and why? 
+\medskip
+\item Are amenities influencing the wage? Is this a standard compensating differential story?
+\end{itemize}
+\end{frame}
+%%%%
+\begin{frame}
+\frametitle{A simple benchmark: linear production function}
+\begin{itemize}
+\item Suppose that we have a linear production function and that a firm faces a fixed output price $P_{j}^{0}$.
+\be
+Y_{j} = T_{j} N_{j}=T_{j}((1-\theta)L_{j}+\theta H_{j})
+\ee
+\medskip
+\item Expression for wage of low skilled then becomes:
+\be
+w_{L_{j}} = \dfrac{1}{1+\beta_{L}}b_{L} + \dfrac{\beta_{L}}{1+\beta_{L}}T_{j}P_{j}^{0}(1-\theta)
+\ee
+\item Further assume that $b_{L}=(1-\theta)b$ and $b_{H}=\theta b$. Then
+\be
+\ln w_{L_{j}} = \ln \dfrac{(1-\theta)b}{1+\beta_{L}} + \ln(1+\beta_{L}R_{j})
+\ee
+\be
+\ln w_{H_{j}} = \ln \dfrac{\theta b}{1+\beta_{H}} + \ln(1+\beta_{H}R_{j})
+\ee
+where $R_{j}\equiv \dfrac{T_{j}P_{j}^{0}}{b}$
+\end{itemize}
+\end{frame}
+%%%%
+\begin{frame}
+\frametitle{Discussion of the CCHK model}
+\begin{enumerate}
+\item No dynamics. 
+\bigskip
+\item No interactions $\rightarrow$ but if it is a small market a shock to a firm's productivity will affect all other firms! 
+\bigskip
+\item No compensating differentials! (will come back to this)
+\end{enumerate}
+\end{frame}
+%%%%
+\begin{frame}
+\frametitle{What is the punch line?}
+\begin{itemize}
+\item Monopsonistic posting wage models $\rightarrow$ firms suddenly matters to explain wage inequality $\rightarrow$ typically neglected in SBTC and S-D-I models
+\medskip
+\item These ``firm effects" are going to be highly correlated with measures of firm productivity.
+\medskip
+\item Firm effects only arise due to the presence of ``frictions" in the labor market.  
+\medskip
+\item Many things can generate monopsony power of firms!
+\medskip
+\item Key insight: we can infer degree of market power of firms by looking at magnitude of pass-through of ``productivity" shocks into wages. 
+\medskip
+\item Example that do this really well:  Kline, Petkova, Williams, Zidar (2019); Garin and Silverio (2023)
+\end{itemize}
+\end{frame}
+%%%% ---- end CCHK block ----
+%%
 \begin{frame}
 \frametitle{Dube, Jacobs, Naidu, Suri(2018): Monopsony in online labor markets}
 \begin{itemize}
