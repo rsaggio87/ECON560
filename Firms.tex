@@ -1,0 +1,1600 @@
+\documentclass[notes=show]{beamer}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\AtBeginSubsection[
+  {\frame<beamer>{\frametitle{Outline}   
+    \tableofcontents[currentsection,currentsubsection]}}%
+]%
+{
+  \frame<beamer>{ 
+    \frametitle{Outline}   
+    \tableofcontents[currentsection,currentsubsection]}
+}
+\usepackage{ulem}
+\usepackage{pdflscape}
+\setbeamertemplate{caption}{\insertcaption}
+\usepackage{color,xcolor,ucs}
+\usepackage{beamerthemesplit}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{adjustbox}
+\usepackage{pdfpages} 
+\definecolor{mintgreen}{rgb}{0.6, 1.0, 0.6}
+\makeatletter
+\@addtoreset{subfigure}{framenumber}% subfigure counter resets every frame
+\makeatother
+\newcommand*{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
+\newcommand*{\Resize}[2]{\resizebox{#1}{!}{$#2$}}%
+\usepackage{amsfonts}
+\usepackage{booktabs}
+\usepackage{color,soul}
+\usepackage{pdfpages}
+\setboolean{@twoside}{false}
+\usepackage{amsmath}
+\usepackage{pdflscape} 
+\usepackage{eurosym}
+\usepackage{amstext} % for \text
+\DeclareRobustCommand{\officialeuro}{%
+  \ifmmode\expandafter\text\fi
+  {\fontencoding{U}\fontfamily{eurosym}\selectfont e}}
+\usepackage[caption = false]{subfig}
+\usepackage{appendixnumberbeamer} 
+\usepackage{graphicx}
+\usepackage{mathpazo}
+\usepackage{hyperref}
+\usepackage{multimedia}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{verbatim}
+\usepackage{booktabs, multicol, multirow}
+\setcounter{MaxMatrixCols}{10}
+\input{Macros.tex}
+\AtBeginSection[]
+{
+  \begin{frame}[noframenumbering]
+    \frametitle{Outline for section \thesection}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\usepackage[style=british]{csquotes}
+\usepackage{xcolor,soul}
+\renewcommand<>{\hl}[1]{\only#2{\beameroriginal{\hl}}{#1}}
+
+% https://tex.stackexchange.com/questions/41683/why-is-it-that-coloring-in-soul-in-beamer-is-not-visible
+\makeatletter
+\newcommand\SoulColor{%
+  \let\set@color\beamerorig@set@color
+  \let\reset@color\beamerorig@reset@color}
+\makeatother
+\SoulColor
+\AtBeginSection{\frame{\sectionpage}}
+
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+  {\savebox\mybox{#1}\begin{quote}\openautoquote\hspace*{-.7ex}}
+  {\unskip\closeautoquote\vspace*{1mm}\signed{\usebox\mybox}\end{quote}}
+
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{Assumption}[theorem]{Assumption}
+\newenvironment{stepenumerate}{\begin{enumerate}[<+->]}{\end{enumerate}}
+\newenvironment{stepitemize}{\begin{itemize}[<+->]}{\end{itemize} }
+\newenvironment{stepenumeratewithalert}{\begin{enumerate}[<+-| alert@+>]}{\end{enumerate}}
+\newenvironment{stepitemizewithalert}{\begin{itemize}[<+-| alert@+>]}{\end{itemize} }
+\usetheme{Madrid}
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor~~\beamer@ifempty{\insertshortinstitute}{}{(\insertshortinstitute)}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+%    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} % DELETED
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+\usepackage{pdfpages}
+\usepackage[style=british]{csquotes}
+\title{Firms as Wage Setters}
+\author{Raffaele Saggio}
+\date{UBC}
+
+\def\signed #1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip1em
+  \hbox{}\nobreak\hfill #1%
+  \parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+  {\savebox\mybox{#1}\begin{quote}}
+  {\vspace*{1mm}\signed{\usebox\mybox}\end{quote}}
+%\AtBeginSection[]
+%{
+%  \begin{frame}
+%    \frametitle{Table of Contents}
+%    \tableofcontents[currentsection]
+%  \end{frame}
+%}
+
+\begin{document}
+\begin{frame}[plain]
+	\titlepage
+\end{frame}
+
+\stretchon
+\begin{frame}
+\frametitle{Introduction}
+\begin{itemize}
+\item What drives variation in wages?
+\bigskip
+\item Traditional view: 
+\medskip
+\begin{enumerate}
+\pause
+\item Trends in wage inequality driven by changes in market level skill prices. \\ {\tiny{Katz and Autor (1999); Acemoglu and Autor, (2011)}}.
+\pause
+\medskip
+\item Labor market institutions might provide barriers to price adjustments. \\ {\tiny{DiNardo, Fortin and Lemieux (1994).}}
+\pause
+\medskip
+\item No role for firms.
+\end{enumerate}
+\bigskip
+\pause
+\item ``Monopsony" view: 
+\begin{enumerate}
+\bigskip
+\item Employers have considerable latitude to set wages. {\tiny{Robison 1933}}. 
+\medskip
+\item Firm heterogeneity influences not only who is hired but also the corresponding level of pay.
+\end{enumerate}
+\pause
+\bigskip
+\item Today: discuss the importance of firms in wage settings.
+\medskip
+\begin{itemize}
+\item Much progress in recent years (matched employer-employee datasets).
+\end{itemize}
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Yet they move (together)}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.35]{aux/barth}
+	\end{center}
+\end{columns}
+\end{frame}
+%%
+
+\begin{frame}[shrink=20]
+\frametitle{Outline}
+\begin{enumerate}
+\item Empirical studies of Industry Wage Differentials.
+\medskip
+\begin{itemize}
+\item Slitcher (1950);
+\medskip
+\item Krueger and Summers (1989); 
+\medskip
+\item Gibbons and Katz (1992).
+\medskip
+\end{itemize}
+\pause
+\medskip
+\item The arrival of matched employer-employee datasets: 
+\pause
+\medskip
+\begin{itemize}
+\item Abowd, Kramarz and Margolis (1999)
+\medskip
+\item Card, Heining and Kline (2013).
+\medskip
+\item Song, Price, Guvenen, Bloom and von Wachter (2018).
+\end{itemize}
+\medskip
+\pause
+\item Microfounding the role of Firms in the Labor Market.
+\begin{itemize}
+\medskip
+\item Card, Cardoso, Heining and Kline (2018).
+\medskip
+\item Sorkin (2018).
+\end{itemize}
+\medskip
+\item Applications.
+\begin{itemize}
+\item Gender gaps.
+\item Temp/Outsourced workers.
+\item Job displacement.
+\end{itemize}
+\end{enumerate}
+\end{frame}
+\begin{frame}\centering
+		\includegraphics[scale=0.5]{aux/joke}
+\end{frame}
+\begin{frame}[plain]
+\frametitle{Where It All Started? Slitcher (1950)}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.3]{aux/Slichter}
+	\end{center}
+\end{columns}
+\end{frame}
+%%
+\section{Industry Wage Differentials}
+%%
+\begin{frame}[plain]
+\frametitle{Slitcher (1950)}
+\begin{itemize}
+\medskip
+\item Studies the wage structure of low skilled men in Boston using plant-level survey. 
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.28]{aux/Slichter2}
+	\end{center}
+\end{columns}
+
+\end{itemize}
+\end{frame}
+\begin{frame}[plain]
+\frametitle{Findings}
+\begin{itemize}
+\item Slitcher (1950) documents 7 empirical regularities for wages of unskilled men:
+\bigskip
+\begin{enumerate}
+\item Positive correlation with wages of skilled co-workers.
+\item Negative correlation with \% females.
+\item Positive correlation with industry value added / worker hour.
+\item Positive correlation with sales / worker hour.
+\item Negative correlation with payroll / sales.
+\item Positive correlation with value added / sales.
+\item High correlation of industry wage rank over time.
+\end{enumerate}
+\bigskip
+\item Conclusion: managerial wage policies are important to understand dispersion of wages across industries.
+\pause
+\bigskip
+\bigskip
+\item Discussion:
+\medskip
+\begin{itemize}
+\item Worker pay correlates with productivity differences.
+\medskip
+\item Does this mean that firms share ``rents" with workers? 
+\medskip
+\item or these correlations simply reflect worker sorting?
+\end{itemize}
+\end{itemize}
+\hyperlink{ks}{\beamerbutton{Industry Wage Differentials literature}} 
+\end{frame}
+%%%
+\begin{frame}
+\label{ks}
+\frametitle{Krueger and Summers (1989)}
+\pause
+\begin{itemize}
+\medskip
+\item Exploit longitudinal variation on workers.
+\medskip
+\item ``Experiment": workers switching industries $\rightarrow$ industry wage premium 
+\pause
+\medskip
+\item Question: are OLS estimates of industry wage premia $\approx$ to Fixed effects estimates?
+\medskip
+\item Useful to assess biases due to sorting in measuring industry wage premia.
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Very similar estimates across methods!}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.45]{aux/krueger}
+	\end{center}
+\end{columns}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{No evidence of compensating differentials}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.22]{aux/krueger2}
+	\end{center}
+\end{columns}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{People don't quit high paying industries}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.29]{aux/krueger3}
+	\end{center}
+\end{columns}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Gibbons and Katz (1992): Endogenous mobility}
+\begin{itemize}
+\item Fixed Effects estimates from ``switchers" design can still be biased 
+\medskip
+\item Idea:
+\medskip
+\begin{itemize}
+\medskip
+\item Talent is unknown ex-ante. 
+\medskip
+\item When talent is revealed, the good worker moves to the high productive industry and gets a wage bump.
+\medskip
+\item Interpretation: not rents getting shared but revelation of talent + sorting on match effects!
+\end{itemize}
+\medskip
+\pause
+\item Solution: Exploit ``exogenous" separations. 
+\medskip
+\item Plant closings in CPS Displaced Worker Survey.
+\medskip
+\item Same exercise as Krueger and Summers (1989): compare FE with OLS.
+\end{itemize}
+\end{frame}
+%%
+
+%%
+\begin{frame}
+\frametitle{FE estimates $\approx$ Cross Sectional Estimates}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.275]{aux/katz}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{Summing up}
+\begin{itemize}
+\item (Plant Closing sample): Slope is 0.79 with $R^{2}=0.72$.
+\medskip
+\item (Layoff sample): Slope is 0.97 with $R^{2}=0.81$.
+\medskip
+\item Evidence is therefore: 
+\medskip
+\begin{itemize}
+\item Hard to reconcile with a story of talent revelation/sorting on match effects.
+\item More in line with a true ``industry wage effects model". 
+\end{itemize}
+\end{itemize}
+\end{frame}
+%%
+%%
+\section{Evidence from Matched Employer-Employee Data}
+%%
+%%%
+\begin{frame}
+\frametitle{Abowd, Kramarz and Margolis (1999)}
+\begin{itemize}
+\item Questions:
+\begin{enumerate}
+\medskip
+\item Are there big pay differences across firms within industry?
+\item Does where you work ultimately matter for how much you earn?
+\medskip
+\end{enumerate}
+\item The AKM model (Two-Way Fixed Effects Model)
+\be
+y_{it}=\underbrace{\alpha_{i}}_{\text{Person Effects}}+\underbrace{\psi_{J(i,t)}}_{\text{Firm Effects}}+ W_{it}^{\top}\gamma+r_{it}
+\ee
+\item $\alpha_{i}\equiv$ worker ``ability", rewarded equally at all firms.
+\item $\psi_{J(i,t)}\equiv$ Firm effect, i.e. firm $j$ pays constant $\psi_{j}$ above/below reference firm to \textit{all employees}.  
+\item $W_{it}^{\top}\gamma\equiv$ economy wide changes in returns to education/experience.  
+\pause
+\medskip
+\item Immense computational challenge for 90's technologies. 
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Two-Way Fixed Effects}
+\begin{itemize}
+\item Rewrite model in matrix notation
+\be
+\underbrace{y}_{n\times 1} = \underbrace{D}_{n \times G}\alpha +  \underbrace{F}_{n \times J} \psi + \underbrace{W}_{n \times P}\gamma + \underbrace{r}_{n\times 1}  = X\beta + r
+\ee
+\item
+\medskip $T_{g}\equiv$ Total number of periods in which we observe worker $g$.
+\item $n=\sum_{g=1}^{G}T_{g}$ $\equiv$ Total number of observations.
+\medskip
+\item $K=G + J + P$ $\equiv$ Total number of parameters to be estimated. 
+\medskip
+\item AKM framework extends to various setups (doctors-patients, teachers-students, etc).
+\medskip
+\item Builds on two fundamental assumptions:
+\be
+\label{KEY}
+\underbrace{\E[\varepsilon \vert D, F] = 0}_{\text{Exogenous Mobility}}; \qquad \underbrace{rank(X^{\top}X)=K-1}_{\text{Invertibility}}; 
+\ee 
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Abowd, Creecy and Kramarz (2002): Invertibility Condition}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.3]{aux/akm0}
+	\end{center}
+\end{columns}
+\pause
+\begin{itemize}
+\medskip
+\item Can I identify $\psi_{3}-\psi_{1}$? (Suppose no-covariates for simplicity)
+\pause
+\medskip
+\item Yes! Just use  $\E[\Delta y_{3}+ \Delta y_{1}]$
+\end{itemize}
+\end{frame}
+%%
+%%
+\begin{frame}
+\frametitle{Invertibility Condition}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.3]{aux/akm0}
+	\end{center}
+\end{columns}
+\pause
+\begin{itemize}
+\medskip
+\item Can I identify $\psi_{5}-\psi_{1}$?
+\pause
+\medskip
+\item No!
+\end{itemize}
+\end{frame}
+%%
+%%
+\begin{frame}
+\frametitle{Focus estimation on the largest connected set}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.3]{aux/akm00}
+	\end{center}
+\end{columns}
+\pause
+\begin{itemize}
+\item In the example above it is possible to identify all firm effects (after normalizing one firm effect to 0).
+\pause
+\medskip
+\item \underline{Punch Line}: (High-Dimensional): Two-Way fixed effects models identified only on connected sets. 
+\medskip
+\item Several algorithms can find connected sets in enormous datasets in very short time
+\end{itemize}
+\end{frame}
+%%
+%%
+
+\begin{frame}
+\frametitle{Results from Abowd, Creecy and Kramarz (2002)}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.24]{aux/akm1}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{Firm effects: explain 30\% of the variance of earnings in France (!)}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.24]{aux/akm2}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{Correlation of Firm and Person effects: Negative (!)}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.24]{aux/akm3}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{Discussion}
+\begin{itemize}
+\item Abowd, Creecy and Kramarz (2002) find that firms wage policies explain b/w 20-30\% of the variation in wages.
+\medskip
+\item Worker and Firm fixed effects are negatively correlated $\rightarrow$ negative assortative matching?
+\medskip
+\item Abowd, Creecy and Kramarz (2002) studies a 1/25th sample for France. 1/10th sample from Washington data.
+\medskip
+\item Abowd, Lengermann and McKinney (2003): use 100\% file from LEHD (7 States).
+\bigskip
+\begin{enumerate}
+\item Firm effects explain 16\% of the variance in wages.
+\item Now firm and worker effects are positively correlated.
+\end{enumerate}
+\item Why this change in the estimates? Manifestation of sampling error/Limited Mobility biases $\rightarrow$ will get back to this in the applied econometrics part of the course. 
+
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Card, Heining and Kline (2013)}
+\begin{itemize}
+\item Universe of German social security records 1985-2009 (more than 400 million person-year observations)
+\medskip
+\item Studies \underline{changes} of the German wage structure. 
+\medskip
+\pause
+\item This paper shifted the paradigm ($>$1000 GS citations):
+\begin{itemize}
+\item Before: Supply + Demand + Institutions.
+\item CHK: Need S + D + I + F where F stands for Firms/Frictions. 
+\end{itemize}
+\medskip
+\item Variance decomposition from AKM
+\begin{enumerate}
+\item Estimated over 4 different intervals.
+\item  Each interval provides a ``snapshot" of the labor market.
+\end{enumerate}
+\medskip
+\item Questions:
+\begin{enumerate}
+\item Did sorting change? 
+\item Did importance of firms change?
+\end{enumerate}
+\bigskip
+\item Discussion on endogenous mobility.
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Wage Inequality in Germany}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.35]{aux/chk1}
+	\end{center}
+\end{columns}
+\end{frame}
+%%
+%%
+\begin{frame}
+\frametitle{Discussion on Endogenous Mobility}
+\begin{itemize}
+\item AKM model
+\be
+y_{it} = \alpha_{i} + \psi_{J(i,t)} + W_{it}^{\top}\gamma + r_{it} 
+\ee
+\item CHK characterize the structural error of the AKM model as follows:
+\be
+r_{it}  = \underbrace{m_{i,J(i,t)}}_{\text{Match Effects}} + \underbrace{\nu_{it}}_{\text{Unit Root Component}} + \underbrace{\eta_{it}}_{\text{Transitory Component}}
+\ee
+\item AKM relies on exogenous mobility assumption- see equation (\ref{KEY})
+\medskip
+\item Sufficient condition:
+\be
+\label{ASS}
+\Pr(J(i,t) = j \vert r) = \Pr(J(i,t) = j) = G_{jt}(\alpha_{i},\psi_{1}, \hdots \psi_{J}) \qquad \forall (i,t)
+\ee
+\pause
+\item When is this assumption \underline{not} satisfied?
+\end{itemize}
+\end{frame}
+%%
+%%
+\begin{frame}
+\frametitle{Sources of Endogenous Mobility: Match Component}
+\begin{itemize}
+\item Sorting based on matched component. {\tiny{Roy (1951)}, Gibbons and Katz (1992)}
+\begin{itemize}
+\medskip
+\item Wage changes for movers based on matched component:
+\be
+\begin{aligned}
+& \E[y_{it}-y_{i,t-1}\vert J(i,t) = 2, J(i,t-1) =1]  = \psi_{2} - \psi_{1} +  \\ 
+& + \underbrace{\E[m_{i2}-m_{i1} \vert J(i,t) = 2, J(i,t-1) =1 ]}_{>0 \text{  under positive Roy selection}}
+\end{aligned}
+\ee
+\be
+\begin{aligned}
+& \E[y_{it}-y_{i,t-1}\vert J(i,t) = 1, J(i,t-1) =2]  = \psi_{1} - \psi_{2} +  \\ 
+& + \underbrace{\E[m_{i1}-m_{i2} \vert J(i,t) = 1, J(i,t-1) =2 ]}_{>0 \text{  under positive Roy selection}}
+\end{aligned}
+\ee
+\item AKM instead says
+\be
+\begin{aligned}
+& \E[y_{it}-y_{i,t-1}\vert J(i,t) = 2, J(i,t-1) =1] = \\
+& = - \E[y_{it}-y_{i,t-1}\vert J(i,t) = 1, J(i,t-1) =2]
+\end{aligned}
+\ee
+\pause
+\item We can test for that!
+\end{itemize}
+\end{itemize}
+\end{frame}
+%\appendix
+%%
+\begin{frame}
+\frametitle{CHK Event Study }
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.3]{aux/chk3}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{Wage changes when moving from 4-1}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.3]{aux/chk4}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{Wage changes when moving from 1-4: Roughly symmetric!}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.3]{aux/chk5}
+	\end{center}
+\end{columns}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Sources of Endogenous Mobility: Unit Root Component}
+\begin{itemize}
+\medskip
+\item Drift in the expected wage individual $i$ can receive in period $t$ $(\nu_{it})$ predicts $\Pr(J(i,t) = j)$.  
+\medskip
+\item Example: Learning models (Gibbons et al., 2005).
+\medskip
+\item  Worker $i$ is revealed to be more productive than expected while employed by firm $j$:
+\medskip
+\begin{itemize}
+\item Upward trend in wages while still employed at $j$.
+\medskip
+\item More likely to move in firms that employ high skilled workers. 
+\end{itemize}
+\pause
+\medskip
+\item We can test for that! 
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Back CHK Event Study }
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.3]{aux/chk3}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{No Systematic trends prior to a move!}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.3]{aux/chk6}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{CHK decomposition of Germany Wage Inequality}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.28]{aux/chk7}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{CHK decomposition of Germany Wage Inequality}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.28]{aux/chk8}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{CHK decomposition of Germany Wage Inequality}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.28]{aux/chk9}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{CHK decomposition of Germany Wage Inequality}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.28]{aux/chk10}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{CHK decomposition of Germany Wage Inequality}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.28]{aux/chk11}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{CHK decomposition of Germany Wage Inequality}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.28]{aux/chk12}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{Jobs in High Firm Effects Firms Last Longer }
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.35]{aux/chk13}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{Change in Returns to College Explained by Changes in Firm Effects}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.4]{aux/chk14}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{Cohort Effects in Variation of Firm Effects}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.4]{aux/chk15A}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{New firms are not applying sector-wide collective bargaining agreement?}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.4]{aux/chk15B}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{Distribution of Firm Effects across type of collective bargaining agreements}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.4]{aux/chk16}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{CHK Takeaway}
+\begin{itemize}
+\item AKM as an econometric tool to decompose the wage structure.
+\medskip
+\begin{itemize} 
+\item Decompose gap in wages b/w groups into worker vs. firm component.
+\medskip
+\item Endogenous mobility not so bad?
+\end{itemize}
+\bigskip
+\pause
+\item Inserting the F in the S+D+I paradigm is crucial to understand wage inequality in Germany!
+\medskip
+\begin{itemize}
+\item Firms are becoming more important (wage effects + sorting).
+\medskip
+\item Coincides with institutional changes.
+\medskip
+\item Cohort effects in the variation of firm effects. 
+\end{itemize}
+\end{itemize}
+\end{frame}
+%%
+%%%%%
+\section{Microfounding the Role of Firms in the Labor Market}
+\begin{frame}
+\frametitle{Introduction}
+\begin{itemize}
+\item We have seen that where you work matters for understanding wage inequality.
+\bigskip
+\item This echoes the original monopsony model of Robinson: a firm might have a firm-specific labor supply curve that permits the firm to set a wage that might be different from the ``market" wage.
+\bigskip
+\item But why firms might have a firm-specific labor supply curve? Key elements: (i) idiosyncratic taste heterogeneity (remember the cereal box examples) (ii) inability of firms to observe these idiosyncratic taste factors (no price discrimination).
+\pause
+\bigskip
+\item We now present a ``modern" monospony model that incorporates (i) and (ii) and thus can ``microfound" the presence of a firm-specific labor supply function.   
+\bigskip
+\item Finally, we discuss whether differences in pay across firms simply reflect different amenities that these firms might offer to workers. 
+\end{itemize}
+\end{frame}
+\begin{frame}
+\label{cchk}
+\frametitle{Card, Cardoso, Heining and Kline (2018)}
+\begin{itemize}
+\item Wages are set by employers to maximize profits, subject to labour supply constraints. 
+\medskip
+\item No search frictions, No ``unemployment".
+ \medskip
+ \item Workers value employers differently. This gives firms ``market power".
+  \medskip
+  \item CCHK model provides an important theoretical framework to link together rent sharing, monopsony models and firm inequality literature. 
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Setup}
+\begin{itemize}
+\item $J$ firms and two types of workers: $L$ and $H$. 
+\medskip
+\item Each firm \underline{posts} a pair of wages $(w_{L_{j}},w_{H_{j}})$
+ \medskip
+ \item Workers observe the wages (costlessly). 
+  \medskip
+  \item Firms provide different ``workplace" environments over which workers have heterogenous preferences
+  \be
+  u_{i,S,j} = \beta_{S}\log(w_{S_{j}}-b_{S})+a_{S_{j}} + \epsilon_{i,S,j}
+  \ee
+  \item   $u_{i,S,j}$ indirect utility of worker $i$ in skill group $S$ if she works for firm $j$.
+    \item   $w_{S_{j}}$ wage offered by firm $j$ to individuals in group $S$.
+        \item   $b_{S}$ outside offer (e.g. wage paid in competitive industry).
+         \item   $\epsilon_{i,S,j}$ idiosyncratic preferences (Type-I distributed). 
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}[shrink=20]
+\frametitle{Setup}
+\begin{itemize}
+\item Probability that a worker of type $S$ will show up at firm $j$ if this firm sets wage $w_{S_{j}}$?
+\be
+p_{S_{j}} \equiv \Pr\left(\argmax_{k\in\{0,\hdots,J\}}u_{iSk}=j\right) =\dfrac{\exp(\beta_{S}\log(w_{S_{j}}-b_{S})+a_{S_{j}})}{\sum_{k=1}^{J}\exp(\beta_{S}\log(w_{S_{k}}-b_{S})+a_{S_{k}})}
+\ee
+\item Trick: If $J$ is large then logit probabilities are well approximate by exponential probabilities
+\be
+p_{S_{j}} = \lambda_{S}\exp(\beta_{S}\log(w_{S_{j}}-b_{S})+a_{S_{j}})
+\ee
+where $\lambda_{S}$ constant common across all firms.
+\medskip
+\item If there is a total of $\mathcal{L}$ of low-skilled workers, then the labor supply of low-skilled workers that firm $j$ faces is given by
+\be
+\log(L_{j}(w_{L_{j}}))=\log(\lambda_{L}\mathcal{L}) + \beta_{L}\log(w_{L_{j}}-b_{L}) + a_{L_{j}}
+\ee
+Similarly for high-skilled workers
+\be
+\log(H_{j}(w_{H_{j}}))=\log(\lambda_{L}\mathcal{H}) + \beta_{H}\log(w_{H_{j}}-b_{H}) + a_{H_{j}}
+\ee
+\end{itemize}
+\end{frame}
+%%%%
+%%
+\begin{frame}
+\frametitle{Firm Optimization}
+\begin{itemize}
+\item Firms cannot observe workers' preferences but have knowledge of their supply function.
+\medskip
+\item Assume that firms are price takers in the product market for the moment
+\medskip
+\item Output is produced according to
+\be
+Y_{j} = T_{j}f(L_{j},H_{j})
+\ee
+\medskip
+\item where f(.,.) has CRS and we let $f_{S}\equiv\dfrac{\partial f(L_{j},H_{j})}{\partial S}$ for $S\in\{H,L\}$
+\medskip
+\pause
+\item Firm problem
+\be
+\min_{w_{L_{j}},w_{H_{j}}} w_{L_{j}}L_{j}(w_{L_{j}}) + w_{H_{j}}H_{j}(w_{H_{j}}) \qquad s.t. T_{j}f(L_{j}(w_{L_{j}}),H_{j}(w_{H_{j}})) \geq \bar{Y}
+\ee
+\end{itemize}
+\end{frame}
+%%%%
+\begin{frame}
+\frametitle{Back to something familiar...}
+\begin{itemize}
+\item Taking FOC and rearranging, we obtain that
+\be
+w_{S_{j}} = \dfrac{1}{1+\beta_{S}}b_{S} + \dfrac{\beta_{S}}{1+\beta_{S}}T_{j}f_{S}\underbrace{\mu_{j}}_{\text{Marginal Cost of production}}
+\ee
+\medskip
+\item What happens as $\beta_{S}\rightarrow\infty?$
+\medskip
+\item Who is capturing rents here and why? 
+\medskip
+\item Are amenities influencing the wage? Is this a standard compensating differential story?
+\end{itemize}
+\end{frame}
+%%%%
+\begin{frame}
+\frametitle{A simple benchmark: linear production function}
+\begin{itemize}
+\item Suppose that we have a linear production function and that a firm faces a fixed output price $P_{j}^{0}$.
+\be
+Y_{j} = T_{j} N_{j}=T_{j}((1-\theta)L_{j}+\theta H_{j})
+\ee
+\medskip
+\item Expression for wage of low skilled then becomes:
+\be
+w_{L_{j}} = \dfrac{1}{1+\beta_{L}}b_{L} + \dfrac{\beta_{L}}{1+\beta_{L}}T_{j}P_{j}^{0}(1-\theta)
+\ee
+\item Further assume that $b_{L}=(1-\theta)b$ and $b_{H}=\theta b$. Then
+\be
+\ln w_{L_{j}} = \ln \dfrac{(1-\theta)b}{1+\beta_{L}} + \ln(1+\beta_{L}R_{j})
+\ee
+\be
+\ln w_{H_{j}} = \ln \dfrac{\theta b}{1+\beta_{H}} + \ln(1+\beta_{H}R_{j})
+\ee
+where $R_{j}\equiv \dfrac{T_{j}P_{j}^{0}}{b}$
+\end{itemize}
+\end{frame}
+%%%%
+\begin{frame}
+\frametitle{Discussion}
+\begin{enumerate}
+\item No dynamics. 
+\bigskip
+\item No interactions $\rightarrow$ but if it is a small market a shock to a firm's productivity will affect all other firms! 
+\bigskip
+\item No compensating differentials! (will come back to this)
+\end{enumerate}
+\end{frame}
+%%%%
+\begin{frame}
+\frametitle{What is the punch line?}
+\begin{itemize}
+\item Monopsonistic posting wage models $\rightarrow$ firms suddenly matters to explain wage inequality $\rightarrow$ typically neglected in SBTC and S-D-I models
+\medskip
+\item These ``firm effects" are going to be highly correlated with measures of firm productivity.
+\medskip
+\item Firm effects only arise due to the presence of ``frictions" in the labor market.  
+\medskip
+\item Many things can generate monopsony power of firms!
+\medskip
+\item Key insight: we can infer degree of market power of firms by looking at magnitude of pass-through of ``productivity" shocks into wages. 
+\medskip
+\item Example that do this really well:  Kline, Petkova, Williams, Zidar (2019); Garin and Silverio (2023)
+\end{itemize}
+\end{frame}
+%%%%
+\begin{frame}[shrink=10]
+\frametitle{What if firm effects in pay reflect differences in work environments?}
+\pause
+\begin{itemize}
+\item Utility from a job is not just a function of the wage but also of amenities offer by a given employer
+\bigskip
+\item In the standard CCHK model with linear production function amenities do not affect the marginal product of labor $\rightarrow$ no \underline{direct} effect on wages. Also, amenities are ``sunk" to the firm, i.e. the firm in CCHK model set only the wage not the level of amenity.
+\bigskip
+\item More realistic scenario is that firms might decide to offer a particular amenity (e.g. health insurance) and as result could pay a lower wage $\rightarrow$ compensating differential.
+\bigskip
+\item If that is the case, it would mean that firm effects in pay do not only reflect differences in productivity across firms but also differences in ``work environments" / compensating differential motives.
+\bigskip
+\item How much of the variability in firm-pay comes from unobserved amenities?
+\bigskip
+\item This is the research question of Sorkin (2018).
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{But how to measure amenities?}
+\begin{equation}
+U_{ij} = \underbrace{\psi_{j} + \phi_{1}a_{j1}+\hdots+\phi_{K}a_{jK}}_{\text{Systematic Utility$\equiv V_{j}$}} + e_{ij} 
+\end{equation}
+\begin{itemize}
+\item Hard to get data on all the amenities that influence the systematic utility of being employed by firm $j$. 
+\medskip
+\item Sorkin (2018) develops a way to infer $V_{j}$ without having data on the amenities (nor $\psi_{j}$) $\rightarrow$ application of the PageRank of algorithm used by Google to rank webpages.
+\medskip
+\item Intuition: if a lot of workers \textit{voluntary} leave employer $j$ to join employer $j'$, then it must be that employer $j'$ gives higher systematic utility to workers. 
+\end{itemize}
+\end{frame}
+\begin{frame}[shrink=20]
+\frametitle{Google Page Rank Applied to Job-To-Job transitions}
+\begin{itemize}
+\item Suppose you have a worker deciding on whether to work for either firm $j$ or firm $k$.
+\medskip
+\item Let $V_{j}$ represent the systematic value of being employed by firm $j$. Similarly for $V_{k}$.
+\medskip
+\item Worker's decision is based on comparing $V_{j}$ and $V_{k}$ as well a match-specific idiosyncratic factor assumed to be Type-1 distributed.
+\medskip
+\item The probability that the worker chooses $k$ over $j$ is thus given by
+\begin{equation}
+\dfrac{\exp(V_{k})}{\exp(V_{k})+\exp(V_{j})}
+\end{equation}
+\item In the data we observe $M_{kj}:$ number of people that left firm $j$ to join firm $k$. Similarly, we have $M_{jk}$, number of people that left firm $k$ to join firm $j$. 
+\medskip
+\item Then, letting $N$ represent the total number of workers, we can estimate the \textit{relative} common value of firm $k$ relative to $j$ as
+\begin{equation}
+\dfrac{M_{kj}}{N}\dfrac{N}{M_{jk}}=\dfrac{\exp(V_{k})}{\exp(V_{j})}
+\end{equation}
+\medskip
+\item Can you see some problems with this?
+\end{itemize}
+\end{frame}
+\begin{frame}[shrink=30]
+\frametitle{Google Page Rank Applied to Job-To-Job transitions}
+\begin{itemize}
+\item Note that we can rewrite previous equation as
+\begin{equation}
+M_{kj}\exp(V_{j})=M_{jk}\exp(V_{k})
+\end{equation}
+\item This holds for all employers $j$ that we observe in the data. Let $J$ denote the set of firms
+\pause
+\medskip
+\item We can now sum RHS and LHS across all employers
+\begin{equation}
+\underbrace{\sum_{j\in J}M_{kj}}_{\text{Number of workers leaving a given firm $j\in J$ to join $k$}}\underbrace{\exp(V_{j})}_{\text{Value of origin firm $j$}}=\underbrace{\sum_{j\in J}M_{jk}}_{\text{Number of workers leaving firm $k$}}\underbrace{\exp(V_{k})}_{\text{Value of firm $k$}}
+\end{equation}
+\item Therefore the value of firm $k$ is given by the following recursive expression
+\begin{equation}
+\exp(V_{k}) = \dfrac{\sum_{j\in J}M_{kj}\exp(V_{j})}{\sum_{j\in J}M_{jk}}
+\end{equation}
+\item In matrix form:
+\begin{equation}
+\exp(V) = S^{-1}M\exp(V)
+\end{equation}
+where $M$ is a $J\times J$ matrix with element $(j,k)$ given by $M_{jk}$ and $S$ is a diagonal matrix with kth entry given by ${\sum_{j\in J}M_{jk}}$; finally $\exp(V)$ is a $J\times 1$ vector that stacks together all the common utility values of the $J$ firms. 
+\pause
+\medskip
+\item How we call that last equation? 
+\medskip
+\item This is what Google does when ranking webpages!
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{37\% of all voluntary job transitions imply a decrease in pay!}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.35]{aux/sorkin}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{But 66\% of all transitions lead to a higher $V_{j}$!}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.35]{aux/sorkin2}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{Working in Mining: "standard" utility but need to pay higher than average to compensate for bad working conditions}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.35]{aux/sorkin3}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}[shrink=10]
+\frametitle{Summing up}
+\begin{itemize}
+\item Sorkin uses a stylized model where it shows that compensating differential motives account for around half the variability in firm-pay.
+\medskip
+\item How he arrived at that estimate from his model is what you guys have to solve in Ps-4!
+\medskip
+\item Punch-line: firm might offer different levels of pay \underline{and} utility.
+\medskip 
+\item This creates ``vertical differentiation" across employers: good firms might pay higher wages and offer better amenities while some firms offer bad pay and bad working conditions. 
+\medskip
+\item ``Frictions" permit the co-existence of these two types of firms in the labor market.
+\medskip
+\item But what are these frictions exactly? Is it a problem of asymmetric information? (See Jaeger et al. paper on how well workers know their outside options)
+\medskip
+\item Which factors create variability in firm-utility across employers offering the same level of pay? (Lachowska, Mas, Saggio, Woodbury: look at hours worked; Lachowska, Sorkin, Woodbury: Unemployment Insurance; Dube-Naidu-Reich: dignity of the workplace). 
+\end{itemize}
+\end{frame}
+%%%%
+\section{Applications}
+\begin{frame}
+\frametitle{Card, Cardoso and Kline (2016)}
+\begin{itemize}
+\item What explains the gender wage gap?
+\medskip
+\item Traditional view: women less skilled than men.
+\begin{itemize}
+\item But women have higher levels of education!
+\end{itemize}
+\medskip
+\item Alternative view: women don't ask (Babcock and Laschever, 2009).
+\pause
+\medskip 
+\item CCK: role of firms in explaining the gender wage gap?
+\medskip
+\item Two channels:
+\medskip
+\begin{enumerate}
+\item Women sort in firms with lower premiums.
+\item Women bargain a smaller wage effect premium than men. 
+\end{enumerate} 
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Portugal and the Gender Wage Gap}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.4]{aux/cck1}
+	\end{center}
+\end{columns}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Women have more schooling!}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.4]{aux/cck2}
+	\end{center}
+\end{columns}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{CHK Event studies Men/Women in Portugal}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.4]{aux/cck3}
+	\end{center}
+\end{columns}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Wage change for men 1-4 Quartile of co-workers wages}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.4]{aux/cck4}
+	\end{center}
+\end{columns}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Wage change for women 1-4 Quartile of co-workers wages}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.4]{aux/cck6}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{Same gains?}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.4]{aux/cck8}
+	\end{center}
+\end{columns}
+\end{frame}
+%%
+\begin{frame}{Oaxaca-Blinder Decompositions }
+
+\begin{itemize}
+\item {\small{}Standard tool in labor economics: the Oaxaca (1973)-Blinder
+(1973) decomposition\medskip{}
+}{\small\par}
+\item {\small{}Let's briefly review how OB decompositions work\medskip{}
+}{\small\par}
+\item {\small{}There are two groups, $M$'s and $W$'s\medskip{}
+}{\small\par}
+\item {\small{}Average outcomes are $\bar{Y}_{M}$ and $\bar{Y}_{W}$, where
+$\bar{Y}_{g}=E\left[Y_{ig}|group_{i}=g\right]$\medskip{}
+}{\small\par}
+\item {\small{}We hope to explain group differences with an observed covariate
+vector $X_{i}$ }{\small\par}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Oaxaca-Blinder Decompositions }
+
+\begin{itemize}
+\item {\small{}Quantity to be explained:}{\small\par}
+\end{itemize}
+\begin{center}
+{\small{}$\Delta\equiv\bar{Y}_{M}-\bar{Y}_{W}$}{\small\par}
+\par\end{center}
+\begin{itemize}
+\item {\small{}Suppose we run a regression for each group}{\small\par}
+\end{itemize}
+\begin{center}
+{\small{}$Y_{ig}=X_{ig}^{\prime}\beta_{g}+\epsilon_{ig}$}{\small\par}
+\par\end{center}
+\begin{itemize}
+\item {\small{}$X_{ig}$ includes a constant\medskip{}
+}{\small\par}
+\item {\small{}OLS coefficient vector:}{\small\par}
+\end{itemize}
+\begin{center}
+{\small{}$\beta_{g}=E\left[X_{ig}X_{ig}^{\prime}|group_{i}=g\right]^{-1}E\left[X_{ig}Y_{ig}|group_{i}=g\right]$}{\small\par}
+\par\end{center}
+
+\end{frame}
+
+\begin{frame}{Oaxaca-Blinder Decompositions }
+
+\begin{itemize}
+\item {\footnotesize{}By construction OLS fits group means:}{\footnotesize\par}
+\end{itemize}
+\begin{center}
+{\footnotesize{}$\bar{Y}_{g}=\bar{X}_{g}^{\prime}\beta_{g}$.}{\footnotesize\par}
+\par\end{center}
+\begin{itemize}
+\item {\footnotesize{}Therefore we can write}{\footnotesize\par}
+\end{itemize}
+\begin{center}
+{\footnotesize{}$\Delta=\bar{X}_{M}^{\prime}\beta_{M}-\bar{X}_{W}^{\prime}\beta_{W}$}{\footnotesize\par}
+\par\end{center}
+
+{\footnotesize{}}
+
+\begin{center}
+{\footnotesize{}$=\left(\bar{X}_{M}-\bar{X}_{W}\right)^{\prime}\beta_{M}+\bar{X}_{W}^{\prime}\left(\beta_{M}-\beta_{W}\right)$}{\footnotesize\par}
+\par\end{center}
+\begin{itemize}
+\item {\footnotesize{}The OB decomposition splits $\Delta$ into a component
+explained by $X$'s, and a component explained by $\beta$'s\medskip{}
+}{\footnotesize\par}
+\item {\footnotesize{}First term answers the question: How much more would
+M's make than W's if both groups were paid like M's for observables?\medskip{}
+}{\footnotesize\par}
+\item {\footnotesize{}Second term answers the question: How much of $\Delta$
+is due to differences in earnings for M's and W's with the same characteristics?}{\footnotesize\par}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Oaxaca-Blinder Decompositions }
+
+\begin{center}
+{\small{}$\Delta=\left(\bar{X}_{M}-\bar{X}_{W}\right)^{\prime}\beta_{M}+\bar{X}_{W}^{\prime}\left(\beta_{M}-\beta_{W}\right)$}{\small\par}
+\par\end{center}
+\begin{itemize}
+\item {\small{}Can also write the alternative decomposition:}{\small\par}
+\end{itemize}
+\begin{center}
+{\small{}$\Delta=\left(\bar{X}_{M}-\bar{X}_{W}\right)^{\prime}\beta_{W}+\bar{X}_{M}^{\prime}\left(\beta_{M}-\beta_{W}\right)$}{\small\par}
+\par\end{center}
+\begin{itemize}
+\item {\small{}New first term answers the question: How much more would
+M's make than W's if both groups were paid like W's for observables?\medskip{}
+}{\small\par}
+\item {\small{}Second term measures much of $\Delta$ is explained by the
+$\beta$'s, weighting with M's characteristics}{\small\par}
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{AKM meets Oaxaca-Blinder}
+\begin{itemize}
+\item Gender specific firm effects model:
+\begin{equation}
+y_{it} = \alpha_{i} + \psi^{S}_{J(i,t)} + W_{it}^{\top}\gamma + r_{it} 
+\end{equation}
+\medskip
+\item $\psi^{S}_{j}$ firm effect of firm $j$ for workers with sex =$\{M,F\}$
+\medskip
+\item CCK fit AKM models separately for men and women.
+\item Dual Connected set: connected set of firms that overlap in both male and female AKM model.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{AKM meets Oaxaca-Blinder}
+\begin{itemize}
+\item Decompose differences in firm effects as
+\begin{equation}
+\begin{aligned}
+& \E[ \psi^{M}_{J(i,t)} \vert Male] - \E[ \psi^{F}_{J(i,t)} \vert Female] = \\
+& = \underbrace{\E[ \psi^{M}_{J(i,t)} - \psi^{F}_{J(i,t)} \vert Female]}_{\text{Bargaining Channel}} + \\
+ & + \underbrace{\E[ \psi^{M}_{J(i,t)} \vert Male] - \E[ \psi^{M}_{J(i,t)} \vert Female]}_{\text{Sorting Channel}}
+\end{aligned}
+\end{equation}
+
+\item First piece: difference in firm effects b/w men and women averaged using the distribution of jobs held by women.
+\bigskip
+\item Second piece: difference in average $\psi^{M}_{J(i,t)}$ across jobs held by women vs. men.
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Alternative decomposition}
+\begin{itemize}
+\item Decompose differences in firm effects as
+\begin{equation}
+\begin{aligned}
+& \E[ \psi^{M}_{J(i,t)} \vert Male] - \E[ \psi^{M}_{J(i,t)} \vert Female] = \\
+& = \underbrace{\E[ \psi^{M}_{J(i,t)} - \psi^{F}_{J(i,t)} \vert Male]}_{\text{Bargaining Channel}} + \\
+ & + \underbrace{\E[ \psi^{F}_{J(i,t)} \vert Male] - \E[ \psi^{F}_{J(i,t)} \vert Female]}_{\text{Sorting Channel}}
+\end{aligned}
+\end{equation}
+
+\item First piece: difference in firm effects b/w men and women averaged using the distribution of jobs held by men.
+\bigskip
+\item Second piece: difference in average $\psi^{F}_{J(i,t)}$ across jobs held by women vs. men.
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Gender Specific AKMs}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.35]{aux/cck9}
+	\end{center}
+\end{columns}
+\end{frame}
+%%
+%%
+%%
+\begin{frame}
+\frametitle{Gender Firm Effects and Productivity}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.45]{aux/cck11}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{Gender Firm Effects and Productivity}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.45]{aux/cck12}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{Gender Firm Effects and Productivity}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.45]{aux/cck13}
+	\end{center}
+\end{columns}
+\end{frame}
+
+%%
+%%
+\begin{frame}
+\frametitle{Decomposition}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.4]{aux/cck14}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{Heterogeneity}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.34]{aux/cck15}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{Life Cycle}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.2]{aux/sorting_time}
+	\end{center}
+\end{columns}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Summing up}
+\begin{itemize}
+\medskip
+\item Male/Female firm effects are highly correlated.
+\medskip
+\item But women only obtain 90\% of the firm effect of men.
+\medskip
+\item Firm effects explain 20\% of raw gender gap.
+\medskip
+\item Mostly explained by sorting component: women work in firms with lower premiums.
+\medskip
+\item But bargaining important in explaining the gap at higher levels of education.
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Goldschmidt and Schmeider (2017)}
+\begin{itemize}
+\item Weil (2014): 
+\begin{quote}
+Wage discrimination is rarely seen in large  firms despite
+the benefits it could confer. As long as workers are under
+one roof, the problems presented by horizontal and vertical
+equity remain. But what if the large employer could wage
+discriminate by changing the boundary of the  firm?
+\end{quote}
+\medskip
+\item By how can firms change their boundaries? Solution: by outsourcing. 
+\medskip
+\item GS studies on-site outsourcing events in Germany. Occupations studied: food, cleaning, logistics and services.
+\medskip
+\item Outsourcing Event$\equiv$ a large group of workers leave a mother firm and joins a new daugther firm in the business service.  
+\end{itemize}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Temp agencies and Business Service Firms on the rise}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.2]{aux/gs_1}
+	\end{center}
+\end{columns}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{AKM for FCLS and non-FCLS highly correlated}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.3]{aux/gs_2}
+	\end{center}
+\end{columns}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Large Wage Losses following the Outsourcing Event}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.3]{aux/gs_3}
+	\end{center}
+\end{columns}
+\end{frame}
+%%
+%%
+\begin{frame}
+\frametitle{Losses almost all explained by lost of AKM effect}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.2]{aux/gs_4}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{Daruich, Di Addario, Saggio (2023): Temp Workers}
+\end{frame}
+\begin{frame}
+\centering
+\includegraphics[scale=0.2]{aux/ryan.jpg}
+\end{frame}
+\begin{frame}
+\centering
+\includegraphics[scale=0.2]{aux/ryan1.jpg}
+\end{frame}
+\begin{frame}
+\frametitle{Large Wage Returns from Conversion}
+\centering
+\includegraphics[scale=0.2]{aux/JMP.jpg}
+\end{frame}
+\begin{frame}
+\frametitle{Almost Entirely Explained by a \textit{Change} in Rent-Sharing Coefficients}
+\centering
+\includegraphics[scale=0.2]{aux/JMP1.jpg}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Drenik, Jaeger, Plotkin and Schoefer: Temp Workers in Argentina}
+\centering
+\includegraphics[scale=0.4]{aux/pascuel.jpg}
+\end{frame}
+%%
+\begin{frame}
+\frametitle{Taking Stock}
+\begin{itemize}
+\item \textit{Where} you work seems crucial to explain many import effects that we see in the labor market:
+\begin{itemize}
+    \item Losses following outsourcing.
+    \item Gains from Temporary to Permanent conversion.
+\end{itemize}
+\pause
+\item Let's now apply this logic to a topic covered in the previous set of slides: wage losses from job-displacement. 
+\end{itemize}
+\end{frame}
+
+%%
+\begin{frame}
+\frametitle{Washington State}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.2]{aux/lmw}
+	\end{center}
+\end{columns}
+\end{frame}
+%%
+%%
+\begin{frame}
+\frametitle{Germany}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.2]{aux/till_new}
+	\end{center}
+\end{columns}
+\end{frame}
+\begin{frame}
+\frametitle{Evidence from multiple countries: Berthau, Acabbi, Barcelo, Gulyas, Lombardi, Saggio (forthcoming) }
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.2]{aux/saggio}
+	\end{center}
+\end{columns}
+\end{frame}
+
+%%
+\begin{frame}[shrink=7]
+\frametitle{Summing up}
+\begin{itemize}
+\item Increasing availability of matched employer-employee datasets has helped economists assessing importance of firms in wage settings.
+\medskip
+\item More and more papers on this:
+\medskip
+\item Importance of firms in explaining wage ``gaps"
+\medskip
+\begin{itemize}
+\item Male vs. Female.{\tiny{Card, Cardoso and Kline (2016)}}
+\item College vs. Non-College. \\ {\tiny{Engdom, Moser (2017)}; Huneeus, Neilson, Miller and Zimmerman (2015)}
+\item Black vs. White. {\tiny{Gerard, Lagos, Severnini, Card (2018)}} 
+\item Layoff workers vs Non-Layoff workers. \\ {\tiny{Lachowska, Mas, Woodbury (2017)}; Schmieder, von Wachter and Heining (2018)}
+\item Outsourced vs. Non Outsourced workers. {\tiny{ Goldschmidt and Schmieder (2017)}} 
+\item Temporary vs. Permanent contract workers. {\tiny{Daruich, Di Addario, Saggio (2020)}; Drenik, Jager, Plotkin, Schoefer (2020)}
+\item Unions vs. Non-Unionized Jobs  {\tiny{Beauregard-Lemieux-Messacar-Saggio (2024)}}
+\item Family vs. non-family firms.   {\tiny{Di Porto-Pagano-Pezone Schivardi-Saggio (2024)}}
+\end{itemize}
+\item Lots of paper also on the microfoundations on how firms can impact wages beyond what shown in this slide-deck:  
+{\tiny{Lamadon, Mogstad and Setzler (2020); Haanwinckel (2023); Berger Herkenhoff and Mongey (2019); Di Addario-Kline-Saggio-S\o lvsten (2023)}}.
+\end{itemize} 
+\end{frame}
+%%
+\begin{frame}
+\begin{columns}
+	\column{\dimexpr\paperwidth+5pt}
+	\begin{center}
+		\includegraphics[scale=0.6]{aux/meme}
+	\end{center}
+\end{columns}
+\end{frame}
+%%
+
+\end{document}
